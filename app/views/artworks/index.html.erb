@@ -1,9 +1,9 @@
 <!-- list artist's artwork in table format? -->
-
-<h3> <%= @artwork.artist.name %>'s Artworks </h3>
+<!-- Sort by title and user_owned -->
 
 <p><%= link_to "Add New Artwork", new_artist_artwork_path(@artist) %><br></p>
 
-
-
-<p>link test</p>
+<%= @artist.artworks.each do |work| %>
+  <h2> <%= @artwork.title %> </h2>
+  <p> Do I own this? <%= @artwork.user_owned %> </p>
+<% end %>
