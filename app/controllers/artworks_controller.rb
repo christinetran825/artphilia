@@ -8,6 +8,7 @@ class ArtworksController < ApplicationController
 
   def new
     @artwork = Artwork.new
+    @artist = Artist.find(params[:artist_id]) #find the parent
     # @media = Medium.all
   end
 
@@ -24,7 +25,7 @@ class ArtworksController < ApplicationController
   end
 
   def show
-    @artist = Artist.new
+    # @artist = Artist.new
   end
 
   def edit
