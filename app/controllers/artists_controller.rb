@@ -23,7 +23,8 @@ class ArtistsController < ApplicationController
   end
 
   def show
-    # @artwork = @artist.artworks.build
+    @artwork = @artist.artworks
+
   end
 
   def edit
