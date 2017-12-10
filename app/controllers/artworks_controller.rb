@@ -1,6 +1,7 @@
 class ArtworksController < ApplicationController
 
   before_action :set_artwork, only: [:show, :edit, :update, :destroy]
+  before_action :find_the_parent
 
   def index
     @artworks = Artwork.all
@@ -8,12 +9,9 @@ class ArtworksController < ApplicationController
 
   def new
     @artwork = Artwork.new
-    @artist = Artist.find(params[:artist_id]) #find the parent
-    # @media = Medium.all
   end
 
   def create
-    @artist = Artist.find(params[:artist_id]) #find the parent
     @artwork = @artist.artworks.build(artwork_params)
     if @artwork && @artwork.save
       flash[:success] = "#{@artwork.title} added"
@@ -25,7 +23,6 @@ class ArtworksController < ApplicationController
   end
 
   def show
-    # @artist = Artist.new
   end
 
   def edit
@@ -47,14 +44,16 @@ class ArtworksController < ApplicationController
   end
 
   private
+    def find_the_parent
+      @artist = Artist.find(params[:artist_id]) #find the parent
+    end
 
     def set_artwork
       @artwork = Artwork.find(params[:id])
     end
 
     def artwork_params
-      params.require(:artwork).permit(:title, :exhibition, :user_owned, :signed, :original, :rating, :comments, :medium)
-      #medium_id:[], :media_attributes => [:id, :name]
+      params.require(:artwork).permit(:title, :exhibition, :user_owned, :signed, :original, :rating, :comments, medium_id:[], :medium_attributes => [:id, :name])
     end
 
 end
