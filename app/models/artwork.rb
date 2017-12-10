@@ -4,7 +4,7 @@ class Artwork < ApplicationRecord
 
   before_validation :make_title_case
 
-  validates_presence :title, :exhibition, :user_owned, :signed, :original, :rating, :comments, :medium
+  validates_presence_of :title, :exhibition, :user_owned, :signed, :original, :rating, :comments, :medium
 
   def make_title_case
     self.title = self.title.titlecase
