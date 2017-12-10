@@ -1,6 +1,8 @@
 <!-- list artist's artwork in table format? -->
 <!-- Sort by title and user_owned -->
 
+<p><%= pluralize(@artist.artworks.count, 'Artworks') %></p>
+
 <p><%= link_to "Add New Artwork", new_artist_artwork_path(@artist) %><br></p>
 
 <%= @artist.artworks.each do |work| %>
