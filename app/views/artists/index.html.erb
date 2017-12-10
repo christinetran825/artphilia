@@ -1,0 +1,12 @@
+<h1>All Artists</h1>
+
+<h4><%= link_to "Add a New Artist", new_artist_path %></h4>
+
+<p>Sort by First/Last Name   A  |  B  |  C </p>
+<!-- create a sort option list for first/last name; create links for first and last initials -->
+
+<!-- list all artists; filter by abc order last name and first name; add artist's website link -->
+<h4>Artist's Name | Artworks | Website | Rating</h4>
+<% @artists.each do |a| %>
+  <h4><%= link_to a.name, artist_path(a) %>  | <%= link_to 'Artworks', artist_artworks_path(a) %> | <%= a.website %>  |  <%= a.rating %></h4>
+<% end %>
