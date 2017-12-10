@@ -1,0 +1,52 @@
+<%= form_for([@artist, @artwork]) do |f| %>
+  <div class="field">
+    <%= f.label "Title" %><br>
+    <%= f.text_field :title %>
+  </div><br>
+
+  <div class="field">
+    <%= f.label "Exhibition (enter None for None/Not Sure)" %><br>
+    <%= f.text_field :exhibition %>
+  </div><br>
+
+  <div class="field">
+    <%= f.label "Medium/Media (select as many that apply)" %><br>
+<!-- checkbox for exisiting media -->
+    <%= f.collection_check_boxes :medium_id, Medium.all, :id, :name %>
+<!-- text input for new medium -->
+    <%= f.fields_for :medium, @artwork.build_medium do |media_fields| %>
+      <%= media_fields.text_field :name %>
+    <% end %>
+  </div><br>
+
+  <div class="field">
+    <%= f.label "Rating" %><br>
+    <%= f.text_field :rating %>
+  </div><br>
+
+  <div class="field">
+    <%= f.label "Comments" %><br>
+    <%= f.text_field :comments %>
+  </div><br>
+
+  <h4>Got to have it</h4>
+
+  <div class="field">
+    <%= f.label "Do you own this artwork?" %><br>
+    <%= f.radio_button :user_owned, "Yes" %> Yes <%= f.radio_button :user_owned, "No" %> No
+  </div><br>
+
+  <div class="field">
+<!-- if user does own the artwork, show signed and original fields -->
+    <%= f.label "Is it signed?" %><br>
+    <%= f.radio_button :signed, "Yes" %> Yes <%= f.radio_button :signed, "No" %> No
+  </div><br>
+
+  <div class="field">
+    <%= f.label "Original or Print?" %><br>
+    <%= f.radio_button :original, "Yes" %> Yes <%= f.radio_button :original, "No" %> No
+  </div><br>
+
+    <%= f.submit%>
+
+<% end %>
