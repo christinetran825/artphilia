@@ -18,5 +18,6 @@ Rails.application.routes.draw do
   resources :artists do
     resources :artworks
   end
+  resources :media
 
 end
