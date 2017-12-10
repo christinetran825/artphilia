@@ -14,8 +14,10 @@
 <!-- checkbox for exisiting media -->
     <%= f.collection_check_boxes :medium_id, Medium.all, :id, :name %>
 <!-- text input for new medium -->
-    <%= f.fields_for :medium, @artwork.build_medium do |media_fields| %>
+    <p>
+      Add a New Medium <%= f.fields_for :medium, @artwork.build_medium do |media_fields| %>
       <%= media_fields.text_field :name %>
+    </p>
     <% end %>
   </div><br>
 
@@ -44,7 +46,7 @@
 
   <div class="field">
     <%= f.label "Original or Print?" %><br>
-    <%= f.radio_button :original, "Yes" %> Yes <%= f.radio_button :original, "No" %> No
+    <%= f.radio_button :original, "Original" %> Original <%= f.radio_button :original, "Print" %> Print
   </div><br>
 
     <%= f.submit%>
