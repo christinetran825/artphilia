@@ -25,7 +25,7 @@
     [x] email
     [x] password
 [x] form
-  [x] errors for sign up - alert - 'Please enter a valid email & valid password'
+  [x] errors for sign up - error - 'Please enter a valid email & valid password'
   [x] create => redirects to Artists index
 [x] show 1 user
 
@@ -50,7 +50,7 @@
 [x] add create action
 [x] form
   [x] create => redirects to Artists index
-  [x] errors for login - alert - 'Invalid email/password combination'
+  [x] errors for login - error - 'Invalid email/password combination'
   [x] add link - social media (omniauth)
 [] destroy - notice - 'You're logged out'
 
@@ -62,3 +62,64 @@
 8. Layouts > Application
 [x] add render header partial to application
 [x] add flash message iterations
+
+9. Artist
+[x] rails g resource Artists name:string website:string discovered:string rating:integer notes:string
+** discovered can be at gallery?
+[x] model
+  [x] associations
+    [x] belongs_to :user
+    [x] has_many :artworks, through: :artist_artwork
+    [x] has_many artist_artwork
+  [x] accepts_nested_attributes_for :artworks
+  [x] before validations = name titlecase
+  [x] validations
+    [x] name
+    [x] website
+    [x] discovered
+    [x] rating
+    [x] notes
+  [] avoid duplicates
+[x] form
+  [x] create - success - 'New Artist added'
+  [x] edit - success - 'Artist was updated'
+  [x] redirects to artist#show
+[x] show 1 artist
+  [x] delete artist - success - 'Are you sure you want to delete this Artist?'
+  [x] notice - 'Artist was deleted'
+
+!!!!
+  ensure nested routes for artists and artworks
+  artist controller#show => build the artwork relationship => @artwork = @artist.artworks.build
+  artwork controller#create => @artist = Artist.find(params[:artist_id]) #find the parent
+                            => @artwork = @artist.artworks.build(artwork_params)
+                            => ensure routes are redirect_to artist_path(@artist)
+  Add validations where blank spaces/entries are not accepted
+
+10. Artwork
+[x] rails g resource Artworks title:string exhibition:string medias:string user_owned:string signed:string original:string rating:integer comments:string
+[] model
+  [] create setter method = medium_name ** medium is a collection;
+  [] before validations = title, exhibition titlecase
+  [] association
+    [] belongs_to :user
+    [] has_many :artists, through: :artist_artwork
+    [] has_many artist_artwork
+    [] has_many :medias
+  [] validations
+    [] title
+    [] exhibition
+    [] medias
+    [] user_owned
+    [] signed
+    [] original
+    [] rating
+    [] comments
+  [] avoid duplicates
+[] form
+  [] create - notice - 'New Artwork added'
+  [] edit - notice - 'Artwork was updated'
+  [] redirects to artwork#show
+[] show 1 artwork
+  [] delete artwork - alert - 'Are you sure you want to delete this Artwork?'
+  [] notice - 'Artwork was deleted'
