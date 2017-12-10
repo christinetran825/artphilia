@@ -6,6 +6,6 @@
 <p><%= link_to "Add New Artwork", new_artist_artwork_path(@artist) %><br></p>
 
 <%= @artist.artworks.each do |work| %>
-  <h2> <%= @artwork.title %> </h2>
-  <p> Do I own this? <%= @artwork.user_owned %> </p>
+  <h2> <%= link_to work.title, artist_artwork_path(work) %> </h2>
+  <p> Do I own this? <%= work.user_owned %> </p>
 <% end %>
