@@ -52,7 +52,8 @@ class ArtworksController < ApplicationController
     end
 
     def artwork_params
-      params.require(:artwork).permit(:title, :exhibition, :user_owned, :signed, :original, :rating, :comments, medium_id:[], :media_attributes => [:id, :name])
+      params.require(:artwork).permit(:title, :exhibition, :user_owned, :signed, :original, :rating, :comments, :medium)
+      #medium_id:[], :media_attributes => [:id, :name]
     end
 
 end
