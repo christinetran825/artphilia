@@ -1,5 +1,7 @@
 class Artist < ApplicationRecord
   belongs_to :user
+  has_many :artworks
+  has_many :media, through: :artworks
 
   before_validation :make_title_case
 
