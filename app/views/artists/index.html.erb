@@ -1,11 +1,9 @@
 <h1>All Artists</h1>
 
-<h4><%= link_to "Add a New Artist", new_artist_path %></h4>
-
 <p>Sort by First/Last Name   A  |  B  |  C </p>
 <!-- create a sort option list for first/last name; create links for first and last initials -->
 
-<p><%= pluralize(@artists.count, 'Artists') %></p>
+<%= pluralize(@artists.count, 'Artists') %> <%= link_to "Add a New Artist", new_artist_path %>
 
 <!-- list all artists; filter by abc order last name and first name; add artist's website link -->
 <table class="table table-striped">

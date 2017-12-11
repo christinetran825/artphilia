@@ -24,7 +24,7 @@
       <%= media_fields.text_field :name %>
     </p>
     <% end %>
-  </div><br>
+  </div>
 
   <div class="field">
     <%= f.label "Rating" %><br>
@@ -54,6 +54,6 @@
     <%= f.radio_button :original, "Original" %> Original <%= f.radio_button :original, "Print" %> Print
   </div><br>
 
-    <%= f.submit%>
+    <%= f.submit class: 'btn btn-success' %>
 
 <% end %>

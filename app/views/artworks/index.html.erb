@@ -2,7 +2,7 @@
 
 <h3> <%= @artist.name %>'s Artworks </h3>
 
-<p><%= pluralize(@artist.artworks.count, 'Artworks') %> | <%= link_to "Add New Artwork", new_artist_artwork_path(@artist) %><br></p>
+<%= pluralize(@artist.artworks.count, 'Artworks') %> | <%= link_to "Add New Artwork", new_artist_artwork_path(@artist) %><br>
 
 <p> sort by media, title, user_owned </p>
 
