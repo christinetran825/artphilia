@@ -40,7 +40,7 @@ class ArtworksController < ApplicationController
   def destroy
     @artwork.delete
     flash[:success] = "#{@artwork.title} was deleted"
-    redirect_to artworks_path
+    redirect_to artist_path(@artist)
   end
 
   private
@@ -53,7 +53,7 @@ class ArtworksController < ApplicationController
     end
 
     def artwork_params
-      params.require(:artwork).permit(:title, :exhibition, :user_owned, :signed, :original, :rating, :comments, medium_id:[], :medium_attributes => [:id, :name])
+      params.require(:artwork).permit(:title, :exhibition, :user_owned, :signed, :original, :rating, :comments, medium_ids:[], :medium_attributes => [:id, :name])
     end
 
 end
