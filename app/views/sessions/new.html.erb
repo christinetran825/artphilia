@@ -1,8 +1,11 @@
 <h1>Log In</h1>
 
 <%= render 'sessions/log_in_form' %>
-<%= render 'sessions/oauth-link' %>
-
 <br>
-<h3>Don't have an account yet?</h3>
-<%= link_to "Sign up now!", signup_path %>
+
+<%= render 'sessions/oauth-link' %>
+<br><br>
+
+<h4>Don't have an account yet? <%= link_to "Sign up now!", signup_path, class: 'btn btn-info btn-xs' %></h4>
+
+<%= link_to 'Cancel', root_path %>
