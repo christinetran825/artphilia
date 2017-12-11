@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-fixed-top" id="mainNav">
     <div class="container-fluid">
     <div class="navbar-header">
-        <a class="navbar-brand" href="/"> logo </a>
+        <a class="navbar-brand" href="/"> Artphilia </a>
     </div>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="glyphicon glyphicon-align-justify"></span>
@@ -9,7 +9,7 @@
     <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="nav navbar-nav ml-auto">
         <% if !!current_user %>
-            <li class="nav-item">
+            <li class="active">
               <%= link_to "Home", root_path %>
               <%= link_to "Your Artists", artists_path %>
               <%= link_to "Galleries" %>
