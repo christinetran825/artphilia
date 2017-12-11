@@ -87,6 +87,7 @@
 [x] show 1 artist
   [x] delete artist - success - 'Are you sure you want to delete this Artist?'
   [x] notice - 'Artist was deleted'
+[] index - sort artist by name; rating --- add a search field?
 
 !!!!
   ensure nested routes for artists and artworks
@@ -115,27 +116,32 @@
     [x] original
     [x] rating
     [x] comments
-  [] avoid duplicates
+  [] avoid duplicates???
 [x] form
   [x] create - notice - 'New Artwork added'
+    [] add extended form to select signed and original if user says they own the piece
+      [] user_owned
+      [] signed
+      [] original
   [x] edit - notice - 'Artwork was updated'
   [x] redirects to artist_artwork#show
 [] show 1 artwork
   [x] delete artwork - alert - 'Are you sure you want to delete this Artwork?'
   [x] notice - 'Artwork was deleted'
+[] index - sort artist by name; rating --- add a search field?
 
-11. Media
+11. Medium/Media
 [x] rails g migration Medium name:string
 [x] model
   [x] association
     [x] belongs_to :artworks
-  [] avoid duplicates
-<!-- [] form
+  [x] avoid duplicates = added medium_attributes= setter, and validates uniqueness for :name
+[] form
   [] create - alert - 'New Medium added'
   [] edit - alert - 'Medium was updated'
   [] redirects to medium#show
 [] delete medium - confirm - 'Are you sure you want to delete this Medium?'
-[] alert - 'Medium was removed' -->
+[] alert - 'Medium was removed'
 
 Little things
 [] check if flash messages work correctly
