@@ -1,11 +1,11 @@
 <!-- list artist's artwork in table format? -->
 <!-- Sort by title and user_owned -->
 
-<p><%= pluralize(@artist.artworks.count, 'Artworks') %></p>
+<h3> <%= @artist.name %>'s Artworks </h3>
 
-<p><%= link_to "Add New Artwork", new_artist_artwork_path(@artist) %><br></p>
+<p><%= pluralize(@artist.artworks.count, 'Artworks') %> | <%= link_to "Add New Artwork", new_artist_artwork_path(@artist) %><br></p>
 
 <%= @artist.artworks.each do |work| %>
-  <h2> <%= link_to work.title, artist_artwork_path(work) %> </h2>
+  <h3> <%= link_to work.title, artist_artwork_path(@artist, work) %> </h3>
   <p> Do I own this? <%= work.user_owned %> </p>
 <% end %>
