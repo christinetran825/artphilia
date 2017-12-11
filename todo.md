@@ -98,28 +98,100 @@
 
 10. Artwork
 [x] rails g resource Artworks title:string exhibition:string medias:string user_owned:string signed:string original:string rating:integer comments:string
-[] model
-  [] create setter method = medium_name ** medium is a collection;
-  [] before validations = title, exhibition titlecase
-  [] association
-    [] belongs_to :user
-    [] has_many :artists, through: :artist_artwork
-    [] has_many artist_artwork
-    [] has_many :medias
-  [] validations
-    [] title
-    [] exhibition
-    [] medias
-    [] user_owned
-    [] signed
-    [] original
-    [] rating
-    [] comments
+[x] model
+  [x] create setter method = medium_name ** medium is a collection;
+  [x] before validations = title, exhibition titlecase
+  [x] association
+    [x] belongs_to :user
+    [x] has_many :artists, through: :artist_artwork
+    [x] has_many artist_artwork
+    [x] has_many :medias
+  [x] validations
+    [x] title
+    [x] exhibition
+    [x] medias
+    [x] user_owned
+    [x] signed
+    [x] original
+    [x] rating
+    [x] comments
   [] avoid duplicates
-[] form
-  [] create - notice - 'New Artwork added'
-  [] edit - notice - 'Artwork was updated'
-  [] redirects to artwork#show
+[x] form
+  [x] create - notice - 'New Artwork added'
+  [x] edit - notice - 'Artwork was updated'
+  [x] redirects to artist_artwork#show
 [] show 1 artwork
-  [] delete artwork - alert - 'Are you sure you want to delete this Artwork?'
-  [] notice - 'Artwork was deleted'
+  [x] delete artwork - alert - 'Are you sure you want to delete this Artwork?'
+  [x] notice - 'Artwork was deleted'
+
+11. Media
+[x] rails g migration Medium name:string
+[x] model
+  [x] association
+    [x] belongs_to :artworks
+  [] avoid duplicates
+<!-- [] form
+  [] create - alert - 'New Medium added'
+  [] edit - alert - 'Medium was updated'
+  [] redirects to medium#show
+[] delete medium - confirm - 'Are you sure you want to delete this Medium?'
+[] alert - 'Medium was removed' -->
+
+Little things
+[] check if flash messages work correctly
+[] check if flash messages appear where they should be
+[]
+
+CSS/bootstrap
+[] work on divs, classes
+[] colors
+[] fonts
+
+NESTED
+{
+  :artist => {
+    :name => 'Mark Ryden'      #titlecase
+    :website => 'website'
+    :discovered => 'The Yak Book - ComicCon vendor'
+    :artwork_attributes => {
+      "0" => {
+        :title => "The Tree of Life", #titlecase
+        :exhibition => 'The Tree Show', #titlecase
+        :medium => [
+          'oil',      #titlecase #f.collection_select :media, Media.all, :id, :media
+          ]
+        :user_owned => 'Yes'
+        :signed => 'Yes'
+        :original => 'Yes'
+        :rating => '5'
+        :comments => 'comments',
+      }
+      "1" => {
+        :title => "The Last Rabbit", #titlecase
+        :exhibition => 'Bunnies & Bees', #titlecase
+        :medium => [
+          'Painting',
+          'oil'     #f.collection_select :media, Media.all, :id, :media
+          ]
+        :user_owned => 'No'
+        :signed => 'No'
+        :original => 'No'
+        :rating => '4'
+        :comments => 'comments',
+      }
+    }
+    :artist_rating => 5
+    :notes => 'notes'
+  }
+}
+
+OAUTH2 Flow
+1. User goes to /auth/provider on my site
+2. Omniauth redirects them to provider, providing provider with key & secret identifying the application. Provider then will know which application user is trying to log into
+3. User logs in with Provider
+4. Provider redirects user back to application (callback URL) and provides application with a secret code representing the user on provider
+5. Application sends the secret code back to Provider
+6. Provider confirms code that came from Provider and that application received it
+7. Provider sends application back the user's data
+8. Application checks if user exists in the system by email, if so, logs them in
+9. If user doesn't exist, application creates a user based on their email and logs them in
