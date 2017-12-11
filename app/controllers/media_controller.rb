@@ -50,7 +50,6 @@ class MediaController < ApplicationController
 
     def media_params
       params.require(:medium).permit(:name)
-      # params.require(:media).permit(:name, artwork_ids: [])
     end
 
 
