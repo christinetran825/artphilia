@@ -1,9 +1,10 @@
 <!-- list artist's artwork in table format? -->
-<!-- Sort by title and user_owned -->
 
 <h3> <%= @artist.name %>'s Artworks </h3>
 
 <p><%= pluralize(@artist.artworks.count, 'Artworks') %> | <%= link_to "Add New Artwork", new_artist_artwork_path(@artist) %><br></p>
+
+<p> sort by media, title, user_owned </p>
 
 <%= @artist.artworks.each do |work| %>
   <h3> <%= link_to work.title, artist_artwork_path(@artist, work) %> </h3>
