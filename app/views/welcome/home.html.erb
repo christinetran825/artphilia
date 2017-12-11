@@ -1,5 +1,10 @@
-<h1>Artphilia</h1>
-<p>Keep a record of all the artists you know and love!</p>
+<div class="container">
+  <h1>Artphilia</h1>
+  <p>Keep a record of all the artists you know and love!</p>
+    <div class="col-xs-3">
+      <%= render 'sessions/oauth-link' %>
+      <%= link_to "Sign Up", signup_path, class: 'btn btn-success btn-lg' %>
+      <%= link_to "Log In", login_path, class: 'btn btn-success btn-lg' %>
+    </div>
 
-<%= render 'sessions/oauth-link' %>
-<%= link_to "Sign Up", signup_path %> | <%= link_to "Log In", login_path %>
+</div>
