@@ -15,11 +15,5 @@ class Artwork < ApplicationRecord
     self.medium = Medium.find_or_create_by(medium)
     self.medium.update(medium)
   end
-  #
-  # def medium_attributes=(medium_attributes)
-  #   medium_attributes.values.each do |medium_attribute|
-  #     medium = Medium.find_or_create_by(medium_attribute)
-  #     self.artwork_media.build(medium: medium)
-  #   end
-  # end
+  
 end
