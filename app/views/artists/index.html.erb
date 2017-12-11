@@ -8,7 +8,23 @@
 <p><%= pluralize(@artists.count, 'Artists') %></p>
 
 <!-- list all artists; filter by abc order last name and first name; add artist's website link -->
-<h4>Artist's Name | Artworks | Website | Rating</h4>
-<% @artists.each do |a| %>
-  <h4><%= link_to a.name, artist_path(a) %>  | <%= link_to 'Artworks', artist_artworks_path(a) %> | <%= a.website %>  |  <%= a.rating %></h4>
-<% end %>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Artist's Name</th>
+      <th>Artist's Artworks</th>
+      <th>Website</th>
+      <th>Rating</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @artists.each do |a| %>
+    <tr>
+      <td><%= link_to a.name, artist_path(a) %></td>
+      <td><%= link_to 'Artworks', artist_artworks_path(a) %></td>
+      <td><%= a.website %></td>
+      <td><%= a.rating %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
