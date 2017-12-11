@@ -31,11 +31,16 @@ gem 'jbuilder', '~> 2.5'
 gem 'bcrypt', '~> 3.1.7'
 
 gem 'pry'
+# social media login
 gem 'omniauth'
 gem 'omniauth-facebook'
+
+# hides api keys/secrets
 gem 'dotenv-rails'
 
-gem 'bootstrap-sass', '~> 3.2.0'
+#boostrap
+# gem 'bootstrap-sass', '~> 3.2.0'
+gem 'bootstrap'
 gem 'autoprefixer-rails'
 
 # Use Capistrano for deployment
