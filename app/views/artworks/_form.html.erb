@@ -12,7 +12,12 @@
   <div class="field">
     <%= f.label "Medium/Media (enter Mixed for mixed media)" %><br>
 <!-- checkbox for exisiting media if medium.checked?-->
-    <%= f.collection_check_boxes :medium_id, Medium.all, :id, :name %>
+    <%= f.collection_check_boxes :medium_id, Medium.all, :id, :name do |b|%>
+      <div class="collection-check-box">
+        <%= b.check_box %>
+        <%= b.label %>
+      </div>
+    <% end %>
 <!-- text input for new medium -->
     <p>
       Add a New Medium <%= f.fields_for :medium, @artwork.build_medium do |media_fields| %>
