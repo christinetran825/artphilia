@@ -10,8 +10,8 @@
   </div><br>
 
   <div class="field">
-    <%= f.label "Medium/Media (select as many that apply)" %><br>
-<!-- checkbox for exisiting media -->
+    <%= f.label "Medium/Media (enter Mixed for mixed media)" %><br>
+<!-- checkbox for exisiting media if medium.checked?-->
     <%= f.collection_check_boxes :medium_id, Medium.all, :id, :name %>
 <!-- text input for new medium -->
     <p>
