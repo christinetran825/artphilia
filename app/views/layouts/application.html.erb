@@ -6,13 +6,13 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-
+    <link href="https://fonts.googleapis.com/css?family=Della+Respira" rel="stylesheet">
   </head>
 
   <body>
     <%= render 'layouts/header' %>
     <div id="main-container" class="container-fluid">
-       <% flash.each do |name, msg| -%>
+       <% flash.each do |name, msg| %>
          <%= content_tag :div, msg, class: "alert alert-#{name}" %>
        <% end %>
       <%= yield %>
