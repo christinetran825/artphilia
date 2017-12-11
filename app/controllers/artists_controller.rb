@@ -17,7 +17,7 @@ class ArtistsController < ApplicationController
       flash[:success] = "#{@artist.name} added!"
       redirect_to artists_path(@artist)
     else
-      flash.now[:error] = "Please enter all fields"
+      flash.now[:danger] = "Please enter all fields"
       render :new
     end
   end

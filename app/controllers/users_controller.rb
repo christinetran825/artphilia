@@ -18,7 +18,7 @@ class UsersController < ApplicationController
       redirect_to user_path(@user)
       # redirect_to @user #/users/#{@user.id} same as user_path(@user)
     else
-      flash.now[:error] = "Please enter a valid email & valid password"
+      flash.now[:danger] = "Please enter a valid email & valid password"
       render :new #error; show user the form again
     end
   end

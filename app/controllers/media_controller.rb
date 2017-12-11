@@ -17,7 +17,7 @@ class MediaController < ApplicationController
       flash[:success] = "#{@medium.name} added"
       redirect_to artist_path(@artist)
     else
-      flash.now[:error] = "Please enter a medium"
+      flash.now[:danger] = "Please enter a medium"
       render :new
     end
   end
