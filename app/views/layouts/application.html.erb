@@ -6,16 +6,17 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    
   </head>
 
   <body>
-
     <%= render 'layouts/header' %>
-    <br>
-    <% flash.each do |name, message| %>
-      <div class="<%= name %>"><%= message %></div>
-    <% end %>
+     <div id="main-container" class="container">
+       <% flash.each do |name, msg| -%>
+         <%= content_tag :div, msg, class: "alert alert-#{name}" %>
+       <% end -%>
+      <%= yield %>
+    </div>
 
-    <%= yield %>
   </body>
 </html>
