@@ -9,4 +9,4 @@
 <p> Signed? <%= @artwork.signed %> </p>
 <p> Original or Print? <%= @artwork.original %> </p>
 
-<p><%= link_to "Show All #{@artist.name} Artworks", artist_artwork_path(@artist) %> | <%= link_to "Edit Artwork", edit_artist_artwork_path(@artwork) %> | <%= link_to "Delete Artwork", artist_artwork_path, method: :delete, data: {confirm: "Are you sure you want to delete this Artwork?"} %> </p>
+<p><%= link_to "Show All #{@artist.name} Artworks", artist_path(@artist) %> | <%= link_to "Edit Artwork", edit_artist_artwork_path %> | <%= link_to "Delete Artwork", artist_artwork_path, method: :delete, data: {confirm: "Are you sure you want to delete this Artwork?"} %> </p>
