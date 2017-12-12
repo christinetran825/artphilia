@@ -1,7 +1,11 @@
-<h2> <%= @user.name %> </h2>
-<h4> <%= @user.email %> </h4>
-
-<div class="btn-group">
-  <%= link_to "Edit Account", edit_user_path, class: 'btn btn-link btn-sm' %>
-  <%= link_to "Delete Account", @artist, method: :delete, data: {confirm: "Are you sure you want to delete your Account?"}, class: 'btn btn-link btn-sm' %></p>
+<div class="container_show">
+  <h1>Profile</h1>
 </div>
+
+  <h4>Name: <%= @user.name.titlecase %> </h4>
+  <p>Email: <%= @user.email %> </p>
+
+  <div class="btn-group">
+    <%= link_to "Edit Account", edit_user_path, class: 'btn btn-link btn-sm' %>
+    <%= link_to "Delete Account", @artist, method: :delete, data: {confirm: "Are you sure you want to delete your Account?"}, class: 'btn btn-link btn-sm' %></p>
+  </div>
