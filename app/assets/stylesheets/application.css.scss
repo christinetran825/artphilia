@@ -37,18 +37,50 @@ body.home {
   line-height: 1.5;
 }
 
+// Nav bar
+nav li a {
+  margin: 7px;
+}
+
+// containments
+
 .container {
-  width: 350px;
-  margin: 150px auto;
+  width: 450px;
+  margin: 170px auto;
   // background-color: rgba(255,255,255, 0.5);
   // border-radius: 40px;
+  // border: 2px solid #73AD21;
   text-align: center;
+}
+
+.container_login_signin {
+  width: 400px;
+  margin: 60px auto;
+  padding: 50px;
+  // background-color: rgba(255,255,255, 0.5);
+  border-radius: 40px;
+  border: 2px solid #73AD21;
+  text-align: center;
+}
+
+.container_new_edit {
+  // width: 150px;
+  margin: 25px auto;
+  text-align: left;
 }
 
 .container_show {
   // width: 150px;
   margin: 25px auto;
   text-align: center;
+}
+
+.form {
+  text-align: left;
+}
+
+.form.placeholder {
+  font-size: 4px;
 }
 
 .adding_objects {
@@ -61,4 +93,9 @@ body.home {
 
 .table.table-striped {
 
+}
+
+.footer {
+  margin: 150px auto;
+  text-align: center;
 }
