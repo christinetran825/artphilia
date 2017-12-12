@@ -19,41 +19,43 @@
       </div>
     <% end %>
 <!-- text input for new medium -->
-    <p>
+    <div class="add_medium">
       Add a New Medium <%= f.fields_for :medium, @artwork.build_medium do |media_fields| %>
-      <%= media_fields.text_field :name %>
-    </p>
-    <% end %>
+        <%= media_fields.text_field :name %>
+      <% end %>
+    </div>
   </div>
 
   <div class="field">
     <%= f.label "Rating" %><br>
-    <%= f.text_field :rating %>
+    <%= f.text_field :rating, @artwork.blank_stars.times do %>
+      <span class="glyphicon glyphicon-star-empty"></span>
+    <% end %>
   </div><br>
 
   <div class="field">
     <%= f.label "Comments" %><br>
-    <%= f.text_field :comments %>
+    <%= f.text_area :comments %>
   </div><br>
 
   <h4>Got to have it</h4>
 
   <div class="field">
-    <%= f.label "Do you own this artwork?" %><br>
+    <%= f.label "Do you own this artwork?"%><br>
     <%= f.radio_button :user_owned, "Yes" %> Yes <%= f.radio_button :user_owned, "No" %> No
   </div><br>
 
-  <div class="field">
+  <div class="field reveal-if-active">
 <!-- if user does own the artwork, show signed and original fields -->
     <%= f.label "Is it signed?" %><br>
     <%= f.radio_button :signed, "Yes" %> Yes <%= f.radio_button :signed, "No" %> No
   </div><br>
 
-  <div class="field">
+  <div class="field reveal-if-active">
     <%= f.label "Original or Print?" %><br>
     <%= f.radio_button :original, "Original" %> Original <%= f.radio_button :original, "Print" %> Print
   </div><br>
 
     <%= f.submit class: 'btn btn-success' %>
-
 <% end %>
+<br>
