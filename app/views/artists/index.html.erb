@@ -1,9 +1,11 @@
-<h1>All Artists</h1>
+<div class="container_show">
+  <h1>All Artists</h1>
 
-<p>Sort by First/Last Name   A  |  B  |  C </p>
-<!-- create a sort option list for first/last name; create links for first and last initials -->
-
-<%= pluralize(@artists.count, 'Artists') %> <%= link_to "Add a New Artist", new_artist_path %>
+  <div class="adding_objects">
+    <p><%= pluralize(@artists.count, 'Artists') %></p>
+    <%= link_to "Add a New Artist", new_artist_path, class:'btn btn-link btn-md' %>
+  </div>
+</div>
 
 <!-- list all artists; filter by abc order last name and first name; add artist's website link -->
 <table class="table table-striped">
