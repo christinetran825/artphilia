@@ -1,6 +1,7 @@
-<h1>Edit Artist <%= @artist.name %></h1>
+<div class="container_new_edit">
+  <h1>Edit <%= @artist.name %></h1>
 
-<%= render 'form'  %>
+  <%= render 'form'  %>
 
-<br>
-<%= link_to "Cancel", artist_path %>
+  <%= link_to "Cancel", artist_path %>
+</div>
