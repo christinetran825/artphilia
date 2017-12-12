@@ -19,7 +19,12 @@
 // FONTS
 // @import url('https://fonts.googleapis.com/css?family=Goudy+Bookletter+1911');
 @import url('https://fonts.googleapis.com/css?family=Della+Respira');
+@import url('https://fonts.googleapis.com/css?family=Karla');
+
+h1, h2, h3, h4 {
+  font-family: 'Della Respira', serif;
+}
 
 body {
-  font-family: 'Ubuntu', sans-serif;
+  font-family: 'Karla', sans-serif;
 }
