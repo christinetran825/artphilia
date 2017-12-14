@@ -7,7 +7,10 @@ class Artist < ApplicationRecord
 
   validates_presence_of :name, :website, :discovered, :rating
 
+  validates :rating, presence: true, numericality: { only_integer: true }
+
   def make_title_case
     self.name = self.name.titlecase
+    self.discovered = self.discovered.titlecase
   end
 end
