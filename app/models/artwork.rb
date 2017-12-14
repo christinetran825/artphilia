@@ -16,8 +16,4 @@ class Artwork < ApplicationRecord
     self.medium.update(medium)
   end
 
-  def blank_stars
-   5 - rating.to_i
-  end
-
 end
