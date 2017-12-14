@@ -13,9 +13,7 @@
   </div><br>
   <div class="field">
     <%= f.label "Rating" %><br>
-    <%= f.text_field :rating, @artwork.blank_stars.times do %>
-      <span class="glyphicon glyphicon-star-empty"></span>
-    <% end %>
+    <%= f.text_field :rating %>
   </div><br>
   <div class="field">
     <%= f.label :notes %><br>

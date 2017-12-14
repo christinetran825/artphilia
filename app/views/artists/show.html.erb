@@ -2,7 +2,8 @@
   <h1> <%= @artist.name %> </h1>
   <h4> <%= @artist.website %> </h4>
   <p> Discovered at: <%= @artist.discovered %> </p>
-  
+  <p> Rating: <%= @artist.rating %> </p>
+
   <div class="btn-group">
     <%= link_to "Show All Artists", artists_path, class:'btn btn-link btn-sm' %>
     <%= link_to "Edit Artist", edit_artist_path(@artist), class:'btn btn-link btn-sm' %>
