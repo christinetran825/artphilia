@@ -1,4 +1,5 @@
 <%= form_for([@artist, @artwork]) do |f| %>
+  <%= render 'shared/form_errors', target: @artwork %>
   <div class="field">
     <%= f.label "Title" %><br>
     <%= f.text_field :title %>
@@ -33,7 +34,7 @@
 
   <div class="field">
     <%= f.label "Comments" %><br>
-    <%= f.text_area :comments %>
+    <%= f.text_area :comments, size: "24x6" %>
   </div><br>
 
   <h4>Got to have it</h4>
