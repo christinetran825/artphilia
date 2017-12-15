@@ -51,30 +51,32 @@ nav li a {
   border: 1px solid red !important;
 }
 
-// containments
+// Sign up & Log in
 
 .container {
   width: 450px;
-  margin: 170px auto;
+  margin: 100px auto;
   // background-color: rgba(255,255,255, 0.5);
   // border-radius: 40px;
   // border: 2px solid #73AD21;
   text-align: center;
 }
 
-.container_login_signin {
-  width: 400px;
-  margin: 60px auto;
-  padding: 50px;
-  // background-color: rgba(255,255,255, 0.5);
-  border-radius: 40px;
-  border: 2px solid #73AD21;
-  text-align: center;
+.container h1 {
+  margin-bottom: 25px;
 }
 
+form.new_user {
+  margin-bottom: 25px;
+}
+
+.adding_objects {
+  margin: 20px 0;
+}
+
+// New, Edit, Show
 .container_new_edit {
-  // width: 150px;
-  margin: 25px auto;
+  margin: 30px auto;
   text-align: left;
 }
 
@@ -84,6 +86,7 @@ nav li a {
   text-align: center;
 }
 
+// Artwork form for Medium/Media
 .collection-check-box {
   margin: 0 5px auto;
   display: inline-block;
@@ -93,27 +96,13 @@ nav li a {
   margin: 15px auto;
 }
 
-.form {
-  text-align: left;
-}
-
-.form.placeholder {
-  font-size: 4px;
-}
-
-.adding_objects {
-  margin-bottom: 10px
-}
-
+// Artwork - Show
 .col-md-6 {
   padding-top: 35px;
   text-align: center;
 }
 
-.table.table-striped {
-
-}
-
+// Footer
 .footer {
   margin: 150px auto;
   text-align: center;
