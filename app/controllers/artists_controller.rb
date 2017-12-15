@@ -4,6 +4,7 @@ class ArtistsController < ApplicationController
 
   def index
     @artists = Artist.all
+    @artists = current_user.artists
   end
 
   def new
@@ -14,7 +15,7 @@ class ArtistsController < ApplicationController
     @artist = Artist.new(artist_params)
     @artist.user = current_user
     if @artist && @artist.save
-      redirect_to artists_path(@artist), flash: {success: "'#{@artist.name}' was added!"}
+      redirect_to artist_path(@artist), flash: {success: "'#{@artist.name}' was added!"}
     else
       render :new, flash: {danger: "Please enter all fields"}
     end
