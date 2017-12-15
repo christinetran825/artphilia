@@ -2,15 +2,12 @@
 
 <div class="container">
   <h1>Log In</h1>
+  
+  <div class="adding_objects">
+    <p>Not a member? <%= link_to "Sign up!", signup_path %></p>
+  </div>
 
   <%= render 'sessions/log_in_form' %>
 
   <%= render 'sessions/oauth-link' %>
-
-  <div class="adding_objects">
-    <p>Don't have an account yet?</p>
-    <%= link_to "Sign up now!", signup_path, class: 'btn btn-info btn-xs' %></h4>
-  </div>
-
-  <%= link_to 'Cancel', root_path %>
 </div>

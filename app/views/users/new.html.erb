@@ -1,14 +1,13 @@
 <%= render 'shared/form_errors', target: @user %>
 
 <div class="container">
-  <h1>Sign Up!</h1>
+  <h1>Join Artphilia</h1>
+
+  <div class="adding_objects">
+    <p>Already a member? <%= link_to "Log In!", login_path %></p>
+  </div>
 
   <%= render 'users/form' %>
 
-  <div class="adding_objects">
-    <p>Already apart of the Artphilia family?</p>
-    <%= link_to "Log In!", login_path, class: 'btn btn-info btn-xs' %></h4>
-  </div>
-
-  <%= link_to 'Cancel', root_path %>
+  <%= render 'sessions/oauth-link' %>
 </div>
