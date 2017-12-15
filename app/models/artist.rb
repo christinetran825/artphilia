@@ -5,7 +5,7 @@ class Artist < ApplicationRecord
 
   before_validation :make_title_case
 
-  validates_presence_of :name, :website, :discovered, :rating
+  validates_presence_of :name, :website, :discovered
 
   validates :rating, presence: true, numericality: { only_integer: true }
 
