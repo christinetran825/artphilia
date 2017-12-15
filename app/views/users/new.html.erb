@@ -1,11 +1,14 @@
-<div class="container_login_signin">
+<%= render 'shared/form_errors', target: @user %>
+
+<div class="container">
   <h1>Sign Up!</h1>
 
-  <%= render 'form'  %>
-  
+  <%= render 'users/form' %>
+
   <div class="adding_objects">
-    <p>Don't have an account yet?</p>
-    <%= link_to "Sign up now!", signup_path, class: 'btn btn-info btn-xs' %></h4>
+    <p>Already apart of the Artphilia family?</p>
+    <%= link_to "Log In!", login_path, class: 'btn btn-info btn-xs' %></h4>
   </div>
+
   <%= link_to 'Cancel', root_path %>
 </div>

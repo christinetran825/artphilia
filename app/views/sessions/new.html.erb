@@ -1,4 +1,6 @@
-<div class="container_login_signin">
+<%= render 'shared/form_errors', target: @user %>
+
+<div class="container">
   <h1>Log In</h1>
 
   <%= render 'sessions/log_in_form' %>
