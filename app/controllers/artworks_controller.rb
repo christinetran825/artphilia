@@ -14,11 +14,9 @@ class ArtworksController < ApplicationController
   def create
     @artwork = @artist.artworks.build(artwork_params)
     if @artwork && @artwork.save
-      flash[:success] = "#{@artwork.title} added"
-      redirect_to artist_path(@artist)
+      redirect_to artist_path(@artist), flash: {success: "'#{@artwork.title}' was added!"}
     else
-      flash.now[:danger] = "Please enter all fields"
-      render :new
+      render :new, flash: {danger: "Please enter all fields"}
     end
   end
 
@@ -30,8 +28,7 @@ class ArtworksController < ApplicationController
 
   def update
     if @artwork.update(artwork_params)
-      flash[:success] = "#{@artwork.title} was updated"
-      redirect_to artist_path(@artist)
+      redirect_to artist_path(@artist), flash: {success: "'#{@artwork.title}' was updated!"}
     else
       render :edit
     end
@@ -39,8 +36,7 @@ class ArtworksController < ApplicationController
 
   def destroy
     @artwork.delete
-    flash[:success] = "#{@artwork.title} was deleted"
-    redirect_to artist_path(@artist)
+    redirect_to artist_path(@artist), flash: {success: "'#{@artwork.title}' was deleted!"}
   end
 
   private

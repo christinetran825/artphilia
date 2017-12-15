@@ -14,11 +14,9 @@ class ArtistsController < ApplicationController
     @artist = Artist.new(artist_params)
     @artist.user = current_user
     if @artist && @artist.save
-      flash[:success] = "#{@artist.name} added!"
-      redirect_to artists_path(@artist)
+      redirect_to artists_path(@artist), flash: {success: "'#{@artist.name}' was added!"}
     else
-      flash.now[:danger] = "Please enter all fields"
-      render :new
+      render :new, flash: {danger: "Please enter all fields"}
     end
   end
 
@@ -31,8 +29,7 @@ class ArtistsController < ApplicationController
 
   def update
     if @artist.update(artist_params)
-      flash[:success] = "#{@artist.name} was updated!"
-      redirect_to artist_path(@artist)
+      redirect_to artist_path(@artist), flash: {success: "'#{@artist.name}' was updated!"}
     else
       render :edit
     end
@@ -40,8 +37,7 @@ class ArtistsController < ApplicationController
 
   def destroy
     @artist.delete
-    flash[:success] = "#{@artist.name} was deleted!"
-    redirect_to artists_path
+    redirect_to artists_path, flash: {success: "'#{@artist.name}' was deleted!"}
   end
 
   private
