@@ -13,17 +13,14 @@
                 <%= link_to "Home", root_path %>
                 <%= link_to "Your Artists", artists_path %>
                 <%= link_to "Galleries" %>
-                <%= link_to "Historical Artists" %>
-                <%= link_to "Art History" %>
-                <%= link_to "Types of Art" %>
                 <%= link_to "Profile", users_path %>
                 <%= link_to logout_path, method: :delete do %>
                     <span class="glyphicon glyphicon-log-out"></span> Sign Out
                 <% end %>
               </li>
           <% else %>
-              <li class="nav-item"><a href="/signup" class="nav-link"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-              <li class="nav-item"><a href="/login" class="nav-link"><span class="glyphicon glyphicon-log-in"></span> Log In</a></li>
+              <!-- <li class="nav-item"><a href="/signup" class="nav-link"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+              <li class="nav-item"><a href="/login" class="nav-link"><span class="glyphicon glyphicon-log-in"></span> Log In</a></li> -->
           <% end %>
           </ul>
       <!-- </div> -->
