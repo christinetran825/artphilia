@@ -3,10 +3,9 @@
   <p>Keep a record of all the artists you know and love!</p>
 
   <div class="adding_objects">
-    <%= render 'sessions/oauth-link' %>
-    <br><br>
     <%= link_to "Sign Up", signup_path, class: 'btn btn-success btn-md' %>
     <%= link_to "Log In", login_path, class: 'btn btn-success btn-md' %>
   </div>
 
+  <%= render 'sessions/oauth-link' %>
 </div>
