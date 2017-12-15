@@ -52,5 +52,4 @@ class MediaController < ApplicationController
       params.require(:medium).permit(:name)
     end
 
-
 end
