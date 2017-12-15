@@ -14,7 +14,7 @@
   <thead>
     <tr>
       <th>Artist's Name</th>
-      <th>Artist's Artworks</th>
+      <th># of Artworks</th>
       <th>Website</th>
       <th>Rating</th>
     </tr>
@@ -23,7 +23,7 @@
     <% @artists.each do |a| %>
     <tr>
       <td><%= link_to a.name, artist_path(a) %></td>
-      <td><%= link_to 'Artworks', artist_artworks_path(a) %></td>
+      <td><%= link_to a.artworks.count, artist_artworks_path(a) %></td>
       <td><%= a.website %></td>
       <td><%= a.rating %></td>
     </tr>
