@@ -12,11 +12,8 @@
   <body>
     <%= render 'layouts/header' %>
     <div id="main-container" class="container-fluid">
-      <div class="row">
-         <% flash.each do |name, msg| %>
-           <%= content_tag :div, msg, class: "alert alert-#{name}" %>
-         <% end %>
-      </div>
+      <%= yield :form_errors %>
+
       <%= yield %>
     </div>
 
