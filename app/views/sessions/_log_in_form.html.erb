@@ -1,12 +1,14 @@
 <%= form_for @user, url: login_path do |f| %>
+
   <div class="field">
-    <%= f.label :email, "Email:" %>
+    <%= f.label "Email:" %>
     <%= f.text_field :email %><br><br>
   </div>
+
   <div class="field">
-  <%= f.label :password, "Password:" %>
+  <%= f.label "Password:" %>
   <%= f.password_field :password %><br><br>
   </div>
+
   <%= f.submit "Log In", class: 'btn btn-success btn-md' %>
 <% end %>
-<br>
