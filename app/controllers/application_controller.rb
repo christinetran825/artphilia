@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
-  helper_method :current_user, :logged_in? #let these methods be used in views
+  helper_method :current_user, :logged_in?, :log_user_in #let these methods be used in views
 
   #check if user logged in
   def logged_in?
@@ -17,5 +17,5 @@ class ApplicationController < ActionController::Base
   def log_user_in
     session[:user_id] = @user.id
   end
-  
+
 end
