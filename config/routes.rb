@@ -20,4 +20,5 @@ Rails.application.routes.draw do
   end
   resources :media
   resources :places
+  resources :event_types
 end
