@@ -19,6 +19,4 @@ Rails.application.routes.draw do
     resources :artworks
   end
   resources :media
-  resources :places
-  resources :event_types
 end
