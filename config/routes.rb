@@ -13,11 +13,11 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 
-  resources :users
+  resources :users, except: [:index]
   resources :sessions, only: [:new, :create, :destroy]
   resources :artists do
     resources :artworks
   end
   resources :media
-
+  resources :places
 end
