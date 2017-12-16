@@ -1,8 +1,9 @@
 <%= render 'shared/form_errors', target: @user %>
+<%= render 'shared/flash_messages', target: @user %>
 
 <div class="container">
   <h1>Log In</h1>
-  
+
   <div class="adding_objects">
     <p>Not a member? <%= link_to "Sign up!", signup_path %></p>
   </div>
