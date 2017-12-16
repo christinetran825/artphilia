@@ -1,0 +1,15 @@
+<div class="container_show">
+
+  <%= render :partial => 'shared/flash_messages' %>
+
+  <h1> <%= @place.name %> </h1>
+  <h4> <%= @place.website %> </h4>
+  <p> Discovered at: <%= @place.discovered %> </p>
+  <p> Rating: <%= @place.rating %> </p>
+
+  <div class="btn-group">
+    <%= link_to "Show All Fairs/Galleries", places_path, class:'btn btn-link btn-sm' %>
+    <%= link_to "Edit Fair/Gallery", edit_place_path(@place), class:'btn btn-link btn-sm' %>
+    <%= link_to "Delete Fair/Gallery", @place, method: :delete, data: {confirm: "Are you sure you want to delete this Fair/Gallery?"}, class:'btn btn-link btn-sm' %></p>
+  </div>
+</div>
