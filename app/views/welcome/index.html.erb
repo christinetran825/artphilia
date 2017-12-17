@@ -2,6 +2,8 @@
   <h1>Artphilia</h1>
   <p>Keep a record of all the artists you know and love!</p>
 
+  <%= render :partial => 'shared/flash_messages' %>
+
   <div class="adding_objects">
     <%= link_to "Sign Up", signup_path, class: 'btn btn-success btn-md' %>
     <%= link_to "Log In", login_path, class: 'btn btn-success btn-md' %>
