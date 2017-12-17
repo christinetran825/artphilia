@@ -1,7 +1,11 @@
 <nav class="navbar navbar-expand-lg navbar-fixed-top" id="mainNav">
     <div class="container-fluid">
       <div class="navbar-header">
+        <% if !!current_user %>
+          <a class="navbar-brand" href="/home"> Artphilia </a>
+        <% else %>
           <a class="navbar-brand" href="/"> Artphilia </a>
+        <% end %>
       </div>
       <!-- <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="glyphicon glyphicon-align-justify"></span>
@@ -10,9 +14,9 @@
           <ul class="nav navbar-nav ml-auto">
           <% if !!current_user %>
               <li class="active">
-                <%= link_to "Home", root_path %>
+                <%= link_to "Home", home_path %>
                 <%= link_to "Your Artists", artists_path %>
-                <%= link_to "Profile", users_path(@user) %>
+                <%= link_to "Profile", user_path(current_user) %>
                 <%= link_to logout_path, method: :delete do %>
                     <span class="glyphicon glyphicon-log-out"></span> Sign Out
                 <% end %>
