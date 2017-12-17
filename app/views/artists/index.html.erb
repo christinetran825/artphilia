@@ -24,7 +24,7 @@
     <tr>
       <td><%= link_to a.name, artist_path(a) %></td>
       <td><%= link_to a.artworks.count, artist_artworks_path(a) %></td>
-      <td><%= a.website %></td>
+      <td><%= link_to a.website, a.website, :target => "_blank" %></td>
       <td><%= a.rating %></td>
     </tr>
     <% end %>
