@@ -1,11 +1,18 @@
 <div class="container">
   <h1>Artphilia</h1>
-  <p>Keep a record of all the artists you know and love!</p>
+  <h2> *** </h2>
+</div>
 
-  <div class="adding_objects">
-    <%= link_to "Sign Up", signup_path, class: 'btn btn-success btn-md' %>
-    <%= link_to "Log In", login_path, class: 'btn btn-success btn-md' %>
+<div class="section">
+  <div class="row text-center">
+    <div class="col-lg">
+      <p> <%= link_to "Collection of Artists", artists_path %> </p>
+    </div>
+    <div class="col-lg">
+      <p>Collection of Galleries/Fairs (coming soon)</p>
+    </div>
+    <div class="col-lg">
+      <p>Wish List (coming soon)</p>
+    </div>
   </div>
-
-  <%= render 'sessions/oauth-link' %>
 </div>
