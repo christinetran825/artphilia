@@ -14,6 +14,7 @@
       <th>Title</th>
       <th>Exhibition</th>
       <th>Do I have this?</th>
+      <th>Rating</th>
     </tr>
   </thead>
   <tbody>
@@ -23,6 +24,7 @@
         <td><%= link_to work.title, artist_artwork_path(@artist, work) %></td>
         <td><%= link_to work.exhibition, artist_artwork_path(@artist, work) %></td>
         <td><%= work.user_owned %></td>
+        <td><%= work.rating %></td>
     </tr>
     <% end %>
   </tbody>
