@@ -18,14 +18,14 @@ class SessionsController < ApplicationController
         log_user_in
         redirect_to artists_path, flash: {success: "You're logged in!"}  #user_path(@user)
       else
-        render 'sessions/new', flash: {success: "Invalid email/password combination!"}
+        render 'sessions/new', flash: {danger: "Invalid email/password combination!"}
       end
     end
   end
 
   def destroy
     session.clear
-    redirect_to root_path
+    redirect_to root_path, flash: {success: "You're logged out!"}
   end
 
   private

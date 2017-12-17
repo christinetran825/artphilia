@@ -41,7 +41,7 @@ class UsersController < ApplicationController
 
   def destroy
     @user.destroy
-    redirect_to root_path
+    redirect_to root_path, flash: {success: "Your account has been deleted!"}
   end
 
   private
