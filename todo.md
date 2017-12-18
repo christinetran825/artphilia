@@ -52,12 +52,13 @@
   [x] create => redirects to Artists index
   [x] errors for login - error - 'Invalid email/password combination'
   [x] add link - social media (omniauth)
-[] destroy - notice - 'You're logged out'
+[x] destroy - notice - 'You're logged out'
 
 7. Nav bar
 [x] add nav bar
 [x] add if logged in logic
-  [] links to homepage, artists list, (static pages - Art style, history)
+  [x] links to homepage, artists list
+  [.../ Future adds] static pages - Art style, history
 
 8. Layouts > Application
 [x] add render header partial to application
@@ -79,7 +80,7 @@
     [x] discovered
     [x] rating
     [x] notes
-  [] avoid duplicates
+  [x] avoid duplicates
 [x] form
   [x] create - success - 'New Artist added'
   [x] edit - success - 'Artist was updated'
@@ -87,7 +88,7 @@
 [x] show 1 artist
   [x] delete artist - success - 'Are you sure you want to delete this Artist?'
   [x] notice - 'Artist was deleted'
-[] index - sort artist by name; rating --- add a search field?
+[.../ Future adds] index - sort artist by name; rating --- add a search field?
 
 !!!!
   ensure nested routes for artists and artworks
@@ -116,19 +117,19 @@
     [x] original
     [x] rating
     [x] comments
-  [] avoid duplicates???
+  [x] avoid duplicates???
 [x] form
   [x] create - notice - 'New Artwork added'
-    [] add extended form to select signed and original if user says they own the piece
-      [] user_owned
-      [] signed
-      [] original
+    [.../ Future adds] add extended form to select signed and original if user says they own the piece
+      [...] user_owned
+      [...] signed
+      [...] original
   [x] edit - notice - 'Artwork was updated'
   [x] redirects to artist_artwork#show
-[] show 1 artwork
+[x] show 1 artwork
   [x] delete artwork - alert - 'Are you sure you want to delete this Artwork?'
   [x] notice - 'Artwork was deleted'
-[] index - sort artist by name; rating --- add a search field?
+[.../ Future adds] index - sort artist by name; rating --- add a search field?
 
 11. Medium/Media
 [x] rails g migration Medium name:string
@@ -136,22 +137,23 @@
   [x] association
     [x] belongs_to :artworks
   [x] avoid duplicates = added medium_attributes= setter, and validates uniqueness for :name
-[] form
-  [] create - alert - 'New Medium added'
-  [] edit - alert - 'Medium was updated'
-  [] redirects to medium#show
-[] delete medium - confirm - 'Are you sure you want to delete this Medium?'
-[] alert - 'Medium was removed'
+[.../ Future adds] form
+  [.../ Future adds] create - alert - 'New Medium added'
+  [.../ Future adds] edit - alert - 'Medium was updated'
+  [.../ Future adds] redirects to medium#show
+[.../ Future adds] delete medium - confirm - 'Are you sure you want to delete this Medium?'
+[.../ Future adds] alert - 'Medium was removed'
 
 Little things
-[] check if flash messages work correctly
-[] check if flash messages appear where they should be
-[]
+[x] check if flash messages work correctly
+[x] check if flash messages appear where they should be
+[x] check if error messages work correctly
+[x] check if error messages appear where they should be
 
 CSS/bootstrap
-[] work on divs, classes
-[] colors
-[] fonts
+[x] work on divs, classes
+[x] colors
+[x] fonts
 
 NESTED
 {
