@@ -1,17 +1,23 @@
 <%= form_for([@artist, @artwork]) do |f| %>
   <%= render 'shared/form_errors', target: @artwork %>
   <div class="field form-inline">
-    <%= f.label "Title:" %><br>
+    <%= f.label "Title:" %>
     <%= f.text_field :title %>
-  </div><br>
+  </div>
 
   <div class="field form-inline">
-    <%= f.label "Exhibition:" %><br>
+    <%= f.label "Exhibition:" %>
     <%= f.text_field :exhibition, {placeholder: "enter None for None"} %>
-  </div><br>
+  </div>
 
   <div class="field">
-    <%= f.label "Medium/Media (enter Mixed for mixed media)" %><br>
+<!-- text input for new medium -->
+    <div class="add_medium">
+      <%= f.label "Add a New Medium:" %>
+       <%= f.fields_for :medium, @artwork.build_medium do |media_fields| %>
+        <%= media_fields.text_field :name, {placeholder: "acrylic, oil, mixed, etc."} %>
+      <% end %>
+    </div>
 <!-- checkbox for exisiting media if medium.checked?-->
     <%= f.collection_check_boxes :medium_id, Medium.all, :id, :name do |b|%>
       <div class="collection-check-box">
@@ -19,42 +25,36 @@
         <%= b.label %>
       </div>
     <% end %>
-<!-- text input for new medium -->
-    <div class="add_medium">
-      Add a New Medium <%= f.fields_for :medium, @artwork.build_medium do |media_fields| %>
-        <%= media_fields.text_field :name, {placeholder: "acrylic, oil, mixed, etc."} %>
-      <% end %>
-    </div>
 
   </div>
 
   <div class="field">
-    <%= f.label "Rating (5 being best):" %><br>
+    <%= f.label "Rating (5 being best):" %>
     <%= f.select :rating, (1..5) %>
-  </div><br>
+  </div>
 
   <div class="field">
     <%= f.label "Comments:" %><br>
     <%= f.text_area :comments, size: "24x6" %>
-  </div><br>
+  </div>
 
   <h4>Got to have it</h4>
 
   <div class="field">
-    <%= f.label "Do you own this artwork?"%><br>
+    <%= f.label "Do you own this artwork?"%>
     <%= f.radio_button :user_owned, "Yes" %> Yes <%= f.radio_button :user_owned, "No" %> No
-  </div><br>
+  </div>
 
   <div class="field reveal-if-active">
 <!-- if user does own the artwork, show signed and original fields -->
-    <%= f.label "Is it signed?" %><br>
+    <%= f.label "Is it signed?" %>
     <%= f.radio_button :signed, "Yes" %> Yes <%= f.radio_button :signed, "No" %> No
-  </div><br>
+  </div>
 
   <div class="field reveal-if-active">
-    <%= f.label "Original or Print?" %><br>
+    <%= f.label "Original or Print?" %>
     <%= f.radio_button :original, "Original" %> Original <%= f.radio_button :original, "Print" %> Print
-  </div><br>
+  </div>
 
     <%= f.submit class: 'btn btn-success' %>
 <% end %>
