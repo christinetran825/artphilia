@@ -1,7 +1,7 @@
 class ArtworksController < ApplicationController
 
   before_action :set_artwork, only: [:show, :edit, :update, :destroy]
-  before_action :find_the_parent
+  before_action :find_the_artist
 
   def index
     @artworks = Artwork.all
@@ -40,7 +40,7 @@ class ArtworksController < ApplicationController
   end
 
   private
-    def find_the_parent
+    def find_the_artist
       @artist = Artist.find(params[:artist_id]) #find the parent
     end
 
