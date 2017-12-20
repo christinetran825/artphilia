@@ -59,8 +59,22 @@ nav li a {
   text-align: center;
 }
 
-// Sign up & Log in
+// Forms
+form {
+  margin: 32px 16px;
+}
 
+input {
+  margin-left: 16px;
+}
+
+input::placeholder {
+  font-size: 12px;
+  font-style: italic;
+  padding: 0 6px;
+}
+
+// Sign up & Log in
 .container {
   width: 450px;
   margin: 100px auto;
