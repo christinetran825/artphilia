@@ -1,14 +1,14 @@
 <%= form_for @artist do |f| %>
   <%= render 'shared/form_errors', target: @artist %>
-  <div class="field form-inline">
+  <div class="field">
     <%= f.label "Artist's Name:" %>
     <%= f.text_field :name %>
   </div>
-  <div class="field form-inline">
+  <div class="field">
     <%= f.label "Artist's Website:" %>
     <%= f.text_field :website, {placeholder: "enter None for No Website"} %>
   </div>
-  <div class="field form-inline">
+  <div class="field">
     <%= f.label "Discovered:" %>
     <%= f.text_field :discovered, {placeholder: "Gallery Nucleus, Craft Show"} %>
   </div>

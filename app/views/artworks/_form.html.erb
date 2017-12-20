@@ -1,11 +1,11 @@
 <%= form_for([@artist, @artwork]) do |f| %>
   <%= render 'shared/form_errors', target: @artwork %>
-  <div class="field form-inline">
+  <div class="field">
     <%= f.label "Title:" %>
     <%= f.text_field :title %>
   </div>
 
-  <div class="field form-inline">
+  <div class="field">
     <%= f.label "Exhibition:" %>
     <%= f.text_field :exhibition, {placeholder: "enter None for None"} %>
   </div>
