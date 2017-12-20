@@ -1,25 +1,24 @@
 <%= form_for @artist do |f| %>
   <%= render 'shared/form_errors', target: @artist %>
-  <div class="field">
-    <%= f.label "Artist's Name" %><br>
+  <div class="field form-inline">
+    <%= f.label "Artist's Name:" %><br>
     <%= f.text_field :name %>
   </div><br>
-  <div class="field">
-    <%= f.label "Artist's Website (enter None for No Website)" %><br>
-    <%= f.text_field :website %>
+  <div class="field form-inline">
+    <%= f.label "Artist's Website:" %><br>
+    <%= f.text_field :website, {placeholder: "enter None for No Website"} %>
+  </div><br>
+  <div class="field form-inline">
+    <%= f.label "Discovered:" %><br>
+    <%= f.text_field :discovered, {placeholder: "Gallery Nucleus, Craft Show"} %>
   </div><br>
   <div class="field">
-    <%= f.label "Where did you find this Artist?" %><br>
-    <%= f.text_field :discovered %>
-  </div><br>
-  <div class="field">
-    <%= f.label "Rating (5 being best)" %><br>
+    <%= f.label "Rating (5 being best):" %><br>
     <%= f.select :rating, (1..5) %>
   </div><br>
   <div class="field">
-    <%= f.label :notes %><br>
+    <%= f.label "Notes:" %><br>
     <%= f.text_area :notes, size: "24x6" %>
   </div><br>
     <%= f.submit class: 'btn btn-success' %>
 <% end %>
-<br>
