@@ -26,6 +26,8 @@
       </div>
     <% end %>
 
+  <!-- <%= render 'mediums/form', f: f %> -->
+
   </div>
 
   <div class="field">
@@ -38,22 +40,24 @@
     <%= f.text_area :comments, size: "24x6" %>
   </div>
 
-  <h4>Got to have it</h4>
-
   <div class="field">
     <%= f.label "Do you own this artwork?"%>
     <%= f.radio_button :user_owned, "Yes" %> Yes <%= f.radio_button :user_owned, "No" %> No
   </div>
 
-  <div class="field reveal-if-active">
-<!-- if user does own the artwork, show signed and original fields -->
-    <%= f.label "Is it signed?" %>
-    <%= f.radio_button :signed, "Yes" %> Yes <%= f.radio_button :signed, "No" %> No
-  </div>
+  <span>If you do own this, please answer the questions below. Otherwise, leave blank. </span>
+  <div class="container_ownership">
+    <div class="field">
+  <!-- if user does own the artwork, show signed and original fields -->
+      <br>
+      <%= f.label "Is it signed?" %>
+      <%= f.radio_button :signed, "Yes" %> Yes <%= f.radio_button :signed, "No" %> No
+    </div>
 
-  <div class="field reveal-if-active">
-    <%= f.label "Original or Print?" %>
-    <%= f.radio_button :original, "Original" %> Original <%= f.radio_button :original, "Print" %> Print
+    <div class="field">
+      <%= f.label "Original or Print?" %>
+      <%= f.radio_button :original, "Original" %> Original <%= f.radio_button :original, "Print" %> Print
+    </div>
   </div>
 
     <%= f.submit class: 'btn btn-success' %>
