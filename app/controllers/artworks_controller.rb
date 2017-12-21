@@ -14,7 +14,7 @@ class ArtworksController < ApplicationController
   def create
     @artwork = @artist.artworks.build(artwork_params)
     if @artwork && @artwork.save
-      redirect_to artist_path(@artist), flash: {success: "'#{@artwork.title}' was added!"}
+      redirect_to artist_artwork_path(@artist, @artwork), flash: {success: "'#{@artwork.title}' was added!"}
     else
       render :new, flash: {danger: "Please enter all fields"}
     end
@@ -28,7 +28,7 @@ class ArtworksController < ApplicationController
 
   def update
     if @artwork.update(artwork_params)
-      redirect_to artist_path(@artist), flash: {success: "'#{@artwork.title}' was updated!"}
+      redirect_to artist_artwork_path(@artist, @artwork), flash: {success: "'#{@artwork.title}' was updated!"}
     else
       render :edit
     end
