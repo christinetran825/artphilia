@@ -1,21 +1,24 @@
 class Artwork < ApplicationRecord
   belongs_to :artist
-  belongs_to :medium
+  has_many :artwork_medium
+  has_many :media, through: :artwork_medium
+  accepts_nested_attributes_for :media
 
   before_validation :make_title_case
 
-  validates_presence_of :title, :exhibition, :user_owned, :comments, :medium, :rating
-
+  validates_presence_of :title, :exhibition, :user_owned, :comments, :rating
   validates :signed, :original, presence: true, :allow_blank => true
 
   def make_title_case
     self.title = self.title.titlecase
     self.exhibition = self.exhibition.titlecase
   end
-
-  def medium_attributes=(medium)
-    self.medium = Medium.find_or_create_by(medium)
-    self.medium.update(medium)
+  
+  def media_attributes=(medium_attributes)
+    medium_attributes.values.each do |medium_attr|
+      medium = Medium.find_or_create_by(medium_attr)
+      self.media << medium
+    end
   end
 
 end
