@@ -17,7 +17,9 @@
   <div class="col-md-6">
     <h2> <%= @artwork.title %> </h2>
     <p> Exhibition: <%= @artwork.exhibition %> </p>
-    <p> Medium: <%= @artwork.medium %> </p>
+    <% @artwork.media.each do |medium| %>
+      <p> Medium: <%= medium.name %> </p>
+    <% end %>
     <p> Rating: <%= @artwork.rating %> </p>
     <p> Comments: <%= @artwork.comments %> </p>
 
