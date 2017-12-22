@@ -14,20 +14,19 @@
 <!-- text input for new medium -->
     <div class="add_medium">
       <%= f.label "Add a New Medium:" %>
-       <%= f.fields_for :medium, @artwork.build_medium do |media_fields| %>
-        <%= media_fields.text_field :name, {placeholder: "acrylic, oil, mixed, etc."} %>
+      <%= f.fields_for :media, @artwork.media.build do |medium_fields| %>
+        <%= medium_fields.text_field :name, {placeholder: "acrylic, oil, mixed, etc."} %>
       <% end %>
     </div>
 <!-- checkbox for exisiting media if medium.checked?-->
-    <%= f.collection_check_boxes :medium_id, Medium.all, :id, :name do |b|%>
-      <div class="collection-check-box">
-        <%= b.check_box %>
-        <%= b.label %>
-      </div>
-    <% end %>
-
-  <!-- <%= render 'mediums/form', f: f %> -->
-
+    <div class="show_collection">
+      <%= f.collection_check_boxes :medium_ids, Medium.all, :id, :name do |b|%>
+        <div class="collection-check-box">
+          <%= b.check_box %>
+          <%= b.label %>
+        </div>
+      <% end %>
+    </div>
   </div>
 
   <div class="field">
