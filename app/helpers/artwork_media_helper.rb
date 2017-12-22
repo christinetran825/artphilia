@@ -1,0 +1,2 @@
+module ArtworkMediaHelper
+end

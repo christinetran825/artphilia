@@ -24,4 +24,5 @@ Rails.application.routes.draw do
     resources :artworks
   end
   resources :media
+  resources :artwork_media
 end

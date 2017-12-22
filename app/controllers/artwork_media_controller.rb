@@ -1,0 +1,2 @@
+class ArtworkMediaController < ApplicationController
+end
