@@ -1,6 +1,6 @@
 class Medium < ApplicationRecord
-  has_many :artworks, dependent: :destroy #medium's plural is media
-  has_many :artists, through: :artworks #medium's plural is media
+  has_many :artwork_medium
+  has_many :artworks, through: :artwork_medium
 
   before_validation :make_title_case
   validates :name, presence: true, uniqueness: true
