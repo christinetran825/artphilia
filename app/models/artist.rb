@@ -5,9 +5,10 @@ class Artist < ApplicationRecord
 
   before_validation :make_title_case, :make_website
 
-  validates_presence_of :name, :discovered, :rating
   VALID_WEBSITE_REGEX = /(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?/
-  validates :website, presence: true, format: { with: VALID_WEBSITE_REGEX }
+
+  validates_presence_of :name, :discovered, :rating
+  validates :website, presence: true
 
   def make_title_case
     self.name = self.name.titlecase
@@ -15,7 +16,9 @@ class Artist < ApplicationRecord
   end
 
   def make_website
-    if self.website != VALID_WEBSITE_REGEX
+    if self.website != VALID_WEBSITE_REGEX && self.website.blank?
+      self.website = "None"
+    elsif self.website != VALID_WEBSITE_REGEX && !self.website.blank?
       self.website = "http://#{website}"
     else
       self.website
