@@ -18,7 +18,7 @@ class SessionsController < ApplicationController
         log_user_in
         redirect_to artists_path, flash: {success: "You're logged in!"}  #user_path(@user)
       else
-        render 'sessions/new', flash: {danger: "Invalid email/password combination!"}
+        redirect_to '/sessions/new', flash: {danger: "Invalid email/password combination!"}
       end
     end
   end
