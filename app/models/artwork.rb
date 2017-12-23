@@ -2,7 +2,6 @@ class Artwork < ApplicationRecord
   belongs_to :artist
   has_many :artwork_medium
   has_many :media, through: :artwork_medium
-  accepts_nested_attributes_for :media
 
   before_validation :make_title_case
 
@@ -13,11 +12,13 @@ class Artwork < ApplicationRecord
     self.title = self.title.titlecase
     self.exhibition = self.exhibition.titlecase
   end
-  
+
   def media_attributes=(medium_attributes)
     medium_attributes.values.each do |medium_attr|
-      medium = Medium.find_or_create_by(medium_attr)
-      self.media << medium
+      if !medium_attr[:name].blank?
+        medium = Medium.find_or_create_by(medium_attr)
+          self.media << medium
+      end
     end
   end
 
