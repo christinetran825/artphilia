@@ -35,7 +35,7 @@ Artist.create({
 
 Artist.create({
     name: 'fabio pastori',
-    website: 'none',
+    website: '',
     discovered: 'dinosaur museum in morrison, colorado',
     rating: 5,
     notes: "paloartist, dinosaurs, science",
@@ -44,7 +44,7 @@ Artist.create({
 
 Artist.create({
     name: 'maurice sendak',
-    website: 'none',
+    website: '',
     discovered: 'chicken soup with rice',
     rating: 5,
     notes: "children's illustrations, simple, funny",
