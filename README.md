@@ -1,24 +1,23 @@
-# README
+# Artphilia
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+An app to help you keep a record of non-musician artists (painters, illustrators, etc) that you like. Keep a record of the artist's artwork(s) that you already own or wish to own.
 
-Things you may want to cover:
+## Installation
 
-* Ruby version
+This app requires Ruby 2.3.1 and Rails 5.1.4.
 
-* System dependencies
+Once you have Ruby 2.3.1 and Rails 5.1.4 installed,
 
-* Configuration
+* ```fork https://github.com/christinetran825/Artphilia & clone locally```
+* ```cd Artphilia from your local directory```
+* ```bundle install```
+* ```rake db:migrate```
+* ```rails s```
+* ```open browser to localhost:3000```
+* ```Sign up for an Account or Login using Facebook```
 
-* Database creation
+## Future Revisions
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Future inclusion of:
+ * More imagery, colors, and styles coming soon.
+ * Artist's category/styles, sortable columns, sort by medium/medias, and search tags.
