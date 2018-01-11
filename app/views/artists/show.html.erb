@@ -1,12 +1,12 @@
 <div class="container_show">
   <h1> <%= @artist.name %> </h1>
-  <h4>
+  <p> Website:
     <% if @artist.website != "None" %>
       <%= link_to @artist.website, @artist.website, :target => "_blank" %>
     <% else %>
-      <%= @artist.website %>
+      No Website
     <% end %>
-  </h4>
+  </p>
   <p> Discovered at: <%= @artist.discovered %> </p>
   <p> Rating: <%= @artist.rating %> </p>
 
