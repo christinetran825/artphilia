@@ -4,7 +4,7 @@ class ArtistsController < ApplicationController
 
   def index
     @artists = Artist.all
-    @artists = current_user.artists
+    @artists = current_user.artists.order(:name)
   end
 
   def new
