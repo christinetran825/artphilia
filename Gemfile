@@ -38,6 +38,9 @@ gem 'omniauth-facebook'
 # hides api keys/secrets
 gem 'dotenv-rails'
 
+#paperclip
+gem "paperclip", "~> 5.0.0"
+
 #boostrap
 # gem 'bootstrap-sass', '~> 3.2.0'
 gem 'bootstrap'
