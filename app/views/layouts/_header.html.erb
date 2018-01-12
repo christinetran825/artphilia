@@ -17,6 +17,7 @@
                 <%= link_to "Home", home_path %>
                 <%= link_to "All Artists", artists_path %>
                 <%= link_to "Your Favorite Artists", artists_favorites_path %>
+                <%= link_to "Artworks I Own", artworks_ownerships_path %>
                 <%= link_to "Profile", user_path(current_user) %>
                 <%= link_to logout_path, method: :delete do %>
                     <span class="glyphicon glyphicon-log-out"></span> Sign Out
