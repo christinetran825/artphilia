@@ -21,12 +21,15 @@ Rails.application.routes.draw do
     resources :favorites, only: [:index]
   end
 
+  namespace :artworks do
+    resources :ownerships, only: [:index]
+  end
+
   resources :users, except: [:index]
   resources :sessions, only: [:new, :create, :destroy]
   resources :artists do
     resources :artworks
   end
-
   resources :media
   resources :artwork_media
 end
