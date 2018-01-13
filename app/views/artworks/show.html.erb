@@ -4,14 +4,7 @@
 
 <div class='row'>
   <div class="col-md-6">
-    <div class="images">
-      <%= image_tag("star.png", alt: "star", size: "325x325") %>
-    </div>
-    <div class="btn-group">
-      <p>Add an image (coming soon)</p>
-      <!-- <%= link_to "Add an image", class:'btn btn-link btn-sm' %>
-      <%= link_to "Edit image", class:'btn btn-link btn-sm' %> -->
-    </div>
+    <%= image_tag @artwork.images.url %>
   </div>
 
   <div class="col-md-6-text">
