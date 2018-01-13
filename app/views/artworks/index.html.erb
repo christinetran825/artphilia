@@ -22,7 +22,7 @@
   <tbody>
     <% @artist.artworks.each do |work| %>
     <tr>
-        <!-- <td>Image</td> -->
+        <td><%= image_tag work.images.url(:thumb) %></td>
         <td><%= link_to work.title, artist_artwork_path(@artist, work) %></td>
         <td><%= link_to work.exhibition, artist_artwork_path(@artist, work) %></td>
         <td><%= work.user_owned %></td>
