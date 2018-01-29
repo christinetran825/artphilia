@@ -39,7 +39,7 @@ gem 'omniauth-facebook'
 gem 'dotenv-rails'
 
 #paperclip
-gem "paperclip", "~> 5.0.0"
+gem "paperclip"
 
 #boostrap
 # gem 'bootstrap-sass', '~> 3.2.0'
