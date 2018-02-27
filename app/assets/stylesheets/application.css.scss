@@ -42,6 +42,36 @@ nav li a {
   margin: 7px;
 }
 
+// Body Header
+.body-header {
+  text-align: center;
+  margin: 35px 0;
+}
+
+.artworks-body-header {
+  text-align: center;
+  margin: 35px 0;
+}
+
+.header {
+
+}
+
+.header-attr {
+  margin: 20px 0;
+}
+
+.header-btns {
+
+}
+
+.body-content {
+  // width: 150px;
+  margin: 35px auto;
+}
+
+
+
 // Errors
 .error_explanation {
   margin: 10px 0;
@@ -96,9 +126,6 @@ form.new_user {
   margin-bottom: 25px;
 }
 
-.adding_objects {
-  margin: 20px 0;
-}
 
 // New, Edit, Show
 .container_new_edit {
@@ -106,11 +133,6 @@ form.new_user {
   text-align: left;
 }
 
-.container_show {
-  // width: 150px;
-  margin: 25px auto;
-  text-align: center;
-}
 
 .container_profile {
   margin: 25px auto;
