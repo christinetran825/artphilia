@@ -1,5 +1,5 @@
-<div class="body-header">
-  <div class="header">
+<div id="header">
+  <div class="heading">
     <h1>Favorite Artists</h1>
   </div>
 
@@ -7,7 +7,7 @@
     <p><%= pluralize(@artists.count, 'Artists') %></p>
   </div>
 
-  <div class="header-buttons">
+  <div class="buttons">
     <%= link_to "Back to All Artists", artists_path, id:'artist_index', class:'btn btn-link btn-md' %>
   </div>
 </div>
