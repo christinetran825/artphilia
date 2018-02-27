@@ -5,6 +5,10 @@ class ArtistsController < ApplicationController
   def index
     @artists = Artist.all
     @artists = current_user.artists.order(:name)
+    respond_to do |f|
+      f.html
+      f.json {render json: @artists}
+    end
   end
 
   def new
@@ -15,7 +19,10 @@ class ArtistsController < ApplicationController
     @artist = Artist.new(artist_params)
     @artist.user = current_user
     if @artist && @artist.save
-      redirect_to artist_path(@artist), flash: {success: "'#{@artist.name}' was added!"}
+      respond_to do |f|
+        f.html {redirect_to artist_path(@artist), flash: {success: "'#{@artist.first_name} #{@artist.last_name}' was added!"}}
+        f.json {render json: @artist}
+      end
     else
       render :new, flash: {danger: "Please enter all fields"}
     end
@@ -23,6 +30,10 @@ class ArtistsController < ApplicationController
 
   def show
     @artwork = @artist.artworks
+    respond_to do |f|
+      f.html
+      f.json { render json: @artist }
+    end
   end
 
   def edit
@@ -30,7 +41,10 @@ class ArtistsController < ApplicationController
 
   def update
     if @artist.update(artist_params)
-      redirect_to artist_path(@artist), flash: {success: "'#{@artist.name}' was updated!"}
+      respond_to do |f|
+        f.html {redirect_to artist_path(@artist), flash: {success: "'#{@artist.first_name} #{@artist.last_name}' was updated!"}}
+        f.json {render json: @artist}
+      end
     else
       render :edit
     end
