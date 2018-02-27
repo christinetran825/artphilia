@@ -1,9 +1,9 @@
-<div class="artworks-body-header">
-  <div class="header">
+<div id="header">
+  <div class="heading">
     <h4> <%= @artist.name %>'s Artworks </h4>
   </div>
 
-  <div class="header-attr">
+  <div class="obj-attr">
     <p><%= pluralize(@artist.artworks.count, 'Artworks') %></p>
   </div>
 
