@@ -43,7 +43,7 @@ nav li a {
 }
 
 // Body Header
-.body-header {
+#header {
   text-align: center;
   margin: 35px 0;
 }
@@ -53,7 +53,7 @@ nav li a {
   margin: 35px 0;
 }
 
-.header {
+.heading {
 
 }
 
@@ -108,39 +108,60 @@ input::placeholder {
   margin-bottom: 24px;
 }
 
-// Sign up & Log in
-.container {
-  width: 450px;
-  margin: 100px auto;
+// Welcome, Sign Up, Log in
+#welcome {
   // background-color: rgba(255,255,255, 0.5);
   // border-radius: 40px;
   // border: 2px solid #73AD21;
+}
+
+#welcome h1 {
+  font-size: 50px;
+}
+
+#welcome p {
+  margin: 20px 0;
+}
+
+#new_user p {
+  margin: 20px 0;
+}
+
+#login p {
+  margin: 25px 0;
+}
+
+.container {
+  width: 450px;
+  margin: 150px auto;
   text-align: center;
 }
 
-.container h1 {
-  margin-bottom: 25px;
+.main-btn {
+  margin-bottom: 20px;
+}
+
+.socialmedia-login {
+
+}
+
+
+
+// User's HomePage
+#homepage{
+  width: 450px;
+  margin: 100px auto;
+  text-align: center;
 }
 
 form.new_user {
   margin-bottom: 25px;
 }
 
-
-// New, Edit, Show
-.container_new_edit {
-  margin: 30px auto;
-  text-align: left;
-}
-
-
-.container_profile {
-  margin: 25px auto;
+// User's Profile
+.profile-attr {
+  margin: 25px 0;
   padding: 20px;
-}
-
-.container_ownership {
-  margin-left: 25px;
 }
 
 // Artwork form for Medium/Media
@@ -161,6 +182,10 @@ form.new_user {
 
 .col-md-6-text {
   padding-top: 35px;
+}
+
+.btn-group {
+
 }
 
 // Footer
