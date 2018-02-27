@@ -1,0 +1,13 @@
+<div class="body-header">
+  <div class="header">
+    <h1>All Artists</h1>
+  </div>
+
+  <div class="header-attr">
+    <p><%= pluralize(@artists.count, 'Artists') %></p>
+  </div>
+
+  <div class="header-buttons">
+    <%= link_to "Add a New Artist", new_artist_path, id:'add_artist', class:'btn btn-link btn-md' %>
+  </div>
+</div>
