@@ -1,7 +1,12 @@
-<div class="container_new_edit">
-  <h1>Edit <%= @artist.name %></h1>
+<div class="body-header">
+  <div class="header">
+    <h1>Edit <%= @artist.name %></h1>
+  </div>
 
-  <%= render 'form'  %>
+  <%= render :partial => 'formButtons' %>
 
-  <%= link_to "Cancel", artist_path %>
+</div>
+
+<div class="body-content">
+  <%= render 'form' %>
 </div>

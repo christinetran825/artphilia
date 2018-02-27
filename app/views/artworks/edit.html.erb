@@ -1,7 +1,13 @@
-<div class="container_new_edit">
-  <h1>Edit <%= @artwork.title  %> </h1>
+<div class="body-header">
+  <div class="header">
+    <h1>Edit <%= @artwork.title  %> </h1>
+  </div>
+  <div class="header-btns">
+    <%= link_to "Cancel", artist_artwork_path, id:'artist_show', class:'btn btn-link btn-md' %>
+    <!-- <%= link_to "Cancel", artist_path(@artist), id:'artist_show', class:'btn btn-link btn-md' %> -->
+  </div>
+</div>
 
-  <%= render 'form'  %>
-
-  <%= link_to "Cancel", artist_artwork_path %>
+<div class="body-content">
+  <%= render 'form' %>
 </div>

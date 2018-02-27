@@ -1,7 +1,13 @@
-<div class="container_new_edit">
-  <h1>Add a New Artwork</h1>
+<div class="body-header">
+  <div class="header">
+    <h1>Add a New Artwork</h1>
+  </div>
 
-  <%= render 'form'  %>
+  <div class="header-btns">
+    <%= link_to "Cancel", artist_path(@artist), id:'artist_show', class:'btn btn-link btn-md' %>
+  </div>
+</div>
 
-  <%= link_to "Cancel", artist_path(@artist) %>
+<div class="body-content">
+  <%= render 'form' %>
 </div>

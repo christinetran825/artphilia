@@ -1,19 +1,24 @@
-<div class="container_show">
-  <h1> <%= @artist.name %> </h1>
-  <p> Website:
-    <% if @artist.website != "None" %>
-      <%= link_to @artist.website, @artist.website, :target => "_blank" %>
-    <% else %>
-      No Website
-    <% end %>
-  </p>
-  <p> Discovered at: <%= @artist.discovered %> </p>
-  <p> Rating: <%= @artist.rating %> </p>
+<div class="body-header">
+  <div class="header">
+    <h1> <%= @artist.name %> </h1>
+  </div>
 
-  <div class="btn-group">
-    <%= link_to "Show All Artists", artists_path, class:'btn btn-link btn-sm' %>
-    <%= link_to "Edit Artist", edit_artist_path(@artist), class:'btn btn-link btn-sm' %>
-    <%= link_to "Delete Artist", @artist, method: :delete, data: {confirm: "Are you sure you want to delete this Artist?"}, class:'btn btn-link btn-sm' %></p>
+  <div class="header-attr">
+    <p> Website:
+      <% if @artist.website != "None" %>
+        <%= link_to @artist.website, @artist.website, :target => "_blank" %>
+      <% else %>
+        No Website
+      <% end %>
+    </p>
+    <p> Discovered at: <%= @artist.discovered %> </p>
+    <p> Rating: <%= @artist.rating %> </p>
+  </div>
+
+  <div class="header-btns">
+    <%= link_to "Show All Artists", artists_path, id:"artist_index", class:'btn btn-link btn-sm' %>
+    <%= link_to "Edit Artist", edit_artist_path(@artist), id:"update_artist", class:'btn btn-link btn-sm' %>
+    <%= link_to "Delete Artist", @artist, class:'btn btn-link btn-sm', method: :delete, data: {confirm: "Are you sure you want to delete this Artist?"}%></p>
   </div>
 </div>
 

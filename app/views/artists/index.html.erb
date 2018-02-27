@@ -1,15 +1,6 @@
-<div class="container_show">
-  <h1>All Artists</h1>
-
-  <div class="adding_objects">
-    <p><%= pluralize(@artists.count, 'Artists') %></p>
-    <%= link_to "Add a New Artist", new_artist_path, class:'btn btn-link btn-md' %>
-  </div>
-</div>
-
+<%= render :partial => 'artistIndexBodyHeader' %>
 <%= render :partial => 'shared/flash_messages' %>
 
-<!-- list all artists; filter by abc order last name and first name; add artist's website link -->
 <table class="table table-striped">
   <thead>
     <tr>
@@ -28,7 +19,7 @@
       <td><%= link_to a.artworks.count, artist_artworks_path(a) %></td>
       <td><%= link_to a.website, a.website, :target => "_blank" %></td>
       <td><%= a.rating %></td>
-      <td><%= link_to "Edit", edit_artist_path(a) %></td>
+      <td><%= link_to "Edit", edit_artist_path(a), id:"update_artist" %></td>
       <td><%= link_to "Delete", a, method: :delete, data: {confirm: "Are you sure you want to delete this Artist?"} %></td>
     </tr>
     <% end %>

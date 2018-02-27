@@ -1,5 +1,15 @@
-<div class="container_show">
-  <h1>Artworks I Own</h1>
+<div class="body-header">
+  <div class="header">
+    <h1>Artworks I Own</h1>
+  </div>
+
+  <div class="header-attr">
+    <p><%= pluralize(@artworks.count, 'Artworks') %></p>
+  </div>
+
+  <div class="header-buttons">
+    <%= link_to "Back to All Artists", artists_path, id:'artist_index', class:'btn btn-link btn-md' %>
+  </div>
 </div>
 
 <%= render :partial => 'shared/flash_messages' %>
@@ -8,6 +18,7 @@
 <table class="table table-striped">
   <thead>
     <tr>
+      <th>Image</th>
       <th>Title</th>
       <th>Artist</th>
       <th>Edit</th>
@@ -17,9 +28,10 @@
   <tbody>
     <% @artworks.each do |work| %>
     <tr>
+      <td><%= image_tag work.images.url(:thumb) %></td>
       <td><%= link_to work.title, artist_artwork_path(work.artist, work) %></td>
       <td><%= link_to work.artist.name, artist_path(work.artist) %></td>
-      <td><%= link_to "Edit", edit_artist_artwork_path(work.artist, work) %></td>
+      <td><%= link_to "Edit", edit_artist_artwork_path(work.artist, work), id:"update_artwork" %></td>
       <td><%= link_to "Delete", artist_artwork_path(work.artist, work), method: :delete, data: {confirm: "Are you sure you want to delete this Artwork?"} %></td>
     <% end %>
   </tbody>

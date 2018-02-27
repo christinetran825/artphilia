@@ -1,16 +1,9 @@
-<div class="container_show">
-  <h4> <%= @artist.name %>'s Artworks </h4>
-
-  <div class="adding_objects">
-    <p><%= pluralize(@artist.artworks.count, 'Artworks') %></p>
-    <%= link_to "Add New Artwork", new_artist_artwork_path(@artist), class:'btn btn-link btn-sm' %>
-  </div>
-</div>
+<%= render :partial => 'artworksIndexBodyHeader' %>
 
 <table class="table table-hover sortable">
   <thead>
     <tr>
-      <!-- <th>Image</th> -->
+      <th>Image</th>
       <th>Title</th>
       <th>Exhibition</th>
       <th>Do I have this?</th>
@@ -27,8 +20,8 @@
         <td><%= link_to work.exhibition, artist_artwork_path(@artist, work) %></td>
         <td><%= work.user_owned %></td>
         <td><%= work.rating %></td>
-        <td><%= link_to "Edit", edit_artist_artwork_path(@artist, work) %></td>
-        <td><%= link_to "Delete", artist_artwork_path(@artist, work),method: :delete, data: {confirm: "Are you sure you want to delete this Artwork?"} %></td>
+        <td><%= link_to "Edit", edit_artist_artwork_path(@artist, work), id:"update_artwork" %></td>
+        <td><%= link_to "Delete", artist_artwork_path(@artist, work), method: :delete, data: {confirm: "Are you sure you want to delete this Artwork?"} %></td>
     <% end %>
   </tbody>
 </table>
