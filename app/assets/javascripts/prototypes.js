@@ -67,3 +67,30 @@ Artwork.prototype.formatArtworkOwnedData = function(theOwnedArtworkArtist) {
   `
   return artworkOwned
 }
+
+/////// SHOW an Artist ///////
+Artist.prototype.formatArtistShowHeading = function() {
+  let artistShow = `
+    <h1>${this.name}</h1>
+  `
+  return artistShow
+}
+
+Artist.prototype.formatArtistShowHeaderAttr = function() {
+  let artistShow = `
+    <p><a target=_blank href="${this.website}">${this.website}</a></p>
+    <p>Discovered at: ${this.discovered}</p>
+    <p>Artworks</p>
+  `
+  return artistShow
+}
+
+Artist.prototype.formatArtistShowButtons = function() {
+  let artistShowButtons = `
+   <button><a href="/artists" class="artists_index">Back to All Artists</a></button>
+   <button><a href="/artists/${this.id}/edit" class="update_artist">Edit Artist</a></button>
+   <button><a href="/artists/${this.id}" data-method="delete">Delete Artist</a></button>
+   <button><a href="/artists/${this.id}/artworks" id="load_artworks">Show All Artworks</a></button>
+  `
+  return artistShowButtons
+}

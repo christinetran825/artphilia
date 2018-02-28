@@ -15,6 +15,11 @@ function theNewEditBody(theHeader, theForm){
   bodyElements(theHeader, theForm)
 }
 
+function theShowBody(heading, attr, links){
+  theBodyShowPage();
+  bodyShowElements(heading, attr, links)
+}
+
 function theBodyPage(){
   $("#main-container").html(
     `
@@ -32,6 +37,34 @@ function bodyElements(theHeader, theContent){
     theContent
   );
 }
+
+function theBodyShowPage(){
+  $("#main-container").html(
+    `
+      <div class="header">
+        <div class="heading"></div>
+        <div class="obj-attr"></div>
+        <div class="obj-links"></div>
+      </div>
+      <div class="content"></div>
+    `
+  )
+}
+
+function bodyShowElements(heading, attr, links){
+  $(".heading").html(
+    heading
+  );
+  $(".obj-attr").html(
+    attr
+  );
+  $(".obj-links").html(
+    links
+  );
+  $("#pageContent").html(
+  );
+}
+
 
 function bodyElementsWithTable(theHeader){
   $("#theHeader").html(
