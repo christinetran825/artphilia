@@ -15,4 +15,8 @@
 //= require bootstrap-sprockets
 //= require artists
 //= require fav_artists
+//= require artworks
+//= require own_artworks
+//= require page_format
+//= require prototypes
 //= require_tree .
