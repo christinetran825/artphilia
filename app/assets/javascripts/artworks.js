@@ -1,9 +1,10 @@
 $(document).ready(function() {
   getNewArtwork();
-  // getEditArtwork();
+  getEditArtwork();
+  clickOnArtwork();
 })
 
-// OPTION A
+///////////////////// OPTION A /////////////////////
 const getNewArtwork = () => {
   $(document).on('click', "#add_artwork", function(e){
     e.preventDefault();
@@ -19,46 +20,34 @@ const getNewArtwork = () => {
   })
 }
 
-function cancelFromNewArtwork(){
-  $(document).on('click', ".artist_show_link", function(e){
+// Artworks Index is in Artist Show within Show All Artwork button event
+const getEditArtwork = () => {
+  $(document).on('click', "#update_artwork", function(e){
     e.preventDefault();
-    console.log("hello")
-    // let id = $(this).attr("data-id");
-    // $.get(this.href).success(function(response){
-    //   let _template = response
-    //   let template = $.parseHTML(_template)
-    //   let theHeader = $(template).find(".header")
-    //   let theForm = $(template).find("#new_artwork")
-    //   theNewEditBody(theHeader, theForm);
-    //   addOwnershipForm(theForm);
-    // })
+    $.get(this.href).success(function(response){
+      let _template = response
+      let template = $.parseHTML(_template)
+      let heading = $(template).find(".header")
+      let theForm = $(template).find(".edit_artwork")
+      theNewEditBody(heading, theForm)
+      addOwnershipForm(theForm);
+    })
+  });
+}
+
+const clickOnArtwork = () => {
+  $(document).on('click', ".artwork_show_link", function(e){
+    e.preventDefault();
+    $.get(this.href).success(function(response){
+      let _template = response
+      let template = $.parseHTML(_template)
+      let artworkShow = $(template).find("#the_artworks")
+      theArtworkBodyPage(artworkShow)
+    })
   })
 }
 
-//Artworks Index is in Artist Show within Show All Artwork button event
-// const getEditArtwork = () => {
-//   $(document).on('click', "#update_artwork", function(e){
-//     e.preventDefault();
-//     // let id = $(this).attr("data-id");
-//     $.get(this.href).success(function(response){
-//       let _template = response
-//       let template = $.parseHTML(_template)
-//       let heading = $(template).find(".header")
-//       // let links = cancelToArtistArtworks(id)
-//       let theForm = $(template).find(".edit_artwork")
-//       theNewEditBody(heading, theForm)
-//       // $(".content").html(theForm);
-//       addOwnershipForm(theForm);
-//     })
-//   });
-// }
-
-// function cancelToArtistArtworks(theClickedArtist){
-//   let backTheArtist = `<button><a href="/artists/${theClickedArtist}/artworks" data-id="${theClickedArtist}" class="artist_show_link">Cancel</a></button>`
-//   return backTheArtist
-// }
-
-// Option B (formally Option C)
+///////////////////// Option B (formally Option C) /////////////////////
 // const getNewArtwork = () => {
 //   $(document).on('click', "#add_artwork", function(e){
 //     e.preventDefault();
@@ -76,7 +65,6 @@ function cancelFromNewArtwork(){
 //     })
 //   })
 // }
-
 // function cancelToArtistArtworks(theClickedArtist){
 //   let backTheArtist = `<button><a href="/artists/${theClickedArtist}/artworks" data-id="${theClickedArtist}" id="load_artworks">Cancel</a></button>`
 //   return backTheArtist
