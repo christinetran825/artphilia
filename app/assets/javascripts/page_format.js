@@ -15,10 +15,10 @@ function theNewEditBody(theHeader, theForm){
   bodyElements(theHeader, theForm)
 }
 
-function theArtworkNewEditBody(heading, links){
-  theBodyArtworkNewEditPage();
-  bodyArtworksNewEditElements(heading, links)
-}
+// function theArtworkNewEditBody(heading, links){
+//   theBodyArtworkNewEditPage();
+//   bodyArtworksNewEditElements(heading, links)
+// }
 
 function theShowBody(heading, attr, links){
   theBodyShowPage();
