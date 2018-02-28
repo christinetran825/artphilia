@@ -3,7 +3,7 @@
     <h1> <%= @artist.name %> </h1>
   </div>
   <div class="obj-links">
-    <%= link_to "Show All #{@artist.name} Artworks", artist_path(@artist), class:'btn btn-link btn-sm' %>
+    <%= link_to "Show All #{@artist.name} Artworks", artist_path(@artist), id:"artist_index", class:'btn btn-link btn-sm' %>
     <%= link_to "Edit Artwork", edit_artist_artwork_path, id:"update_artwork", class:'btn btn-link btn-sm' %>
     <%= link_to "Delete Artwork", artist_artwork_path, class:'btn btn-link btn-sm', method: :delete, data: {confirm: "Are you sure you want to delete this Artwork?"} %>
   </div>
