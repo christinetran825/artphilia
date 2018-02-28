@@ -7,6 +7,10 @@ class ArtworksController < ApplicationController
     # @artworks = Artwork.all
     @artworks = @artist.artworks
     render 'artworks/index', :layout => false
+    # respond_to do |f|
+    #   f.html
+    #   f.json { render json: @artworks }
+    # end
   end
 
   def new
