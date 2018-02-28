@@ -59,7 +59,7 @@ Artwork.prototype.formatArtworkOwnedData = function(theArtistName, theOwnedArtwo
       <td><a href="/artists/${theOwnedArtworkArtist}/artworks/${this.id}">images</a></td>
       <td><a href="/artists/${theOwnedArtworkArtist}/artworks/${this.id}">${this.title}</a></td>
       <td><a href="/artists/${theOwnedArtworkArtist}">${theArtistName}</a></td>
-      <td><a href="/artists/${theOwnedArtworkArtist}/artworks/${this.id}" id="update_artwork">Edit</a></td>
+      <td><a href="/artists/${theOwnedArtworkArtist}/artworks/${this.id}/edit" id="update_artwork">Edit</a></td>
       <td><a href="/artists/${theOwnedArtworkArtist}/artworks/${this.id}" data-method="delete">Delete</a></td>
     </tr>
   `
