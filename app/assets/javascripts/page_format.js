@@ -4,59 +4,93 @@
   //Clear main-container; add the bodyElements (header and pageContent);
   //const the bodyElements to include theHeader and pageContent divs
 
+////// Artist Index, Fav Artist, Owned Artwork //////
 function theIndexBody(theHeader, theTableHeader){
   theBodyPage();
-  bodyElementsWithTable(theHeader);
+  addHeader(theHeader);
+  addTableToContents();
   tableHeader(theTableHeader);
 }
 
-function theNewEditBody(theHeader, theForm){
-  theBodyPage();
-  bodyElements(theHeader, theForm)
-}
-
-// function theArtworkNewEditBody(heading, links){
-//   theBodyArtworkNewEditPage();
-//   bodyArtworksNewEditElements(heading, links)
-// }
-
-function theShowBody(heading, attr, links){
-  theBodyShowPage();
-  bodyShowElements(heading, attr, links)
-}
-
+/// set up the body ///
 function theBodyPage(){
   $("#main-container").html(
     `
-      <div id="theHeader"></div>
-      <div id="pageContent"></div>
+      <div id="header"></div>
+      <div id="content"></div>
     `
   )
 }
 
-function bodyElements(theHeader, theContent){
-  $("#theHeader").html(
+/// add the body's content into its elements (with the Table into the pageContent div)///
+function addHeader(theHeader){
+  $("#header").html(
     theHeader
   );
-  $("#pageContent").html(
-    theContent
+}
+
+function addContents(theContents){
+  $("#content").html(
+    theContents
   );
 }
 
-function theBodyShowPage(){
-  $("#main-container").html(
-    `
-      <div class="header">
-        <div class="heading"></div>
-        <div class="obj-attr"></div>
-        <div class="obj-links"></div>
-      </div>
-      <div class="content"></div>
-    `
-  )
+function addTableToContents(){
+  $("#content").html(
+    theTable()
+  );
 }
 
-function bodyShowElements(heading, attr, links){
+/// set up the table to the pageContent div ///
+const theTable = () => {
+  let table = `
+    <table class="table table-striped">
+      <thead></thead>
+      <tbody></tbody>
+    </table> `
+  return table
+}
+
+// add the column name to the table header
+function tableHeader(theTableHeader){
+  $("table thead").html(theTableHeader)
+}
+
+// add the data to the table body
+function tableContent(theTableData){
+  $("table tbody").html(theTableData)
+}
+
+
+////// FORMs //////
+function theNewEditBody(theHeader, theContents){
+  theBodyPage();
+  addHeader(theHeader);
+  addContents(theContents);
+}
+
+////// Artist Show //////
+function theShowBody(heading, attr, links){
+  theBodyPage();
+  addShowHeader();
+  addShowHeaderElements(heading, attr, links)
+}
+
+function addShowHeader(){
+  $("#header").html(
+    `<div class="heading"></div>
+    <div class="obj-attr"></div>
+    <div class="obj-links"></div>`
+  );
+}
+
+function addShowContents(theContents){
+  $("#content").html(
+    theContents
+  );
+}
+
+function addShowHeaderElements(heading, attr, links){
   $(".heading").html(
     heading
   );
@@ -66,77 +100,49 @@ function bodyShowElements(heading, attr, links){
   $(".obj-links").html(
     links
   );
-  $(".content").html(
-  );
 }
 
-function theBodyArtworkNewEditPage(){
+////// Artwork Show //////
+function theArtworkBodyPage(theContents){
   $("#main-container").html(
-    `
-      <div class="header">
-        <div class="heading"></div>
-        <div class="obj-links"></div>
-      </div>
-      <div class="content"></div>
-    `
+    theContents
   )
 }
 
-
-function bodyArtworksNewEditElements(heading, links){
-  $(".heading").html(
-    heading
-  );
-  $(".obj-links").html(
-    links
-  );
-  $(".content").html(
-  );
-}
-
-
-
-function bodyElementsWithTable(theHeader){
-  $("#theHeader").html(
-    theHeader
-  );
-  $("#pageContent").html(
-    theTable()
-  );
-}
-
-//Add the table to pageContent
-function theTable(){
-  $("#pageContent").html(
-    `
-      <table class="table table-striped">
-        <thead></thead>
-        <tbody></tbody>
-      </table>
-    `
-  )
-}
-
-//Add the table header contents
-function tableHeader(theTableHeader){
-  $("table thead").html(theTableHeader)
-}
-
-//Add the table data
-function tableContent(theTableData){
-  $("table tbody").html(theTableData)
-}
-
-///////********
-function theShowArtworksPortion(){
-  $(".content").html(
-    ` <div id="mini">
-        <div class="heading">
-          <h4>Add a New Artwork</h4>
-        </div>
-        <div class="obj-links"></div>
-        <div class="content"></div>
-      </div>
-    `
-  )
-}
+// function theBodyArtworkNewEditPage(){
+//   $("#main-container").html(
+//     `
+//       <div class="header">
+//         <div class="heading"></div>
+//         <div class="obj-links"></div>
+//       </div>
+//       <div class="content"></div>
+//     `
+//   )
+// }
+//
+//
+// function bodyArtworksNewEditElements(heading, links){
+//   $(".heading").html(
+//     heading
+//   );
+//   $(".obj-links").html(
+//     links
+//   );
+//   $(".content").html(
+//   );
+// }
+//
+// ///////********
+// function theShowArtworksPortion(){
+//   $(".content").html(
+//     ` <div id="mini">
+//         <div class="heading">
+//           <h4>Add a New Artwork</h4>
+//         </div>
+//         <div class="obj-links"></div>
+//         <div class="content"></div>
+//       </div>
+//     `
+//   )
+// }
