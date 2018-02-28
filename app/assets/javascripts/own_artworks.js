@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  artworksOwned(); // .../artists
+  artworksOwned();
 })
 
 /////// click on nav bar link for owned Artwork ///////
@@ -12,8 +12,8 @@ const artworksOwned = () => {
       let theHeader = $(template).find(".header")
       let theTableHeader= $(template).find(".table thead tr")
       theIndexBody(theHeader, theTableHeader)
+      addArtworksOwnedByYes()
     });
-    addArtworksOwnedByYes(this)
   });
 }
 
@@ -29,21 +29,20 @@ function filterOwnership(collection, cb){
 }
 
 /////// ADD OWNED ARTWORKS using filter function ///////
-function addArtworksOwnedByYes(allArtworks) {
+function addArtworksOwnedByYes() {
   fetch(`/artists.json`)
   .then(res => res.json())
   .then(theArtists => {
     theArtists.forEach(artist => {
-     debugger;
+     let theArtistName = artist.name
      let theArtworks = artist.artworks
      const whichArtworkOwned = filterOwnership(theArtworks, function(artworks){
        return artworks.user_owned === "Yes"
      });
-     debugger;
      whichArtworkOwned.forEach(artwork => {
        let theOwnedArtwork = new Artwork(artwork); //create newArtwork
        let theOwnedArtworkArtist = artwork.artist_id
-       let eachOwnedArtwork = theOwnedArtwork.formatArtworkOwnedData(theOwnedArtworkArtist);
+       let eachOwnedArtwork = theOwnedArtwork.formatArtworkOwnedData(theArtistName, theOwnedArtworkArtist);
        tableContent(eachOwnedArtwork)
      });
     })

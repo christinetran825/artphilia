@@ -29,9 +29,9 @@ function getAllArtists() {
    .then(res => res.json())
    .then(artists => {
      artists.forEach(artist => {
-       // let numofArtworks = artist.artworks.length
+       let numofArtworks = artist.artworks.length
        let newArtist = new Artist(artist); //create newArtist
-       let theTableData = newArtist.formatArtistIndexData();
+       let theTableData = newArtist.formatArtistIndexData(numofArtworks);
        tableContent(theTableData)
      })
    })
@@ -64,6 +64,22 @@ const getEditArtist = () => {
   })
 }
 
+const postNewArtist = () => {
+  $(document).on('submit', "form#new_artist", function(e){
+    e.preventDefault();
+    let $form = $(this);
+    let action = $form.attr("action");
+    let params = $form.serialize()
+    $.ajax({
+      url: action,
+      data: params,
+      method: "POST"
+    }).success(function(response){
+      console.log(response)
+    })
+  })
+}
+
 //Artist's Show; Click on artist's first or last name; redirect to Artist's Show //
 const clickOnArtist = () => {
   $(document).on('click', '.artist_show_link', function(e){
@@ -79,11 +95,10 @@ function artistShow(theClickedArtist){
   fetch(`/artists/${id}.json`)
    .then(res => res.json())
    .then(artist => {
-     let theArtworks = artist.artworks;
-     // let numofArtworks = artist.artworks.length;
+     let numofArtworks = artist.artworks.length;
      let newArtist = new Artist(artist);
      let heading = newArtist.formatArtistShowHeading();
-     let attr = newArtist.formatArtistShowHeaderAttr();
+     let attr = newArtist.formatArtistShowHeaderAttr(numofArtworks);
      let links = newArtist.formatArtistShowButtons();
      theShowBody(heading, attr, links)
    })

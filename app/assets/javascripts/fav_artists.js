@@ -37,9 +37,9 @@ function addFavArtistsByRating() {
      return artist.rating === 5
    });
    artistsRatingFive.forEach(artist => {
-     // let numofArtworks = artist.artworks.length
+     let numofArtworks = artist.artworks.length
      let theFavArtist = new Artist(artist); //create newArtist
-     let eachFavArtists = theFavArtist.formatFavArtistIndexData();
+     let eachFavArtists = theFavArtist.formatFavArtistIndexData(numofArtworks);
      tableContent(eachFavArtists)
    });
   })

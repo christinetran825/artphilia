@@ -28,7 +28,7 @@ Artist.prototype.formatArtistIndexData = function(numofArtworks) {
   let artistHtml = `
     <tr>
       <td><a href="/artists/${this.id}" data-id="${this.id}" class="artist_show_link">${this.name}</a></td>
-      <td><a href="/artists/${this.id}/artworks" data-id="${this.id}" class="artist_show_link">test</a></td>
+      <td><a href="/artists/${this.id}/artworks" data-id="${this.id}" class="artist_show_link">${numofArtworks}</a></td>
       <td><a target=_blank href="${this.website}">${this.website}</a></td>
       <td>${this.rating}</td>
       <td><a href="/artists/${this.id}/edit" data-id="${this.id}" id="update_artist">Edit</a></td>
@@ -39,11 +39,11 @@ Artist.prototype.formatArtistIndexData = function(numofArtworks) {
 }
 
 /////// FAVORITE ARTISTS ///////
-Artist.prototype.formatFavArtistIndexData = function() {
+Artist.prototype.formatFavArtistIndexData = function(numofArtworks) {
   let favArtists = `
     <tr>
       <td><a href="/artists/${this.id}" data-id="${this.id}" class="artist_show_link">${this.name}</a></td>
-      <td><a href="/artists/${this.id}/artworks" data-id="${this.id}" class="artist_show_link">test</a></td>
+      <td><a href="/artists/${this.id}/artworks" data-id="${this.id}" class="artist_show_link">${numofArtworks}</a></td>
       <td><a target=_blank href="${this.website}">${this.website}</a></td>
       <td>${this.rating}</td>
       <td><a href="/artists/${this.id}/edit" data-id="${this.id}" id="update_artist">Edit</a></td>
@@ -53,14 +53,12 @@ Artist.prototype.formatFavArtistIndexData = function() {
   return favArtists
 }
 
-Artwork.prototype.formatArtworkOwnedData = function(theOwnedArtworkArtist) {
-  // let theOwnedArtworkArtist = `${this.first_name} ${this.last_name}`;
+Artwork.prototype.formatArtworkOwnedData = function(theArtistName, theOwnedArtworkArtist) {
   let artworkOwned = `
     <tr>
       <td><a href="/artists/${theOwnedArtworkArtist}/artworks/${this.id}">images</a></td>
       <td><a href="/artists/${theOwnedArtworkArtist}/artworks/${this.id}">${this.title}</a></td>
-      <td><a href="/artists/${theOwnedArtworkArtist}/artworks/${this.id}">${this.exhibition}</a></td>
-      <td><a href="/artists/${theOwnedArtworkArtist}">${theOwnedArtworkArtist}</a></td>
+      <td><a href="/artists/${theOwnedArtworkArtist}">${theArtistName}</a></td>
       <td><a href="/artists/${theOwnedArtworkArtist}/artworks/${this.id}" id="update_artwork">Edit</a></td>
       <td><a href="/artists/${theOwnedArtworkArtist}/artworks/${this.id}" data-method="delete">Delete</a></td>
     </tr>
@@ -76,11 +74,11 @@ Artist.prototype.formatArtistShowHeading = function() {
   return artistShow
 }
 
-Artist.prototype.formatArtistShowHeaderAttr = function() {
+Artist.prototype.formatArtistShowHeaderAttr = function(numofArtworks) {
   let artistShow = `
     <p><a target=_blank href="${this.website}">${this.website}</a></p>
     <p>Discovered at: ${this.discovered}</p>
-    <p>Artworks</p>
+    <p>${numofArtworks} Artworks</p>
   `
   return artistShow
 }
