@@ -1,6 +1,7 @@
 $(document).ready(function() {
   getArtistIndex(); // .../artists
-  getNewEditArtist();
+  getNewArtist();
+  getEditArtist();
   clickOnArtist();
   showAllArtworks()
 })
@@ -8,7 +9,7 @@ $(document).ready(function() {
 
 /////// click on nav bar link for All Artists ///////
 const getArtistIndex = () => {
-  $('#artist_index').on('click', function(e){
+  $(document).on('click', '#artist_index', function(e){
     e.preventDefault();
     // history.pushState(null, null, "artists");
     $.get(this.href).success(function(response){
@@ -37,7 +38,7 @@ function getAllArtists() {
 }
 
 /////// click on "add new artist" button ///////
-const getNewEditArtist = () => {
+const getNewArtist = () => {
   $(document).on('click', "#add_artist", function(e){
     e.preventDefault();
     $.get(this.href).success(function(response){
@@ -45,6 +46,19 @@ const getNewEditArtist = () => {
       let template = $.parseHTML(_template)
       let theHeader = $(template).find(".header")
       let theForm = $(template).find("#new_artist")
+      theNewEditBody(theHeader, theForm)
+    })
+  })
+}
+
+const getEditArtist = () => {
+  $(document).on('click', "#update_artist", function(e){
+    e.preventDefault();
+    $.get(this.href).success(function(response){
+      let _template = response
+      let template = $.parseHTML(_template)
+      let theHeader = $(template).find(".header")
+      let theForm = $(template).find(".edit_artist")
       theNewEditBody(theHeader, theForm)
     })
   })
