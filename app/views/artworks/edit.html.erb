@@ -4,8 +4,8 @@
   </div>
 
   <div class="obj-links">
-    <%= link_to "Cancel", artist_artwork_path, id:'artist_show', class:'btn btn-link btn-md' %>
-    <!-- <%= link_to "Cancel", artist_path(@artist), id:'artist_show', class:'btn btn-link btn-md' %> -->
+    <%= link_to "Cancel", artist_artwork_path, id:'artist_show', class:'artist_show_link btn btn-link btn-md', :data => {:id => @artist.id} %>
+    <!-- <%= link_to "Cancel", artist_path(@artist), id:'artist_show', class:'artist_show_link btn btn-link btn-md', :data => {:id => @artist.id} %> -->
   </div>
 </div>
 
