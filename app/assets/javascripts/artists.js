@@ -93,7 +93,7 @@ const showAllArtworks = () => {
   $(document).on('click', "a#load_artworks", function(e){
     e.preventDefault();
     $.get(this.href).success(function(response){
-      $(".content").html(response)
+      addShowContents(response)
     })
   })
 }
