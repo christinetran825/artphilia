@@ -4,7 +4,7 @@ $(document).ready(function() {
 
 /////// click on nav bar link for Favorite Artists ///////
 const favoriteArtists = () => {
-  $('#fav_artists').on('click', function(e){
+  $(document).on('click', '#fav_artists', function(e){
     e.preventDefault();
     $.get(this.href).success(function(response){
       let _template = response
