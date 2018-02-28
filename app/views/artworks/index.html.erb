@@ -16,9 +16,9 @@
     <tbody>
       <% @artist.artworks.each do |work| %>
       <tr>
-          <td><%= image_tag work.images.url(:thumb) %></td>
-          <td><%= link_to work.title, artist_artwork_path(@artist, work) %></td>
-          <td><%= link_to work.exhibition, artist_artwork_path(@artist, work) %></td>
+          <td><%= image_tag work.images.url(:thumb), class:"artwork_show_link" %></td>
+          <td><%= link_to work.title, artist_artwork_path(@artist, work), class:"artwork_show_link" %></td>
+          <td><%= link_to work.exhibition, artist_artwork_path(@artist, work), class:"artwork_show_link" %></td>
           <td><%= work.user_owned %></td>
           <td><%= work.rating %></td>
           <td><%= link_to "Edit", edit_artist_artwork_path(@artist, work), id:"update_artwork", class:"artist_show_link" %></td>
