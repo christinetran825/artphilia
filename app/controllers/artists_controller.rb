@@ -4,7 +4,7 @@ class ArtistsController < ApplicationController
 
   def index
     @artists = Artist.all
-    @artists = current_user.artists.order(:name)
+    # @artists = current_user.artists.order(:name)
     respond_to do |f|
       f.html
       f.json {render json: @artists}
@@ -20,7 +20,8 @@ class ArtistsController < ApplicationController
     @artist.user = current_user
     if @artist && @artist.save
       respond_to do |f|
-        f.html {redirect_to artist_path(@artist), flash: {success: "'#{@artist.first_name} #{@artist.last_name}' was added!"}}
+        f.html {redirect_to artist_path(@artist), flash: {success: "'#{@artist.name}' was added!"}}
+        # f.html {redirect_to artist_path(@artist), flash: {success: "'#{@artist.first_name} #{@artist.last_name}' was added!"}}
         f.json {render json: @artist}
       end
     else
@@ -42,7 +43,8 @@ class ArtistsController < ApplicationController
   def update
     if @artist.update(artist_params)
       respond_to do |f|
-        f.html {redirect_to artist_path(@artist), flash: {success: "'#{@artist.first_name} #{@artist.last_name}' was updated!"}}
+        f.html {redirect_to artist_path(@artist), flash: {success: "'#{@artist.name}' was updated!"}}
+        # f.html {redirect_to artist_path(@artist), flash: {success: "'#{@artist.first_name} #{@artist.last_name}' was updated!"}}
         f.json {render json: @artist}
       end
     else
