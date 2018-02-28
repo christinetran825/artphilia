@@ -15,6 +15,11 @@ function theNewEditBody(theHeader, theForm){
   bodyElements(theHeader, theForm)
 }
 
+function theArtworkNewEditBody(heading, links){
+  theBodyArtworkNewEditPage();
+  bodyArtworksNewEditElements(heading, links)
+}
+
 function theShowBody(heading, attr, links){
   theBodyShowPage();
   bodyShowElements(heading, attr, links)
@@ -65,6 +70,31 @@ function bodyShowElements(heading, attr, links){
   );
 }
 
+function theBodyArtworkNewEditPage(){
+  $("#main-container").html(
+    `
+      <div class="header">
+        <div class="heading"></div>
+        <div class="obj-links"></div>
+      </div>
+      <div class="content"></div>
+    `
+  )
+}
+
+
+function bodyArtworksNewEditElements(heading, links){
+  $(".heading").html(
+    heading
+  );
+  $(".obj-links").html(
+    links
+  );
+  $(".content").html(
+  );
+}
+
+
 
 function bodyElementsWithTable(theHeader){
   $("#theHeader").html(
@@ -95,4 +125,18 @@ function tableHeader(theTableHeader){
 //Add the table data
 function tableContent(theTableData){
   $("table tbody").html(theTableData)
+}
+
+///////********
+function theShowArtworksPortion(){
+  $(".content").html(
+    ` <div id="mini">
+        <div class="heading">
+          <h4>Add a New Artwork</h4>
+        </div>
+        <div class="obj-links"></div>
+        <div class="content"></div>
+      </div>
+    `
+  )
 }
