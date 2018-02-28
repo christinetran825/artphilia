@@ -75,8 +75,6 @@ function addOwnershipForm(ownArtworkSection) {
   $("#artwork_user_owned_yes").click(function(){
     if ((this.value) = "Yes") {
       $("div:hidden").show("fast")
-    } else {
-      $("div:hidden").hide("fast")
     }
   })
 }
