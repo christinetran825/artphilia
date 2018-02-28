@@ -34,6 +34,7 @@ nav li a {
   margin: 7px;
 }
 
+
 ///////////////// Welcome, Sign Up, Log in /////////////////
 #welcome {
   // background-color: rgba(255,255,255, 0.5);
@@ -91,6 +92,15 @@ nav li a {
 .content {
   // width: 150px;
   margin: 35px auto;
+}
+
+#mini .heading {
+  text-align: center;
+}
+
+#mini .obj-links {
+  text-align: center;
+  margin: 20px 0;
 }
 
 ///////////////// Artwork's ShowPage /////////////////
