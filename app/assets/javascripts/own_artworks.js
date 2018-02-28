@@ -4,7 +4,7 @@ $(document).ready(function() {
 
 /////// click on nav bar link for owned Artwork ///////
 const artworksOwned = () => {
-  $('#owned_artworks').on('click', function(e){
+  $(document).on('click', '#owned_artworks', function(e){
     e.preventDefault();
     $.get(this.href).success(function(response){
       let _template = response
