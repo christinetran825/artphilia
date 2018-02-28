@@ -6,6 +6,7 @@ class ArtworksController < ApplicationController
   def index
     # @artworks = Artwork.all
     @artworks = @artist.artworks
+    render 'artworks/index', :layout => false
   end
 
   def new
