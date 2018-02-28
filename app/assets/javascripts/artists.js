@@ -1,7 +1,8 @@
 $(document).ready(function() {
   getArtistIndex(); // .../artists
   getNewEditArtist();
-  clickOnArtist()
+  clickOnArtist();
+  showAllArtworks()
 })
 
 
@@ -78,7 +79,7 @@ const showAllArtworks = () => {
   $(document).on('click', "a#load_artworks", function(e){
     e.preventDefault();
     $.get(this.href).success(function(response){
-      $("#pageContent").html(response)
+      $(".content").html(response)
     })
   })
 }

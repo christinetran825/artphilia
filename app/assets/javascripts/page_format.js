@@ -61,7 +61,7 @@ function bodyShowElements(heading, attr, links){
   $(".obj-links").html(
     links
   );
-  $("#pageContent").html(
+  $(".content").html(
   );
 }
 
