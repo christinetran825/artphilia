@@ -14,4 +14,5 @@
 //= require rails-ujs
 //= require bootstrap-sprockets
 //= require artists
+//= require fav_artists
 //= require_tree .
