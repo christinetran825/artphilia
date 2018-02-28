@@ -1,13 +1,12 @@
 $(document).ready(function() {
-  // console.log( "ready!" );
   getArtistIndex(); // .../artists
-
+  getNewArtist()
 })
 
 
 /////// click on nav bar link for All Artists ///////
 const getArtistIndex = () => {
-  $(document).on('click', '#artist_index', function(e){
+  $('#artist_index').on('click', function(e){
     e.preventDefault();
     // history.pushState(null, null, "artists");
     $.get(this.href).success(function(response){
@@ -33,4 +32,19 @@ function getAllArtists() {
        tableContent(theTableData)
      })
    })
+}
+
+/////// click on "add new artist" button ///////
+const getNewArtist = () => {
+  $(document).on('click', "#add_artist", function(e){
+    e.preventDefault();
+    $.get(this.href).success(function(response){
+      debugger;
+      let _template = response
+      let template = $.parseHTML(_template)
+      let theHeader = $(template).find(".header")
+      let theForm = $(template).find("#new_artist")
+      theNewEditBody(theHeader, theForm)
+    })
+  })
 }
