@@ -10,6 +10,11 @@ function theIndexBody(theHeader, theTableHeader){
   tableHeader(theTableHeader);
 }
 
+function theNewEditBody(theHeader, theForm){
+  theBodyPage();
+  bodyElements(theHeader, theForm)
+}
+
 function theBodyPage(){
   $("#main-container").html(
     `
