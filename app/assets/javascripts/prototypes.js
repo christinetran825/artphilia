@@ -31,7 +31,7 @@ Artist.prototype.formatArtistIndexData = function(numofArtworks) {
       <td><a href="/artists/${this.id}/artworks" data-id="${this.id}" class="artist_show_link">test</a></td>
       <td><a target=_blank href="${this.website}">${this.website}</a></td>
       <td>${this.rating}</td>
-      <td><a href="/artists/${this.id}/edit" data-id="${this.id}" class="update_artist">Edit</a></td>
+      <td><a href="/artists/${this.id}/edit" data-id="${this.id}" id="update_artist">Edit</a></td>
       <td><a href="/artists/${this.id}" data-method="delete">Delete</a></td>
     </tr>
   `
@@ -46,7 +46,7 @@ Artist.prototype.formatFavArtistIndexData = function() {
       <td><a href="/artists/${this.id}/artworks" data-id="${this.id}" class="artist_show_link">test</a></td>
       <td><a target=_blank href="${this.website}">${this.website}</a></td>
       <td>${this.rating}</td>
-      <td><a href="/artists/${this.id}/edit" data-id="${this.id}" class="update_artist">Edit</a></td>
+      <td><a href="/artists/${this.id}/edit" data-id="${this.id}" id="update_artist">Edit</a></td>
       <td><a href="/artists/${this.id}" data-method="delete">Delete</a></td>
     </tr>
   `
@@ -61,7 +61,7 @@ Artwork.prototype.formatArtworkOwnedData = function(theOwnedArtworkArtist) {
       <td><a href="/artists/${theOwnedArtworkArtist}/artworks/${this.id}">${this.title}</a></td>
       <td><a href="/artists/${theOwnedArtworkArtist}/artworks/${this.id}">${this.exhibition}</a></td>
       <td><a href="/artists/${theOwnedArtworkArtist}">${theOwnedArtworkArtist}</a></td>
-      <td><a href="/artists/${theOwnedArtworkArtist}/artworks/${this.id}" class="update_artwork">Edit</a></td>
+      <td><a href="/artists/${theOwnedArtworkArtist}/artworks/${this.id}" id="update_artwork">Edit</a></td>
       <td><a href="/artists/${theOwnedArtworkArtist}/artworks/${this.id}" data-method="delete">Delete</a></td>
     </tr>
   `
@@ -87,8 +87,8 @@ Artist.prototype.formatArtistShowHeaderAttr = function() {
 
 Artist.prototype.formatArtistShowButtons = function() {
   let artistShowButtons = `
-   <button><a href="/artists" class="artists_index">Back to All Artists</a></button>
-   <button><a href="/artists/${this.id}/edit" class="update_artist">Edit Artist</a></button>
+   <button><a href="/artists" id="artist_index">Back to All Artists</a></button>
+   <button><a href="/artists/${this.id}/edit" id="update_artist">Edit Artist</a></button>
    <button><a href="/artists/${this.id}" data-method="delete">Delete Artist</a></button>
    <button><a href="/artists/${this.id}/artworks" id="load_artworks">Show All Artworks</a></button>
   `
