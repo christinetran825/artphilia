@@ -156,6 +156,20 @@ input::placeholder {
   margin-bottom: 24px;
 }
 
+/////////// Tables ///////////
+.pagination {
+  float: right;
+  clear: both;
+}
+
+.pagination span {
+  margin-right: 10px;
+}
+
+.pagination a {
+  //no formatting needed?
+}
+
 ///////////////// Artwork form for Medium/Media /////////////////
 .collection-check-box {
   margin: 0 5px auto;
