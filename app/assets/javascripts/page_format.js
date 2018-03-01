@@ -109,40 +109,30 @@ function theArtworkBodyPage(theContents){
   )
 }
 
-// function theBodyArtworkNewEditPage(){
-//   $("#main-container").html(
-//     `
-//       <div class="header">
-//         <div class="heading"></div>
-//         <div class="obj-links"></div>
-//       </div>
-//       <div class="content"></div>
-//     `
-//   )
-// }
-//
-//
-// function bodyArtworksNewEditElements(heading, links){
-//   $(".heading").html(
-//     heading
-//   );
-//   $(".obj-links").html(
-//     links
-//   );
-//   $(".content").html(
-//   );
-// }
-//
-// ///////********
-// function theShowArtworksPortion(){
-//   $(".content").html(
-//     ` <div id="mini">
-//         <div class="heading">
-//           <h4>Add a New Artwork</h4>
-//         </div>
-//         <div class="obj-links"></div>
-//         <div class="content"></div>
-//       </div>
-//     `
-//   )
-// }
+///// OPTION B - Artworks Index within Artist Show /////
+function theArtworkBodyPageOptB(){
+  $("#content").html(
+    `
+      <div class="header">
+        <div class="heading"></div>
+        <div class="obj-links"></div>
+      </div>
+      <div class="content"></div>
+    `
+  )
+}
+
+function bodyArtworksHeaderOptB(heading, links){
+  $(".heading").html(
+    heading
+  );
+  $(".obj-links").html(
+    links
+  );
+}
+
+function bodyArtworksContentOptB(contents){
+  $(".content").html(
+    contents
+  );
+}
