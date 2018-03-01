@@ -14,6 +14,8 @@
       </tr>
     </thead>
     <tbody>
+      <%= page_entries_info @artists, entry_name: "Artists" %>
+      <%= paginate @artists, window: 2 %>
       <% @artists.each do |a| %>
       <tr>
         <td><%= link_to a.name, artist_path(a) %></td>
