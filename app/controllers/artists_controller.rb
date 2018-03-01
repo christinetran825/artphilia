@@ -5,6 +5,7 @@ class ArtistsController < ApplicationController
   def index
     @artists = Artist.all
     # @artists = current_user.artists.order(:name)
+    @artists = Artist.order(created_at: :asc).page(params[:page]).per(10)
     respond_to do |f|
       f.html
       f.json {render json: @artists}
