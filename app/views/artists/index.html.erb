@@ -23,7 +23,7 @@
         <td><%= link_to a.website, a.website, :target => "_blank" %></td>
         <td><%= a.rating %></td>
         <td><%= link_to "Edit", edit_artist_path(a), id:"update_artist" %></td>
-        <td><%= link_to "Delete", a, method: :delete, data: {confirm: "Are you sure you want to delete `#{a.name}`?"} %></td>
+        <td><%= link_to "Delete", a, id:"delete_artist", method: :delete, data: {confirm: "Are you sure you want to delete `#{a.name}`?"} %></td>
       </tr>
       <% end %>
     </tbody>

@@ -32,7 +32,7 @@ Artist.prototype.formatArtistIndexData = function(numofArtworks) {
       <td><a target=_blank href="${this.website}">${this.website}</a></td>
       <td>${this.rating}</td>
       <td><a href="/artists/${this.id}/edit" data-id="${this.id}" id="update_artist">Edit</a></td>
-      <td><a href="/artists/${this.id}" data-method="delete">Delete</a></td>
+      <td><a href="/artists/${this.id}" id="delete_artist" data-method="delete">Delete</a></td>
     </tr>
   `
   return artistHtml
@@ -47,7 +47,7 @@ Artist.prototype.formatFavArtistIndexData = function(numofArtworks) {
       <td><a target=_blank href="${this.website}">${this.website}</a></td>
       <td>${this.rating}</td>
       <td><a href="/artists/${this.id}/edit" data-id="${this.id}" id="update_artist">Edit</a></td>
-      <td><a href="/artists/${this.id}" data-method="delete">Delete</a></td>
+      <td><a href="/artists/${this.id}" id="delete_artist" data-method="delete">Delete</a></td>
     </tr>
   `
   return favArtists
@@ -60,7 +60,7 @@ Artwork.prototype.formatArtworkOwnedData = function(theArtistName, theOwnedArtwo
       <td><a href="/artists/${theOwnedArtworkArtist}/artworks/${this.id}">${this.title}</a></td>
       <td><a href="/artists/${theOwnedArtworkArtist}">${theArtistName}</a></td>
       <td><a href="/artists/${theOwnedArtworkArtist}/artworks/${this.id}/edit" id="update_artwork">Edit</a></td>
-      <td><a href="/artists/${theOwnedArtworkArtist}/artworks/${this.id}" data-method="delete">Delete</a></td>
+      <td><a href="/artists/${theOwnedArtworkArtist}/artworks/${this.id}" id="delete_artwork" data-method="delete">Delete</a></td>
     </tr>
   `
   return artworkOwned
@@ -87,7 +87,7 @@ Artist.prototype.formatArtistShowButtons = function() {
   let artistShowButtons = `
    <button><a href="/artists" id="artist_index">Back to All Artists</a></button>
    <button><a href="/artists/${this.id}/edit" id="update_artist">Edit Artist</a></button>
-   <button><a href="/artists/${this.id}" data-method="delete">Delete Artist</a></button>
+   <button><a href="/artists/${this.id}" data-method="delete" id="delete_artist">Delete Artist</a></button>
    <button><a href="/artists/${this.id}/artworks" id="load_artworks">Show All Artworks</a></button>
   `
   return artistShowButtons

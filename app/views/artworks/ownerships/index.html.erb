@@ -32,7 +32,7 @@
         <td><%= link_to work.title, artist_artwork_path(work.artist, work) %></td>
         <td><%= link_to work.artist.name, artist_path(work.artist) %></td>
         <td><%= link_to "Edit", edit_artist_artwork_path(work.artist, work), id:"update_artwork" %></td>
-        <td><%= link_to "Delete", artist_artwork_path(work.artist, work), method: :delete, data: {confirm: "Are you sure you want to delete `#{work.title}`?"} %></td>
+        <td><%= link_to "Delete", artist_artwork_path(work.artist, work), id:"delete_artwork", method: :delete, data: {confirm: "Are you sure you want to delete `#{work.title}`?"} %></td>
       <% end %>
     </tbody>
   </table>
