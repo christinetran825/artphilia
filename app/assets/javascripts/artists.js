@@ -78,6 +78,13 @@ const postNewArtist = () => {
       // datatype: 'json',
       success: function(data){
         alert("hi");
+        // debugger;
+        // theBodyPage();
+        // $(data).attr('data-id');
+        // let heading = $(data).find(".heading")
+        // let attr = $(data).find(".obj-attr")
+        // let x = $(data).find("#delete_artist")
+        // let what = x
       },
       error: function(){
         alert("woops");
@@ -101,13 +108,9 @@ function artistShow(theClickedArtist){
   fetch(`/artists/${id}.json`)
    .then(res => res.json())
    .then(artist => {
-     debugger;
-     let numofArtworks = artist.artworks.length;
      let newArtist = new Artist(artist);
-     let heading = newArtist.formatArtistShowHeading();
-     let attr = newArtist.formatArtistShowHeaderAttr(numofArtworks);
-     let links = newArtist.formatArtistShowButtons();
-     theShowBody(heading, attr, links)
+     let theHeader = newArtist.formatArtistShowHeader();
+     artistShowBody(theHeader)
    })
 }
 
@@ -115,7 +118,7 @@ const showAllArtworks = () => {
   $(document).on('click', "a#load_artworks", function(e){
     e.preventDefault();
     $.get(this.href).success(function(response){
-      addShowContents(response)
+      addContents(response)
     })
   })
 }

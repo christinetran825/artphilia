@@ -41,8 +41,10 @@ const clickOnArtwork = () => {
     $.get(this.href).success(function(response){
       let _template = response
       let template = $.parseHTML(_template)
-      let artworkShow = $(template).find("#the_artworks")
-      theArtworkBodyPage(artworkShow)
+      let artworkHeader = $(template).find(".header")
+      let artworkShow = $(template).find(".content")
+      artistShowBody(artworkHeader)
+      addContents(artworkShow)
     })
   })
 }

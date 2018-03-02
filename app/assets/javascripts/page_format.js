@@ -4,14 +4,6 @@
   //Clear main-container; add the bodyElements (header and pageContent);
   //const the bodyElements to include theHeader and pageContent divs
 
-////// Artist Index, Fav Artist, Owned Artwork //////
-function theIndexBody(theHeader, theTableHeader){
-  theBodyPage();
-  addHeader(theHeader);
-  addTableToContents();
-  tableHeader(theTableHeader);
-}
-
 /// set up the body ///
 function theBodyPage(){
   $("#main-container").html(
@@ -61,6 +53,13 @@ function tableContent(theTableData){
   $("table tbody").html(theTableData)
 }
 
+////// Artist Index, Fav Artist, Owned Artwork //////
+function theIndexBody(theHeader, theTableHeader){
+  theBodyPage();
+  addHeader(theHeader);
+  addTableToContents();
+  tableHeader(theTableHeader);
+}
 
 ////// FORMs //////
 function theNewEditBody(theHeader, theContents){
@@ -70,69 +69,89 @@ function theNewEditBody(theHeader, theContents){
 }
 
 ////// Artist Show //////
-function theShowBody(heading, attr, links){
+function artistShowBody(theHeader){
   theBodyPage();
-  addShowHeader();
-  addShowHeaderElements(heading, attr, links)
+  addHeader(theHeader);
 }
 
-function addShowHeader(){
-  $("#header").html(
-    `<div class="heading"></div>
-    <div class="obj-attr"></div>
-    <div class="obj-links"></div>`
-  );
-}
+/// Artist Show - artwork index in the content
 
-function addShowContents(theContents){
-  $("#content").html(
-    theContents
-  );
-}
 
-function addShowHeaderElements(heading, attr, links){
-  $(".heading").html(
-    heading
-  );
-  $(".obj-attr").html(
-    attr
-  );
-  $(".obj-links").html(
-    links
-  );
-}
 
-////// Artwork Show //////
-function theArtworkBodyPage(theContents){
-  $("#main-container").html(
-    theContents
-  )
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ////// Artist Show //////
+// function theShowBody(heading, links){
+//   theBodyPage();
+//   addShowHeader();
+//   addShowHeaderElements(heading, links)
+// }
+//
+// function addShowHeader(){
+//   $("#header").html(
+//     `<div class="heading"></div>
+//     <div class="obj-links"></div>`
+//   );
+// }
+//
+// function addShowContents(theContents){
+//   $("#content").html(
+//     theContents
+//   );
+// }
+//
+// function addShowHeaderElements(heading, links){
+//   $(".heading").html(
+//     heading
+//   );
+//   $(".obj-links").html(
+//     links
+//   );
+// }
+//
+// ////// Artwork Show //////
+// function theArtworkBodyPage(theContents){
+//   $("#main-container").html(
+//     theContents
+//   )
+// }
 
 ///// OPTION B - Artworks Index within Artist Show /////
-function theArtworkBodyPageOptB(){
-  $("#content").html(
-    `
-      <div class="header">
-        <div class="heading"></div>
-        <div class="obj-links"></div>
-      </div>
-      <div class="content"></div>
-    `
-  )
-}
-
-function bodyArtworksHeaderOptB(heading, links){
-  $(".heading").html(
-    heading
-  );
-  $(".obj-links").html(
-    links
-  );
-}
-
-function bodyArtworksContentOptB(contents){
-  $(".content").html(
-    contents
-  );
-}
+// function theArtworkBodyPageOptB(){
+//   $("#content").html(
+//     `
+//       <div class="header">
+//         <div class="heading"></div>
+//         <div class="obj-links"></div>
+//       </div>
+//       <div class="content"></div>
+//     `
+//   )
+// }
+//
+// function bodyArtworksHeaderOptB(heading, links){
+//   $(".heading").html(
+//     heading
+//   );
+//   $(".obj-links").html(
+//     links
+//   );
+// }
+//
+// function bodyArtworksContentOptB(contents){
+//   $(".content").html(
+//     contents
+//   );
+// }
