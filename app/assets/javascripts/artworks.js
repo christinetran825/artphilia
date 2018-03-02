@@ -1,6 +1,7 @@
 $(document).ready(function() {
   getNewArtwork();
   getEditArtwork();
+  postNewArtwork();
   clickOnArtwork();
 })
 
@@ -34,6 +35,32 @@ const getEditArtwork = () => {
     })
   });
 }
+
+const postNewArtwork = () => {
+  $(document).on('submit', "form#new_artwork", function(e){
+    e.preventDefault();
+    let $form = $(this);
+    let action = $form.attr("action");
+    let data = $form.serialize();
+    $.ajax({
+      type: "POST",
+      url: action,
+      data: data,
+      // datatype: 'json',
+      success: function(data){
+       debugger;
+        let artworkShowHeader = $(data).find(".header")
+        let artworkDetails = $(data).find(".content")
+        artworkShowBody(artworkShowHeader);
+        addContents(artworkDetails);
+      },
+      error: function(){
+        alert("Hm... something didn't work.");
+      }
+    })
+  })
+}
+
 
 const clickOnArtwork = () => {
   $(document).on('click', ".artwork_show_link", function(e){
