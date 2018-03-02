@@ -22,7 +22,7 @@
           <td><%= work.user_owned %></td>
           <td><%= work.rating %></td>
           <td><%= link_to "Edit", edit_artist_artwork_path(@artist, work), id:"update_artwork", class:"artist_show_link" %></td>
-          <td><%= link_to "Delete", artist_artwork_path(@artist, work), method: :delete, data: {confirm: "Are you sure you want to delete this Artwork?"} %></td>
+          <td><%= link_to "Delete", artist_artwork_path(@artist, work), method: :delete, data: {confirm: "Are you sure you want to delete `#{work.title}`?"} %></td>
       <% end %>
     </tbody>
   </table>
