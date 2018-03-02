@@ -2,6 +2,7 @@ $(document).ready(function() {
   getArtistIndex(); // .../artists
   getNewArtist();
   getEditArtist();
+  postNewArtist();
   clickOnArtist();
   showAllArtworks()
 })
@@ -69,13 +70,18 @@ const postNewArtist = () => {
     e.preventDefault();
     let $form = $(this);
     let action = $form.attr("action");
-    let params = $form.serialize()
+    let data = $form.serialize();
     $.ajax({
+      type: "POST",
       url: action,
-      data: params,
-      method: "POST"
-    }).success(function(response){
-      console.log(response)
+      data: data,
+      // datatype: 'json',
+      success: function(data){
+        alert("hi");
+      },
+      error: function(){
+        alert("woops");
+      }
     })
   })
 }
@@ -95,6 +101,7 @@ function artistShow(theClickedArtist){
   fetch(`/artists/${id}.json`)
    .then(res => res.json())
    .then(artist => {
+     debugger;
      let numofArtworks = artist.artworks.length;
      let newArtist = new Artist(artist);
      let heading = newArtist.formatArtistShowHeading();
