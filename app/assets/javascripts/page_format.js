@@ -68,8 +68,8 @@ function theNewEditBody(theHeader, theContents){
   addContents(theContents);
 }
 
-////// Artist Show //////
-function artistShowBody(theHeader){
+////// Artist Show & Artwork Show //////
+function objShowBody(theHeader){
   theBodyPage();
   addHeader(theHeader);
 }

@@ -104,7 +104,7 @@ function artistShow(theClickedArtist){
    .then(artist => {
      let newArtist = new Artist(artist);
      let theHeader = newArtist.formatArtistShowHeader();
-     artistShowBody(theHeader)
+     objShowBody(theHeader)
    })
 }
 

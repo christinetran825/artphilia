@@ -51,7 +51,7 @@ const postNewArtwork = () => {
        debugger;
         let artworkShowHeader = $(data).find(".header")
         let artworkDetails = $(data).find(".content")
-        artworkShowBody(artworkShowHeader);
+        objShowBody(artworkShowHeader);
         addContents(artworkDetails);
       },
       error: function(){
