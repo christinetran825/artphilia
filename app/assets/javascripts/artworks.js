@@ -70,7 +70,7 @@ const clickOnArtwork = () => {
       let template = $.parseHTML(_template)
       let artworkHeader = $(template).find(".header")
       let artworkShow = $(template).find(".content")
-      artistShowBody(artworkHeader)
+      objShowBody(artworkHeader)
       addContents(artworkShow)
     })
   })
