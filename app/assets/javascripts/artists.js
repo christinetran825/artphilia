@@ -77,17 +77,11 @@ const postNewArtist = () => {
       data: data,
       // datatype: 'json',
       success: function(data){
-        alert("hi");
-        // debugger;
-        // theBodyPage();
-        // $(data).attr('data-id');
-        // let heading = $(data).find(".heading")
-        // let attr = $(data).find(".obj-attr")
-        // let x = $(data).find("#delete_artist")
-        // let what = x
+        let artistLink = $(data).find("#delete_artist")
+        artistShow(artistLink)
       },
       error: function(){
-        alert("woops");
+        alert("Hm... something didn't work.");
       }
     })
   })
@@ -104,8 +98,8 @@ const clickOnArtist = () => {
 
 // pass the clicked Artist's ID; fetch its json to parse the objects
 function artistShow(theClickedArtist){
-  let id = $(theClickedArtist).attr('data-id');
-  fetch(`/artists/${id}.json`)
+  let artistLink = $(theClickedArtist).attr('href');
+  fetch(`${artistLink}.json`)
    .then(res => res.json())
    .then(artist => {
      let newArtist = new Artist(artist);
