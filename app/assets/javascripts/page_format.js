@@ -74,84 +74,60 @@ function objShowBody(theHeader){
   addHeader(theHeader);
 }
 
-/// Artist Show - artwork index in the content
+/// OPTION B - Artworks Index within Artist Show /////
+function newEditInArtistShowOptB(){
+  $("#content").html(
+    `
+    <div id="all_artworks" class="header">
+      <div class="heading"></div>
+      <div class="obj-links"></div>
+    </div>
+    <div id="formInShow" class="theContent"></div>
+    `
+  )
+}
+
+function addHeaderElementsInArtistShow(heading, cancelButton){
+  $("#all_artworks .heading").html(
+    heading
+  );
+  $("#all_artworks .obj-links").html(
+    cancelButton
+  );
+}
+
+function showFormInArtistShow(theForm){
+  $(".theContent").html(
+    theForm
+  );
+}
+
+function showFormInOptB(heading, cancelButton, theForm){
+  newEditInArtistShowOptB()
+  addHeaderElementsInArtistShow(heading, cancelButton)
+  showFormInArtistShow(theForm)
+}
+
+function showArtworkInArtistShowOptB(){
+  $("#content").html(
+    `
+    <div id="all_artworks" class="header"></div>
+    <div id="formInShow" class="theContent"></div>
+    `
+  )
+}
+
+function addArtworkDetailsInArtistShow(heading, details){
+  $("#all_artworks .header").html(
+    heading
+  );
+  $(".theContent").html(
+    details
+  );
+}
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// ////// Artist Show //////
-// function theShowBody(heading, links){
-//   theBodyPage();
-//   addShowHeader();
-//   addShowHeaderElements(heading, links)
-// }
-//
-// function addShowHeader(){
-//   $("#header").html(
-//     `<div class="heading"></div>
-//     <div class="obj-links"></div>`
-//   );
-// }
-//
-// function addShowContents(theContents){
-//   $("#content").html(
-//     theContents
-//   );
-// }
-//
-// function addShowHeaderElements(heading, links){
-//   $(".heading").html(
-//     heading
-//   );
-//   $(".obj-links").html(
-//     links
-//   );
-// }
-//
-// ////// Artwork Show //////
-// function theArtworkBodyPage(theContents){
-//   $("#main-container").html(
-//     theContents
-//   )
-// }
-
-///// OPTION B - Artworks Index within Artist Show /////
-// function theArtworkBodyPageOptB(){
-//   $("#content").html(
-//     `
-//       <div class="header">
-//         <div class="heading"></div>
-//         <div class="obj-links"></div>
-//       </div>
-//       <div class="content"></div>
-//     `
-//   )
-// }
-//
-// function bodyArtworksHeaderOptB(heading, links){
-//   $(".heading").html(
-//     heading
-//   );
-//   $(".obj-links").html(
-//     links
-//   );
-// }
-//
-// function bodyArtworksContentOptB(contents){
-//   $(".content").html(
-//     contents
-//   );
-// }
+function showArtworkInOptB(header, details){
+  showArtworkInArtistShowOptB()
+  addArtworkDetailsInArtistShow(heading, details)
+}
