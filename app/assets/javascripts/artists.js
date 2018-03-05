@@ -4,7 +4,8 @@ $(document).ready(function() {
   getEditArtist();
   postNewArtist();
   clickOnArtist();
-  showAllArtworks()
+  showAllArtworks();
+  deleteArtist();
 })
 
 
@@ -87,6 +88,31 @@ const postNewArtist = () => {
   })
 }
 
+///// delete artist /////
+const deleteArtist = () => {
+  $(document).on('click', "#delete_artist", function(e){
+    debugger;
+    e.preventDefault();
+    let x = $(this);
+    //this.name
+    // if (confirm("Are you sure you want to delete `#{a.name}`??")) {
+    //   debugger;
+    //   $('div').remove('#item1');
+    // }
+    // $.ajax({
+    //     url:route,
+    //     type: 'post',
+    //     data: {_method: 'delete'},
+    //     success: function(msg){
+    //       alert("hi")
+    //     },
+    //     error: function(){
+    //       alert("nope")
+    //     }
+    // })
+  })
+}
+
 //Artist's Show; Click on artist's first or last name; redirect to Artist's Show //
 const clickOnArtist = () => {
   $(document).on('click', '.artist_show_link', function(e){
@@ -108,6 +134,7 @@ function artistShow(theClickedArtist){
    })
 }
 
+/// Option A
 const showAllArtworks = () => {
   $(document).on('click', "a#load_artworks", function(e){
     e.preventDefault();
