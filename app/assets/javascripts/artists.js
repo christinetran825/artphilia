@@ -34,9 +34,10 @@ function getAllArtists() {
        let numofArtworks = artist.artworks.length
        let newArtist = new Artist(artist); //create newArtist
        let theTableData = newArtist.formatArtistIndexData(numofArtworks);
-       tableContent(theTableData)
+       tableContent(`<tr>${theTableData}</tr>`)
      })
    })
+   .then(() => deleteArtist())
 }
 
 /////// click on "add new artist" button ///////
@@ -76,9 +77,8 @@ const postNewArtist = () => {
       type: "POST",
       url: action,
       data: data,
-      // datatype: 'json',
       success: function(data){
-        let artistLink = $(data).find("#update_artist")
+        let artistLink = $(data).find("#delete_artist")
         artistShow(artistLink)
       },
       error: function(){
@@ -90,25 +90,24 @@ const postNewArtist = () => {
 
 ///// delete artist /////
 const deleteArtist = () => {
-  $(document).on('click', "#delete_artist", function(e){
-    debugger;
+  $("#delete_artist").on('click', function(e){
     e.preventDefault();
-    // let $form = $(this);
-    // let action = $form.attr("action");
-    // let data = $form.serialize();
-    // $.ajax({
-    //   type: "POST",
-    //   url: action,
-    //   data: {_method: 'delete', _token :token},
-    //   success: function (data) {
-    //     console.log(data);
-    //     alert('hello')
-    //     // $("#url" + url_id).remove();
-    //   },
-    //   error: function (data) {
-    //     alert('Error:');
-    //   }
-    // });
+    let $form = $(this);
+    let action = $form.attr("href");
+    $.ajax({
+      type: "POST",
+      url: action,
+      data: {_method: 'delete'},
+      beforeSend: function(){
+        return confirm('Are you sure you want to delete this Artist?');
+      },
+      success: function (data) {
+        alert("The Artist was Removed.")
+      },
+      error: function (data) {
+        alert('Oops! Looks like something went wrong.');
+      }
+    });
   })
 }
 
@@ -123,8 +122,8 @@ const clickOnArtist = () => {
 
 // pass the clicked Artist's ID; fetch its json to parse the objects
 function artistShow(theClickedArtist){
-  let theID = $(theClickedArtist).data('id');
-  fetch(`artists/${theID}.json`)
+  let artistLink = $(theClickedArtist).attr('href');
+  fetch(`${artistLink}.json`)
    .then(res => res.json())
    .then(artist => {
      let newArtist = new Artist(artist);
