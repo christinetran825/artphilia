@@ -78,7 +78,7 @@ const postNewArtist = () => {
       data: data,
       // datatype: 'json',
       success: function(data){
-        let artistLink = $(data).find("#delete_artist")
+        let artistLink = $(data).find("#update_artist")
         artistShow(artistLink)
       },
       error: function(){
@@ -93,23 +93,22 @@ const deleteArtist = () => {
   $(document).on('click', "#delete_artist", function(e){
     debugger;
     e.preventDefault();
-    let x = $(this);
-    //this.name
-    // if (confirm("Are you sure you want to delete `#{a.name}`??")) {
-    //   debugger;
-    //   $('div').remove('#item1');
-    // }
+    // let $form = $(this);
+    // let action = $form.attr("action");
+    // let data = $form.serialize();
     // $.ajax({
-    //     url:route,
-    //     type: 'post',
-    //     data: {_method: 'delete'},
-    //     success: function(msg){
-    //       alert("hi")
-    //     },
-    //     error: function(){
-    //       alert("nope")
-    //     }
-    // })
+    //   type: "POST",
+    //   url: action,
+    //   data: {_method: 'delete', _token :token},
+    //   success: function (data) {
+    //     console.log(data);
+    //     alert('hello')
+    //     // $("#url" + url_id).remove();
+    //   },
+    //   error: function (data) {
+    //     alert('Error:');
+    //   }
+    // });
   })
 }
 
@@ -124,8 +123,8 @@ const clickOnArtist = () => {
 
 // pass the clicked Artist's ID; fetch its json to parse the objects
 function artistShow(theClickedArtist){
-  let artistLink = $(theClickedArtist).attr('href');
-  fetch(`${artistLink}.json`)
+  let theID = $(theClickedArtist).data('id');
+  fetch(`artists/${theID}.json`)
    .then(res => res.json())
    .then(artist => {
      let newArtist = new Artist(artist);
