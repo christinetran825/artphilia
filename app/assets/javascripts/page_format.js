@@ -50,7 +50,7 @@ function tableHeader(theTableHeader){
 
 // add the data to the table body
 function tableContent(theTableData){
-  $("table tbody").html(theTableData)
+  $("table tbody").append(theTableData)
 }
 
 ////// Artist Index, Fav Artist, Owned Artwork //////
