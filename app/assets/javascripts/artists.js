@@ -3,6 +3,7 @@ $(document).ready(function() {
   getNewArtist();
   getEditArtist();
   postNewArtist();
+  // postEditArtist();
   clickOnArtist();
   showAllArtworks();
   deleteArtist();
@@ -18,7 +19,7 @@ const getArtistIndex = () => {
       let _template = response
       let template = $.parseHTML(_template)
       let theHeader = $(template).find(".header")
-      let theTableHeader= $(template).find(".table thead tr")
+      let theTableHeader = $(template).find(".table thead tr")
       theIndexBody(theHeader, theTableHeader)
       getAllArtists()
     });
@@ -42,7 +43,7 @@ function getAllArtists() {
 
 /////// click on "add new artist" button ///////
 const getNewArtist = () => {
-  $(document).on('click', "#add_artist", function(e){
+  $("#add_artist").on('click', function(e){
     e.preventDefault();
     $.get(this.href).success(function(response){
       let _template = response
@@ -71,6 +72,7 @@ const postNewArtist = () => {
   $(document).on('submit', "form#new_artist", function(e){
     e.preventDefault();
     let $form = $(this);
+    debugger;
     let action = $form.attr("action");
     let data = $form.serialize();
     $.ajax({
@@ -78,8 +80,10 @@ const postNewArtist = () => {
       url: action,
       data: data,
       success: function(data){
-        let artistLink = $(data).find("#delete_artist")
-        artistShow(artistLink)
+        let theHeader = $(data).find("#the_artists");
+        let getButton = $(data).find("#update_artist");
+        let getButtonId = getButton.data("id");
+        artistShow(getButtonId)
       },
       error: function(){
         alert("Hm... something didn't work.");
@@ -87,6 +91,58 @@ const postNewArtist = () => {
     })
   })
 }
+
+//Artist's Show; Click on artist's first or last name; redirect to Artist's Show //
+const clickOnArtist = () => {
+  $(document).on('click', '.artist_show_link', function(e){
+    e.preventDefault();
+    let artistId = $(this).data("id");
+    artistShow(artistId)
+  })
+}
+
+function artistShow(theID){
+  fetch(`/artists/${theID}.json`)
+   .then(res => res.json())
+   .then(artist => {
+     let newArtist = new Artist(artist);
+     let theHeader = newArtist.formatArtistShowHeader();
+     objShowBody(theHeader)
+   })
+}
+
+/// Option A
+const showAllArtworks = () => {
+  $(document).on('click', "a#load_artworks", function(e){
+    e.preventDefault();
+    $.get(this.href).success(function(response){
+      addContents(response)
+    })
+  })
+}
+
+
+// const postEditArtist = () => {
+//   $(document).on('submit', "form#edit_artist", function(e){
+//     debugger;
+//     e.preventDefault();
+//     let $form = $(this);
+//     let action = $form.attr("action");
+//     let data = $form.serialize();
+//     $.ajax({
+//       type: "POST",
+//       url: action,
+//       data: data,
+//       success: function(data){
+//         let artistLink = $(data).find("#delete_artist")
+//         artistShow(artistLink)
+//       },
+//       error: function(){
+//         alert("Hm... something didn't work.");
+//       }
+//     })
+//   })
+// }
 
 ///// delete artist /////
 const deleteArtist = () => {
@@ -115,36 +171,5 @@ const deleteArtist = () => {
         // alert('Oops! Looks like something went wrong.');
       }
     });
-  })
-}
-
-//Artist's Show; Click on artist's first or last name; redirect to Artist's Show //
-const clickOnArtist = () => {
-  $(document).on('click', '.artist_show_link', function(e){
-    e.preventDefault();
-    artistShow(this) //inject the Artist Show page
-    showAllArtworks()
-  })
-}
-
-// pass the clicked Artist's ID; fetch its json to parse the objects
-function artistShow(theClickedArtist){
-  let artistLink = $(theClickedArtist).attr('href');
-  fetch(`${artistLink}.json`)
-   .then(res => res.json())
-   .then(artist => {
-     let newArtist = new Artist(artist);
-     let theHeader = newArtist.formatArtistShowHeader();
-     objShowBody(theHeader)
-   })
-}
-
-/// Option A
-const showAllArtworks = () => {
-  $(document).on('click', "a#load_artworks", function(e){
-    e.preventDefault();
-    $.get(this.href).success(function(response){
-      addContents(response)
-    })
   })
 }
