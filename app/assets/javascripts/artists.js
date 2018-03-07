@@ -11,7 +11,7 @@ $(document).ready(function() {
 
 /////// click on nav bar link for All Artists ///////
 const getArtistIndex = () => {
-  $(document).on('click', '#artist_index', function(e){
+  $('#artist_index').on('click', function(e){
     e.preventDefault();
     // history.pushState(null, null, "artists");
     $.get(this.href).success(function(response){
@@ -99,13 +99,20 @@ const deleteArtist = () => {
       url: action,
       data: {_method: 'delete'},
       beforeSend: function(){
-        return confirm('Are you sure you want to delete this Artist?');
+        let r = confirm('Are you sure you want to delete this Artist?');
+        if (r == true) {
+            alert("The Artist was Removed.")
+        } else {
+            alert('Oops! Looks like something went wrong.');
+        }
       },
       success: function (data) {
-        alert("The Artist was Removed.")
+        debugger;
+        // alert("The Artist was Removed.")
+        theBodyPage()
       },
       error: function (data) {
-        alert('Oops! Looks like something went wrong.');
+        // alert('Oops! Looks like something went wrong.');
       }
     });
   })
