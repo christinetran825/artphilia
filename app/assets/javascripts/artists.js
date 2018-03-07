@@ -3,7 +3,7 @@ $(document).ready(function() {
   getNewArtist();
   getEditArtist();
   postNewArtist();
-  // postEditArtist();
+  postEditArtist();
   clickOnArtist();
   showAllArtworks();
   deleteArtist();
@@ -12,7 +12,7 @@ $(document).ready(function() {
 
 /////// click on nav bar link for All Artists ///////
 const getArtistIndex = () => {
-  $('#artist_index').on('click', function(e){
+  $(document).on('click', '#artist_index', function(e){
     e.preventDefault();
     // history.pushState(null, null, "artists");
     $.get(this.href).success(function(response){
@@ -72,23 +72,34 @@ const postNewArtist = () => {
   $(document).on('submit', "form#new_artist", function(e){
     e.preventDefault();
     let $form = $(this);
-    debugger;
-    let action = $form.attr("action");
-    let data = $form.serialize();
-    $.ajax({
-      type: "POST",
-      url: action,
-      data: data,
-      success: function(data){
-        let theHeader = $(data).find("#the_artists");
-        let getButton = $(data).find("#update_artist");
-        let getButtonId = getButton.data("id");
-        artistShow(getButtonId)
-      },
-      error: function(){
-        alert("Hm... something didn't work.");
-      }
-    })
+    postingArtistAjax($form)
+  })
+}
+
+const postEditArtist = () => {
+  $(document).on('submit', "form.edit_artist", function(e){
+    e.preventDefault();
+    let $form = $(this);
+    postingArtistAjax($form)
+  })
+}
+
+function postingArtistAjax($form){
+  let action = $form.attr("action");
+  let data = $form.serialize();
+  $.ajax({
+    type: "POST",
+    url: action,
+    data: data,
+    success: function(data){
+      let theHeader = $(data).find("#the_artists");
+      let getButton = $(data).find("#update_artist");
+      let getButtonId = getButton.data("id");
+      artistShow(getButtonId)
+    },
+    error: function(){
+      alert("Hm... something didn't work.");
+    }
   })
 }
 
@@ -120,29 +131,6 @@ const showAllArtworks = () => {
     })
   })
 }
-
-
-// const postEditArtist = () => {
-//   $(document).on('submit', "form#edit_artist", function(e){
-//     debugger;
-//     e.preventDefault();
-//     let $form = $(this);
-//     let action = $form.attr("action");
-//     let data = $form.serialize();
-//     $.ajax({
-//       type: "POST",
-//       url: action,
-//       data: data,
-//       success: function(data){
-//         let artistLink = $(data).find("#delete_artist")
-//         artistShow(artistLink)
-//       },
-//       error: function(){
-//         alert("Hm... something didn't work.");
-//       }
-//     })
-//   })
-// }
 
 ///// delete artist /////
 const deleteArtist = () => {
