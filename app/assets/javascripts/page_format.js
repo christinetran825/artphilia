@@ -16,22 +16,16 @@ function theBodyPage(){
 
 /// add the body's content into its elements (with the Table into the pageContent div)///
 function addHeader(theHeader){
-  $("#header").html(
-    theHeader
-  );
+  $("#header").html(theHeader);
 }
 
 function addContents(theContents){
-  $("#content").html(
-    theContents
-  );
+  $("#content").html(theContents);
 }
 
-function addTableToContents(){
-  $("#content").html(
-    theTable()
-  );
-}
+// function addTable(){
+//   $("#content").html( theTable() );
+// }
 
 /// set up the table to the pageContent div ///
 const theTable = () => {
@@ -54,10 +48,17 @@ function tableContent(theTableData){
 }
 
 ////// Artist Index, Fav Artist, Owned Artwork //////
+// function theIndexBody(theHeader, theTableHeader){
+//   theBodyPage();
+//   addHeader(theHeader);
+//   addTable();
+//   tableHeader(theTableHeader);
+// }
+
 function theIndexBody(theHeader, theTableHeader){
   theBodyPage();
   addHeader(theHeader);
-  addTableToContents();
+  addContents(theTable());
   tableHeader(theTableHeader);
 }
 
@@ -69,12 +70,15 @@ function theNewEditBody(theHeader, theContents){
 }
 
 ////// Artist Show & Artwork Show //////
-function objShowBody(theHeader){
+function theShowBody(theHeader){
   theBodyPage();
   addHeader(theHeader);
 }
 
+
+
 /// OPTION B - Artworks Index within Artist Show /////
+////// show the artwork new & edit form inside artist show
 function newEditInArtistShowOptB(){
   $("#content").html(
     `
@@ -82,52 +86,37 @@ function newEditInArtistShowOptB(){
       <div class="heading"></div>
       <div class="obj-links"></div>
     </div>
-    <div id="formInShow" class="theContent"></div>
+    <div id="formInShow"></div>
     `
   )
 }
 
 function addHeaderElementsInArtistShow(heading, cancelButton){
-  $("#all_artworks .heading").html(
-    heading
-  );
-  $("#all_artworks .obj-links").html(
-    cancelButton
-  );
+  $("#all_artworks .heading").html(heading);
+  $("#all_artworks .obj-links").html(cancelButton);
 }
 
-function showFormInArtistShow(theForm){
-  $(".theContent").html(
-    theForm
-  );
+function showFormInOptB(theForm){
+  $("#formInShow").html(theForm);
 }
 
-function showFormInOptB(heading, cancelButton, theForm){
+function showFormInArtistShow(heading, cancelButton, theForm){
   newEditInArtistShowOptB()
   addHeaderElementsInArtistShow(heading, cancelButton)
-  showFormInArtistShow(theForm)
+  showFormInOptB(theForm)
 }
 
+
+////// show the artwork show page inside artist show
 function showArtworkInArtistShowOptB(){
-  $("#content").html(
-    `
-    <div id="all_artworks" class="header"></div>
-    <div id="formInShow" class="theContent"></div>
-    `
-  )
+  $("#content").html(`<div id="artworkDetails"></div>`)
 }
 
-function addArtworkDetailsInArtistShow(heading, details){
-  $("#all_artworks .header").html(
-    heading
-  );
-  $(".theContent").html(
-    details
-  );
+function addArtworkDetailsInArtistShow(details){
+  $("#artworkDetails").html(details);
 }
 
-
-function showArtworkInOptB(header, details){
-  showArtworkInArtistShowOptB()
-  addArtworkDetailsInArtistShow(heading, details)
+function showArtworkInOptB(details){
+  showArtworkInArtistShowOptB();
+  addArtworkDetailsInArtistShow(details)
 }
