@@ -1,7 +1,8 @@
 $(document).ready(function() {
   getNewArtwork();
-  // getEditArtwork();
-  // postNewArtwork();
+  getEditArtwork();
+  postNewArtwork();
+  postEditArtwork();
   // clickOnArtwork();
 })
 
@@ -80,29 +81,34 @@ $(document).ready(function() {
 const getNewArtwork = () => {
   $(document).on('click', "#add_artwork", function(e){
     e.preventDefault();
-    let id = $(this).attr("data-id");
+    let heading = `<h4>Add a New Artwork</h4>`
+    let artistId = $(this).attr("data-id");
+    let cancelButton = `<button><a href="/artists/${artistId}/artworks" data-id="${artistId}" id="load_artworks">Cancel</a></button>`
     $.get(this.href).success(function(response){
       let _template = response
       let template = $.parseHTML(_template)
-      let heading = `<h4>Add a New Artwork</h4>`
-      let cancelButton = cancelToArtistArtworks(id)
       let theForm = $(template).find("#new_artwork")
-      showFormInOptB(heading, cancelButton, theForm);
+      showFormInArtistShow(heading, cancelButton, theForm);
       addOwnershipForm(theForm);
     })
   })
 }
 
+function buildCancelButton(){
+
+}
+
 const getEditArtwork = () => {
   $(document).on('click', "#update_artwork", function(e){
     e.preventDefault();
+    let artistId = $(this).attr("data-id");
     $.get(this.href).success(function(response){
       let _template = response
       let template = $.parseHTML(_template)
       let heading = `<h4>Edit the Artwork</h4>`
-      let cancelButton = cancelToArtistArtworks(id)
+      let cancelButton = `<button><a href="/artists/${artistId}/artworks" data-id="${artistId}" id="load_artworks">Cancel</a></button>`
       let theForm = $(template).find(".edit_artwork")
-      showFormInOptB(heading, theForm)
+      showFormInArtistShow(heading, cancelButton, theForm);
       addOwnershipForm(theForm);
     })
   });
@@ -112,30 +118,34 @@ const postNewArtwork = () => {
   $(document).on('submit', "form#new_artwork", function(e){
     e.preventDefault();
     let $form = $(this);
-    let action = $form.attr("action");
-    let data = $form.serialize();
-    $.ajax({
-      type: "POST",
-      url: action,
-      data: data,
-      // datatype: 'json',
-      success: function(data){
-       debugger;
-        let artworkShowHeader = $(data).find(".header")
-        let artworkDetails = $(data).find(".content")
-        showArtworkInOptB(artworkShowHeader, artworkDetails);
-      },
-      error: function(){
-        alert("Hm... something didn't work.");
-      }
-    })
+    postingArtworkAjax($form)
   })
 }
 
+const postEditArtwork = () => {
+  $(document).on('submit', "form.edit_artwork", function(e){
+    e.preventDefault();
+    let $form = $(this);
+    postingArtworkAjax($form)
+  })
+}
 
-function cancelToArtistArtworks(theClickedArtist){
-  let backTheArtist = `<button><a href="/artists/${theClickedArtist}/artworks" data-id="${theClickedArtist}" id="load_artworks">Cancel</a></button>`
-  return backTheArtist
+function postingArtworkAjax($form){
+  let action = $form.attr("action");
+  let data = $form.serialize();
+  $.ajax({
+    type: "POST",
+    url: action,
+    data: data,
+    success: function(data){
+      // let header = $(data).find(".header")
+      let details = $(data).find(".content")
+      showArtworkInOptB(details);
+    },
+    error: function(){
+      alert("Hm... something didn't work.");
+    }
+  })
 }
 
 // Artwork ownership portion - form
