@@ -1,6 +1,6 @@
 $(document).ready(function() {
   artworksOwned();
-  buildEditArtwork();
+  getEditOwnedArtwork();
 })
 
 /////// click on nav bar link for owned Artwork ///////
@@ -50,8 +50,8 @@ function addArtworksOwnedByYes() {
   })
 }
 
-const buildEditArtwork = () => {
-  $(document).on('click', "#update_artwork", function(e){
+const getEditOwnedArtwork = () => {
+  $(document).on('click', "#update_owned_artwork", function(e){
     e.preventDefault();
     let artistId = $(this).attr("data-id");
     $.get(this.href).success(function(response){
