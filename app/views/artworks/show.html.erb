@@ -4,8 +4,6 @@
   </div>
   <div class="obj-links">
     <%= link_to "Show All #{@artist.name} Artworks", artist_path(@artist), class:'artist_show_link btn btn-link btn-sm', :data => {:id => @artist.id} %>
-    <%= link_to "Edit Artwork", edit_artist_artwork_path, id:"update_artwork", class:'btn btn-link btn-sm' %>
-    <%= link_to "Delete Artwork", artist_artwork_path, id:"delete_artwork", class:'btn btn-link btn-sm', method: :delete, data: {confirm: "Are you sure you want to delete `#{@artwork.title}`?"} %>
   </div>
 </div>
 
@@ -33,6 +31,10 @@
         <p> Signed? <%= @artwork.signed %> </p>
         <p> Original or Print? <%= @artwork.original %> </p>
       <% end %>
+      <div class="obj-links">
+        <%= link_to "Edit Artwork", edit_artist_artwork_path, id:"update_artwork", class:'btn btn-link btn-sm' %>
+        <%= link_to "Delete Artwork", artist_artwork_path, id:"delete_artwork", class:'btn btn-link btn-sm', method: :delete, data: {confirm: "Are you sure you want to delete `#{@artwork.title}`?"} %>
+      </div>
     </div>
   </div>
 </div>
