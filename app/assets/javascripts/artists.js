@@ -94,7 +94,7 @@ function postingArtistAjax($form){
     success: function(data){
       let theHeader = $(data).find("#the_artists");
       let getButton = $(data).find("#update_artist");
-      let getButtonId = getButton.data("id");
+      let getButtonId = getButton.attr("data-id");
       artistShow(getButtonId)
     },
     error: function(){
@@ -107,7 +107,7 @@ function postingArtistAjax($form){
 const clickOnArtist = () => {
   $(document).on('click', '.artist_show_link', function(e){
     e.preventDefault();
-    let artistId = $(this).data("id");
+    let artistId = $(this).attr("data-id");
     artistShow(artistId)
   })
 }
@@ -118,7 +118,7 @@ function artistShow(theID){
    .then(artist => {
      let newArtist = new Artist(artist);
      let theHeader = newArtist.formatArtistShowHeader();
-     objShowBody(theHeader)
+     theShowBody(theHeader)
    })
 }
 
