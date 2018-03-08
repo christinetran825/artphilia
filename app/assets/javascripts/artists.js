@@ -43,7 +43,7 @@ function getAllArtists() {
 
 /////// click on "add new artist" button ///////
 const getNewArtist = () => {
-  $("#add_artist").on('click', function(e){
+  $(document).on('click', "#add_artist", function(e){
     e.preventDefault();
     $.get(this.href).success(function(response){
       let _template = response
