@@ -58,14 +58,14 @@ const buildEditArtwork = () => {
       let _template = response
       let template = $.parseHTML(_template)
       let heading = `<h4>Edit the Artwork</h4>`
-      let cancelButton = artworkFormCancelButton(artistId)
+      let cancelButton = ownedArtworkFormCancelButton(artistId)
       let theForm = $(template).find(".edit_artwork")
       buildArtworkNewEditBody(heading, cancelButton, theForm)
     })
   });
 }
 
-function artworkFormCancelButton(artistId){
+function ownedArtworkFormCancelButton(artistId){
   let cancelButton =
     `<button><a href="/artworks/ownerships">Cancel</a></button>`
   return cancelButton
