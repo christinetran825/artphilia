@@ -35,7 +35,7 @@ function getAllArtists() {
        let numofArtworks = artist.artworks.length
        let newArtist = new Artist(artist); //create newArtist
        let theTableData = newArtist.formatArtistIndexData(numofArtworks);
-       tableContent(`<tr>${theTableData}</tr>`)
+       tableContent(`<tr>${theTableData}</tr>`);
      })
    })
    .then(() => deleteArtist())
@@ -151,9 +151,8 @@ const deleteArtist = () => {
         }
       },
       success: function (data) {
-        debugger;
         // alert("The Artist was Removed.")
-        theBodyPage()
+        theBodyPage() //need to update
       },
       error: function (data) {
         // alert('Oops! Looks like something went wrong.');

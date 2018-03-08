@@ -4,6 +4,7 @@ $(document).ready(function() {
   postNewArtwork();
   postEditArtwork();
   clickOnArtwork();
+  deleteArtwork();
 })
 
 ///////////////////// Option B (formally Option C) /////////////////////
@@ -102,5 +103,36 @@ const clickOnArtwork = () => {
       let details = $(response).find(".content")
       showArtworkInOptB(details);
     })
+  })
+}
+
+///// delete artwork /////
+const deleteArtwork = () => {
+  $(document).on('click', "#delete_artwork", function(e){
+    debugger
+    e.preventDefault();
+    let $form = $(this);
+    let action = $form.attr("href");
+    $.ajax({
+      type: "POST",
+      url: action,
+      data: {_method: 'delete'},
+      beforeSend: function(){
+        let r = confirm('Are you sure you want to delete this Artwork?');
+        if (r == true) {
+            alert("The Artist was Removed.")
+        } else {
+            alert('Oops! Looks like something went wrong.');
+        }
+      },
+      success: function (data) {
+        debugger;
+        // alert("The Artist was Removed.")
+        theBodyPage()
+      },
+      error: function (data) {
+        // alert('Oops! Looks like something went wrong.');
+      }
+    });
   })
 }
