@@ -32,7 +32,7 @@
         <p> Original or Print? <%= @artwork.original %> </p>
       <% end %>
       <div class="obj-links">
-        <%= link_to "Edit Artwork", edit_artist_artwork_path, id:"update_artwork", class:'btn btn-link btn-sm' %>
+        <%= link_to "Edit Artwork", edit_artist_artwork_path, id:"update_artwork", class:'btn btn-link btn-sm', :data => {:id => @artist.id} %>
         <%= link_to "Delete Artwork", artist_artwork_path, id:"delete_artwork", class:'btn btn-link btn-sm', method: :delete, data: {confirm: "Are you sure you want to delete `#{@artwork.title}`?"} %>
       </div>
     </div>
