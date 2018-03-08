@@ -1,5 +1,6 @@
 $(document).ready(function() {
   artworksOwned();
+  buildEditArtwork();
 })
 
 /////// click on nav bar link for owned Artwork ///////
@@ -47,4 +48,25 @@ function addArtworksOwnedByYes() {
      });
     })
   })
+}
+
+const buildEditArtwork = () => {
+  $(document).on('click', "#update_artwork", function(e){
+    e.preventDefault();
+    let artistId = $(this).attr("data-id");
+    $.get(this.href).success(function(response){
+      let _template = response
+      let template = $.parseHTML(_template)
+      let heading = `<h4>Edit the Artwork</h4>`
+      let cancelButton = artworkFormCancelButton(artistId)
+      let theForm = $(template).find(".edit_artwork")
+      buildArtworkNewEditBody(heading, cancelButton, theForm)
+    })
+  });
+}
+
+function artworkFormCancelButton(artistId){
+  let cancelButton =
+    `<button><a href="/artworks/ownerships">Cancel</a></button>`
+  return cancelButton
 }
