@@ -55,7 +55,10 @@ class ArtistsController < ApplicationController
 
   def destroy
     @artist.delete
-    redirect_to artists_path, flash: {success: "'#{@artist.name}' was deleted!"}
+    respond_to do |f|
+      f.html { redirect_to artists_path, flash: {success: "'#{@artist.name}' was deleted!"} }
+      f.json { head :no_content }
+    end
   end
 
   private
