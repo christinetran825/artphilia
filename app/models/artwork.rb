@@ -8,8 +8,7 @@ class Artwork < ApplicationRecord
   validates_presence_of :title, :exhibition, :user_owned, :comments, :rating
   validates :signed, :original, presence: true, :allow_blank => true
 
-  has_attached_file :images, styles: { medium: "300x300>", thumb: "100x100#" }, default_url: ActionController::Base.helpers.asset_path("star.png")
-  # has_attached_file :images, styles: { medium: "300x300>", thumb: "100x100#" }, default_url: "/assets/images/:thumb/star.png"
+  has_attached_file :images, styles: { medium: "300x300#", thumb: "100x100#" }, default_url: ":style/defaultImage.png"
   validates_attachment_content_type :images, content_type: /\Aimage\/.*\z/
 
   def make_title_case
