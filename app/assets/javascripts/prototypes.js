@@ -13,7 +13,7 @@ function Artwork(artwork){
   this.id = artwork.id,
   this.title = artwork.title,
   this.exhibition = artwork.exhibition,
-  this.user_owned = artwork.user_owned,
+  this.userOwned = artwork.user_owned,
   this.comments = artwork.comments,
   this.rating = artwork.rating
 }
