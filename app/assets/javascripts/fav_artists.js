@@ -7,10 +7,10 @@ const favoriteArtists = () => {
   $(document).on('click', '#fav_artists', function(e){
     e.preventDefault();
     $.get(this.href).success(function(response){
-      let _template = response
-      let template = $.parseHTML(_template)
-      let theHeader = $(template).find(".header")
-      let theTableHeader= $(template).find(".table thead tr")
+      const _template = response
+      const template = $.parseHTML(_template)
+      const theHeader = $(template).find(".header")
+      const theTableHeader= $(template).find(".table thead tr")
       theIndexBody(theHeader, theTableHeader)
       addFavArtistsByRating()
     });
@@ -37,9 +37,9 @@ function addFavArtistsByRating() {
      return artist.rating === 5
    });
    artistsRatingFive.forEach(artist => {
-     let numofArtworks = artist.artworks.length
-     let theFavArtist = new Artist(artist); //create newArtist
-     let eachFavArtists = theFavArtist.formatFavArtistIndexData(numofArtworks);
+     const numofArtworks = artist.artworks.length
+     const theFavArtist = new Artist(artist); //create newArtist
+     const eachFavArtists = theFavArtist.formatFavArtistIndexData(numofArtworks);
      tableContent(eachFavArtists)
    });
   })

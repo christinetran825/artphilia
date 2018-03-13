@@ -29,7 +29,7 @@ function addContents(theContents){
 
 /// set up the table to the pageContent div ///
 const theTable = () => {
-  let table = `
+  const table = `
     <table class="table table-striped">
       <thead></thead>
       <tbody></tbody>

@@ -11,13 +11,13 @@ $(document).ready(function() {
 const getNewArtwork = () => {
   $(document).on('click', "#add_artwork", function(e){
     e.preventDefault();
-    let artistId = $(this).attr("data-id");
+    const artistId = $(this).attr("data-id");
     $.get(this.href).success(function(response){
-      let _template = response
-      let template = $.parseHTML(_template)
-      let heading = `<h4>Add a New Artwork</h4>`
-      let cancelButton = artworkFormCancelButton(artistId)
-      let theForm = $(template).find("#new_artwork")
+      const _template = response
+      const template = $.parseHTML(_template)
+      const heading = `<h4>Add a New Artwork</h4>`
+      const cancelButton = artworkFormCancelButton(artistId)
+      const theForm = $(template).find("#new_artwork")
       buildArtworkNewEditBody(heading, cancelButton, theForm)
     })
   })
@@ -26,20 +26,20 @@ const getNewArtwork = () => {
 const getEditArtwork = () => {
   $(document).on('click', "#update_artwork", function(e){
     e.preventDefault();
-    let artistId = $(this).attr("data-id");
+    const artistId = $(this).attr("data-id");
     $.get(this.href).success(function(response){
-      let _template = response
-      let template = $.parseHTML(_template)
-      let heading = `<h4>Edit the Artwork</h4>`
-      let cancelButton = artworkFormCancelButton(artistId)
-      let theForm = $(template).find(".edit_artwork")
+      const _template = response
+      const template = $.parseHTML(_template)
+      const heading = `<h4>Edit the Artwork</h4>`
+      const cancelButton = artworkFormCancelButton(artistId)
+      const theForm = $(template).find(".edit_artwork")
       buildArtworkNewEditBody(heading, cancelButton, theForm)
     })
   });
 }
 
 function artworkFormCancelButton(artistId){
-  let cancelButton =
+  const cancelButton =
     `<button><a href="/artists/${artistId}/artworks" data-id="${artistId}" id="load_artworks">Cancel</a></button>`
   return cancelButton
 }
@@ -53,7 +53,7 @@ function buildArtworkNewEditBody(heading, cancelButton, theForm){
 const postNewArtwork = () => {
   $(document).on('submit', "form#new_artwork", function(e){
     e.preventDefault();
-    let $form = $(this);
+    const $form = $(this);
     postingArtworkAjax($form)
   })
 }
@@ -61,21 +61,21 @@ const postNewArtwork = () => {
 const postEditArtwork = () => {
   $(document).on('submit', "form.edit_artwork", function(e){
     e.preventDefault();
-    let $form = $(this);
+    const $form = $(this);
     postingArtworkAjax($form)
   })
 }
 
 function postingArtworkAjax($form){
-  let action = $form.attr("action");
-  let data = $form.serialize();
+  const action = $form.attr("action");
+  const data = $form.serialize();
   $.ajax({
     type: "POST",
     url: action,
     data: data,
     success: function(data){
-      // let header = $(data).find(".header")
-      let details = $(data).find(".content")
+      // const header = $(data).find(".header")
+      const details = $(data).find(".content")
       showArtworkInOptB(details);
     },
     error: function(){
@@ -98,9 +98,9 @@ const clickOnArtwork = () => {
   $(document).on('click', '.artwork_show_link', function(e){
     e.preventDefault();
     $.get(this.href).success(function(response){
-      let _template = response
-      let template = $.parseHTML(_template)
-      let details = $(response).find(".content")
+      const _template = response
+      const template = $.parseHTML(_template)
+      const details = $(response).find(".content")
       showArtworkInOptB(details);
     })
   })
@@ -111,14 +111,14 @@ const deleteArtwork = () => {
   $(document).on('click', "#delete_artwork", function(e){
     debugger
     e.preventDefault();
-    let $form = $(this);
-    let action = $form.attr("href");
+    const $form = $(this);
+    const action = $form.attr("href");
     $.ajax({
       type: "POST",
       url: action,
       data: {_method: 'delete'},
       beforeSend: function(){
-        let r = confirm('Are you sure you want to delete this Artwork?');
+        const r = confirm('Are you sure you want to delete this Artwork?');
         if (r == true) {
             alert("The Artist was Removed.")
         } else {
