@@ -11,7 +11,7 @@ function getRouteId(routeId, theHeader, theTableHeader, artistId) {
       break;
     case "owned_artworks":
       theIndexBody(theHeader, theTableHeader)
-      addArtworksOwnedByYes();
+      addArtworksOwnedByYes(artistId);
       break;
     case "load_artworks":
       showArtworksInArtistShow(theHeader, theTableHeader)

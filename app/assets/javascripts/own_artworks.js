@@ -6,7 +6,7 @@ $(document).ready(function() {
 /////// click on nav bar link for owned Artwork ///////
 const artworksOwned = () => {
   $(document).on('click', '#owned_artworks', function(e){
-    getRouteResponse(ethis);
+    getRouteResponse(e, this);
   });
 }
 
@@ -23,8 +23,7 @@ function filterOwnership(collection, cb){
 
 /////// ADD OWNED ARTWORKS using filter function ///////
 function addArtworksOwnedByYes() {
-  debugger;
-  fetch(`/artworks/ownerships.json`)
+  fetch(`/artists.json`)
   .then(res => res.json())
   .then(theArtists => {
     theArtists.forEach(artist => {
@@ -43,44 +42,9 @@ function addArtworksOwnedByYes() {
   })
 }
 
-
-// function addArtworksOwnedByYes() {
-//   fetch(`/artists.json`)
-//   .then(res => res.json())
-//   .then(theArtists => {
-//     theArtists.forEach(artist => {
-//      const theArtistName = artist.name
-//      const theArtworks = artist.artworks
-//      const whichArtworkOwned = filterOwnership(theArtworks, function(artworks){
-//        return artworks.user_owned === "Yes"
-//      });
-//      whichArtworkOwned.forEach(artwork => {
-//        const theOwnedArtwork = new Artwork(artwork); //create newArtwork
-//        const theOwnedArtworkArtist = artwork.artist_id
-//        const eachOwnedArtwork = theOwnedArtwork.formatArtworkOwnedData(theArtistName, theOwnedArtworkArtist);
-//        tableContent(eachOwnedArtwork)
-//      });
-//     })
-//   })
-// }
-
 const getEditOwnedArtwork = () => {
   $(document).on('click', "#update_owned_artwork", function(e){
     e.preventDefault();
-    const artistId = $(this).attr("data-id");
-    $.get(this.href).success(function(response){
-      const _template = response
-      const template = $.parseHTML(_template)
-      const heading = `<h4>Edit the Artwork</h4>`
-      const cancelButton = ownedArtworkFormCancelButton(artistId)
-      const theForm = $(template).find(".edit_artwork")
-      buildArtworkNewEditBody(heading, cancelButton, theForm)
-    })
+    getFormAndResponses(e, this)
   });
-}
-
-function ownedArtworkFormCancelButton(artistId){
-  const cancelButton =
-    `<button><a href="/artworks/ownerships">Cancel</a></button>`
-  return cancelButton
 }

@@ -54,7 +54,7 @@ Artist.prototype.formatFavArtistIndexData = function(numofArtworks) {
 Artwork.prototype.formatArtworkOwnedData = function(theArtistName, theOwnedArtworkArtist) {
   let artworkOwned = `
     <tr>
-      <td><a href="/artists/${theOwnedArtworkArtist}/artworks/${this.id}" class="artwork_show_link">${this.image}</a></td>
+      <td><a href="/artists/${theOwnedArtworkArtist}/artworks/${this.id}" class="artwork_show_link"><img src=${this.images_file_name} alt="paintboard"/></a></td>
       <td><a href="/artists/${theOwnedArtworkArtist}/artworks/${this.id}" class="artwork_show_link">${this.title}</a></td>
       <td><a href="/artists/${theOwnedArtworkArtist}" class="artist_show_link">${theArtistName}</a></td>
       <td><a href="/artists/${theOwnedArtworkArtist}/artworks/${this.id}/edit" data-id="${this.id}" id="update_owned_artwork">Edit</a></td>
