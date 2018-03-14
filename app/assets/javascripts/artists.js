@@ -14,15 +14,7 @@ $(document).ready(function() {
 const getArtistIndex = () => {
   $(document).on('click', '#artist_index', function(e){
     e.preventDefault();
-    // history.pushState(null, null, "artists");
-    $.get(this.href).success(function(response){
-      const _template = response
-      const template = $.parseHTML(_template)
-      const theHeader = $(template).find(".header")
-      const theTableHeader = $(template).find(".table thead tr")
-      theIndexBody(theHeader, theTableHeader)
-      getAllArtists()
-    });
+    getRouteResponse(this);
   })
 }
 
@@ -45,46 +37,33 @@ function getAllArtists() {
 const getNewArtist = () => {
   $(document).on('click', "#add_artist", function(e){
     e.preventDefault();
-    $.get(this.href).success(function(response){
-      const _template = response
-      const template = $.parseHTML(_template)
-      const theHeader = $(template).find(".header")
-      const theForm = $(template).find("#new_artist")
-      theNewEditBody(theHeader, theForm)
-    })
+    getFormAndResponses(this)
   })
 }
 
 const getEditArtist = () => {
   $(document).on('click', "#update_artist", function(e){
     e.preventDefault();
-    $.get(this.href).success(function(response){
-      const _template = response
-      const template = $.parseHTML(_template)
-      const theHeader = $(template).find(".header")
-      const theForm = $(template).find(".edit_artist")
-      theNewEditBody(theHeader, theForm)
-    })
+    getFormAndResponses(this)
   })
 }
 
 const postNewArtist = () => {
   $(document).on('submit', "form#new_artist", function(e){
     e.preventDefault();
-    const $form = $(this);
-    postingArtistAjax($form)
+    postingArtistAjax(this)
   })
 }
 
 const postEditArtist = () => {
   $(document).on('submit', "form.edit_artist", function(e){
     e.preventDefault();
-    const $form = $(this);
-    postingArtistAjax($form)
+    postingArtistAjax(this)
   })
 }
 
-function postingArtistAjax($form){
+function postingArtistAjax(theSubmission){
+  const $form = $(theSubmission);
   const action = $form.attr("action");
   const data = $form.serialize();
   $.ajax({

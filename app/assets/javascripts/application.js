@@ -19,4 +19,5 @@
 //= require own_artworks
 //= require page_format
 //= require prototypes
+//= require codeTemplate
 //= require_tree .

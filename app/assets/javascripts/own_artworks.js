@@ -7,14 +7,7 @@ $(document).ready(function() {
 const artworksOwned = () => {
   $(document).on('click', '#owned_artworks', function(e){
     e.preventDefault();
-    $.get(this.href).success(function(response){
-      const _template = response
-      const template = $.parseHTML(_template)
-      const theHeader = $(template).find(".header")
-      const theTableHeader= $(template).find(".table thead tr")
-      theIndexBody(theHeader, theTableHeader)
-      addArtworksOwnedByYes()
-    });
+    getRouteResponse(this);
   });
 }
 

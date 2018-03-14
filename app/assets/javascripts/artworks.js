@@ -7,35 +7,18 @@ $(document).ready(function() {
   deleteArtwork();
 })
 
-///////////////////// Option B (formally Option C) /////////////////////
-const getNewArtwork = () => {
-  $(document).on('click', "#add_artwork", function(e){
-    e.preventDefault();
-    const artistId = $(this).attr("data-id");
-    $.get(this.href).success(function(response){
-      const _template = response
-      const template = $.parseHTML(_template)
-      const heading = `<h4>Add a New Artwork</h4>`
-      const cancelButton = artworkFormCancelButton(artistId)
-      const theForm = $(template).find("#new_artwork")
-      buildArtworkNewEditBody(heading, cancelButton, theForm)
-    })
+function getArtworkResponses(theObj) {
+  const artistId = $(theObj).attr("data-id");
+  debugger;
+  $.get(theObj.href).success(function(response){
+    const _template = response
+    const template = $.parseHTML(_template)
+    const heading = formHeading
+    const cancelButton = artworkFormCancelButton(artistId)
+    const theForm = $(template).find(formName)
+    showFormInArtistShow(heading, cancelButton, theForm);
+    addOwnershipForm(theForm);
   })
-}
-
-const getEditArtwork = () => {
-  $(document).on('click', "#update_artwork", function(e){
-    e.preventDefault();
-    const artistId = $(this).attr("data-id");
-    $.get(this.href).success(function(response){
-      const _template = response
-      const template = $.parseHTML(_template)
-      const heading = `<h4>Edit the Artwork</h4>`
-      const cancelButton = artworkFormCancelButton(artistId)
-      const theForm = $(template).find(".edit_artwork")
-      buildArtworkNewEditBody(heading, cancelButton, theForm)
-    })
-  });
 }
 
 function artworkFormCancelButton(artistId){
@@ -44,29 +27,50 @@ function artworkFormCancelButton(artistId){
   return cancelButton
 }
 
-function buildArtworkNewEditBody(heading, cancelButton, theForm){
-  showFormInArtistShow(heading, cancelButton, theForm);
-  addOwnershipForm(theForm);
+// Artwork ownership portion - form
+function addOwnershipForm(ownArtworkSection) {
+  $("#artwork_user_owned_yes").click(function(){
+    if ((this.value) = "Yes") {
+      $("div:hidden").show("fast")
+    }
+  })
 }
 
+function getArtworkFormAndResponses(theFormObj){
+  getFormId(theFormObj.id)
+  getArtworkResponses(theFormObj)
+}
+
+const getNewArtwork = () => {
+  $(document).on('click', "#add_artwork", function(e){
+    e.preventDefault();
+    getArtworkFormAndResponses(this)
+  })
+}
+
+const getEditArtwork = () => {
+  $(document).on('click', "#update_artwork", function(e){
+    e.preventDefault();
+    getArtworkFormAndResponses(this)
+  });
+}
 
 const postNewArtwork = () => {
   $(document).on('submit', "form#new_artwork", function(e){
     e.preventDefault();
-    const $form = $(this);
-    postingArtworkAjax($form)
+    postingArtworkAjax(this)
   })
 }
 
 const postEditArtwork = () => {
   $(document).on('submit', "form.edit_artwork", function(e){
     e.preventDefault();
-    const $form = $(this);
-    postingArtworkAjax($form)
+    postingArtworkAjax(this)
   })
 }
 
-function postingArtworkAjax($form){
+function postingArtworkAjax(theSubmission){
+  const $form = $(theSubmission);
   const action = $form.attr("action");
   const data = $form.serialize();
   $.ajax({
@@ -80,15 +84,6 @@ function postingArtworkAjax($form){
     },
     error: function(){
       alert("Hm... something didn't work.");
-    }
-  })
-}
-
-// Artwork ownership portion - form
-function addOwnershipForm(ownArtworkSection) {
-  $("#artwork_user_owned_yes").click(function(){
-    if ((this.value) = "Yes") {
-      $("div:hidden").show("fast")
     }
   })
 }
