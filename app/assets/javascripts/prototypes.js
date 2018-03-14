@@ -75,7 +75,20 @@ Artist.prototype.formatArtistShowHeader = function() {
     <button><a href="/artists" id="artist_index">Back to All Artists</a></button>
     <button><a href="/artists/${this.id}/edit" data-id="${this.id}" id="update_artist">Edit Artist</a></button>
     <button><a href="/artists/${this.id}" data-method="delete" id="delete_artist">Delete Artist</a></button>
-    <button><a href="/artists/${this.id}/artworks" id="load_artworks">Show All Artworks</a></button>
+    <button><a href="/artists/${this.id}/artworks" data-id="${this.id}" id="load_artworks">Show All Artworks</a></button>
   `
   return artistShow
+}
+
+Artwork.prototype.formatArtworkIndexData = function(artistId) {
+  let artistHtml = `
+    <td><a href="/artists/${artistId}/artworks/${this.id}" class="artwork_show_link"><img src=${this.images_file_name} alt="paintboard"/></a></td>
+    <td><a href="/artists/${artistId}/artworks/${this.id}" class="artwork_show_link">${this.title}</a></td>
+    <td><a href="/artists/${artistId}/artworks/${this.id}" class="artwork_show_link">${this.exhibition}</a></td>
+    <td><a href="/artists/${artistId}/artworks/${this.id}" class="artwork_show_link">${this.userOwned}</a></td>
+    <td>${this.rating}</td>
+    <td><a href="/artists/${artistId}/artworks/${this.id}/edit" data-id="${this.id}" id="update_artwork">Edit</a></td>
+    <td><a href="/artists/${artistId}/artworks/${this.id}" id="delete_artwork" data-method="delete">Delete</a></td>
+  `
+  return artistHtml
 }
