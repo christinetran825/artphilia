@@ -6,8 +6,7 @@ $(document).ready(function() {
 /////// click on nav bar link for owned Artwork ///////
 const artworksOwned = () => {
   $(document).on('click', '#owned_artworks', function(e){
-    e.preventDefault();
-    getRouteResponse(this);
+    getRouteResponse(ethis);
   });
 }
 
@@ -24,7 +23,8 @@ function filterOwnership(collection, cb){
 
 /////// ADD OWNED ARTWORKS using filter function ///////
 function addArtworksOwnedByYes() {
-  fetch(`/artists.json`)
+  debugger;
+  fetch(`/artworks/ownerships.json`)
   .then(res => res.json())
   .then(theArtists => {
     theArtists.forEach(artist => {
@@ -42,6 +42,27 @@ function addArtworksOwnedByYes() {
     })
   })
 }
+
+
+// function addArtworksOwnedByYes() {
+//   fetch(`/artists.json`)
+//   .then(res => res.json())
+//   .then(theArtists => {
+//     theArtists.forEach(artist => {
+//      const theArtistName = artist.name
+//      const theArtworks = artist.artworks
+//      const whichArtworkOwned = filterOwnership(theArtworks, function(artworks){
+//        return artworks.user_owned === "Yes"
+//      });
+//      whichArtworkOwned.forEach(artwork => {
+//        const theOwnedArtwork = new Artwork(artwork); //create newArtwork
+//        const theOwnedArtworkArtist = artwork.artist_id
+//        const eachOwnedArtwork = theOwnedArtwork.formatArtworkOwnedData(theArtistName, theOwnedArtworkArtist);
+//        tableContent(eachOwnedArtwork)
+//      });
+//     })
+//   })
+// }
 
 const getEditOwnedArtwork = () => {
   $(document).on('click', "#update_owned_artwork", function(e){

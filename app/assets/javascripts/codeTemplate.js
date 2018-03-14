@@ -1,31 +1,38 @@
 ////// ROUTES //////
-function getRouteId(routeId) {
+function getRouteId(routeId, theHeader, theTableHeader, artistId) {
   switch (routeId) {
     case "artist_index":
+      theIndexBody(theHeader, theTableHeader)
       getAllArtists();
       break;
     case "fav_artists":
-      addFavArtistsByRating()
+      theIndexBody(theHeader, theTableHeader)
+      addFavArtistsByRating();
       break;
     case "owned_artworks":
-      addArtworksOwnedByYes()
+      theIndexBody(theHeader, theTableHeader)
+      addArtworksOwnedByYes();
+      break;
+    case "load_artworks":
+      showArtworksInArtistShow(theHeader, theTableHeader)
+      getAllArtistArtworks(artistId);
       break;
   }
 }
 
-function getRouteResponse(theRoute) {
-  let routeId = theRoute.id
+function getRouteResponse(e, theRoute) {
+  e.preventDefault();
+  const routeId = theRoute.id
   // history.pushState(null, null, "artists");
+  const artistId = $(theRoute).attr("data-id")
   $.get(theRoute.href).success(function(response){
     const _template = response
     const template = $.parseHTML(_template)
     const theHeader = $(template).find(".header")
     const theTableHeader = $(template).find(".table thead tr")
-    theIndexBody(theHeader, theTableHeader)
-    getRouteId(routeId)
+    getRouteId(routeId, theHeader, theTableHeader, artistId)
   });
 }
-
 
 ////// FORMS //////
 function getFormId(theFormId) {
@@ -51,8 +58,8 @@ function getFormId(theFormId) {
   }
 }
 
-function getFormResponses(theObjHref){
-  $.get(theObjHref).success(function(response){
+function getFormResponses(theFormObjHref){
+  $.get(theFormObjHref).success(function(response){
     const _template = response
     const template = $.parseHTML(_template)
     const theHeader = $(template).find(".header")
@@ -61,7 +68,27 @@ function getFormResponses(theObjHref){
   })
 }
 
-function getFormAndResponses(theFormObj){
+function getFormAndResponses(e, theFormObj){
+  e.preventDefault();
   getFormId(theFormObj.id)
   getFormResponses(theFormObj.href)
+}
+
+function getArtworkForm(theObj) {
+  const artistId = $(theObj).attr("data-id");
+  // getArtistDataId(theObj)
+  $.get(theObj.href).success(function(response){
+    const _template = response
+    const template = $.parseHTML(_template)
+    const theHeader = $(template).find(".header")
+    const theForm = $(template).find(formName)
+    showArtworksFormInArtistShow(theHeader, formHeading, theForm, artistId);
+    addOwnershipForm(theForm);
+  })
+}
+
+function getArtistArtworkForm(e, theFormObj){
+  e.preventDefault();
+  getFormId(theFormObj.id)
+  getArtworkForm(theFormObj)
 }

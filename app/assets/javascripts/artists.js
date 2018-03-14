@@ -13,8 +13,7 @@ $(document).ready(function() {
 /////// click on nav bar link for All Artists ///////
 const getArtistIndex = () => {
   $(document).on('click', '#artist_index', function(e){
-    e.preventDefault();
-    getRouteResponse(this);
+    getRouteResponse(e, this);
   })
 }
 
@@ -24,41 +23,39 @@ function getAllArtists() {
    .then(res => res.json())
    .then(artists => {
      artists.forEach(artist => {
-       const numofArtworks = artist.artworks.length
-       const newArtist = new Artist(artist); //create newArtist
+       const numofArtworks = artist.artworks.length;
+       const newArtist = new Artist(artist);
        const theTableData = newArtist.formatArtistIndexData(numofArtworks);
        tableContent(`<tr>${theTableData}</tr>`);
      })
    })
-   .then(() => deleteArtist())
+   .then(() => deleteArtist());
 }
 
 /////// click on "add new artist" button ///////
 const getNewArtist = () => {
   $(document).on('click', "#add_artist", function(e){
-    e.preventDefault();
-    getFormAndResponses(this)
+    getFormAndResponses(e, this);
   })
 }
 
 const getEditArtist = () => {
   $(document).on('click', "#update_artist", function(e){
-    e.preventDefault();
-    getFormAndResponses(this)
+    getFormAndResponses(e, this);
   })
 }
 
 const postNewArtist = () => {
   $(document).on('submit', "form#new_artist", function(e){
     e.preventDefault();
-    postingArtistAjax(this)
+    postingArtistAjax(this);
   })
 }
 
 const postEditArtist = () => {
   $(document).on('submit', "form.edit_artist", function(e){
     e.preventDefault();
-    postingArtistAjax(this)
+    postingArtistAjax(this);
   })
 }
 
@@ -87,28 +84,38 @@ const clickOnArtist = () => {
   $(document).on('click', '.artist_show_link', function(e){
     e.preventDefault();
     const artistId = $(this).attr("data-id");
-    artistShow(artistId)
+    artistShow(artistId);
   })
 }
 
-function artistShow(theID){
-  fetch(`/artists/${theID}.json`)
+function artistShow(artistId){
+  fetch(`/artists/${artistId}.json`)
    .then(res => res.json())
    .then(artist => {
      const newArtist = new Artist(artist);
      const theHeader = newArtist.formatArtistShowHeader();
-     theShowBody(theHeader)
+     theShowBody(theHeader);
    })
 }
 
-/// Option A
 const showAllArtworks = () => {
   $(document).on('click', "a#load_artworks", function(e){
-    e.preventDefault();
-    $.get(this.href).success(function(response){
-      addContents(response)
-    })
+    getRouteResponse(e, this);
   })
+}
+
+///// ADD ALL Artworks to the Artists Show /////
+function getAllArtistArtworks(artistId) {
+  fetch(`/artists/${artistId}/artworks.json`)
+   .then(res => res.json())
+   .then(artworks => {
+     artworks.forEach(artwork => {
+       const newArtwork = new Artwork(artwork);
+       const theTableData = newArtwork.formatArtworkIndexData(artistId);
+       tableContent(`<tr>${theTableData}</tr>`);
+     })
+   })
+   .then(() => deleteArtwork())
 }
 
 ///// delete artist /////

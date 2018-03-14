@@ -7,26 +7,6 @@ $(document).ready(function() {
   deleteArtwork();
 })
 
-function getArtworkResponses(theObj) {
-  const artistId = $(theObj).attr("data-id");
-  debugger;
-  $.get(theObj.href).success(function(response){
-    const _template = response
-    const template = $.parseHTML(_template)
-    const heading = formHeading
-    const cancelButton = artworkFormCancelButton(artistId)
-    const theForm = $(template).find(formName)
-    showFormInArtistShow(heading, cancelButton, theForm);
-    addOwnershipForm(theForm);
-  })
-}
-
-function artworkFormCancelButton(artistId){
-  const cancelButton =
-    `<button><a href="/artists/${artistId}/artworks" data-id="${artistId}" id="load_artworks">Cancel</a></button>`
-  return cancelButton
-}
-
 // Artwork ownership portion - form
 function addOwnershipForm(ownArtworkSection) {
   $("#artwork_user_owned_yes").click(function(){
@@ -36,22 +16,15 @@ function addOwnershipForm(ownArtworkSection) {
   })
 }
 
-function getArtworkFormAndResponses(theFormObj){
-  getFormId(theFormObj.id)
-  getArtworkResponses(theFormObj)
-}
-
 const getNewArtwork = () => {
   $(document).on('click', "#add_artwork", function(e){
-    e.preventDefault();
-    getArtworkFormAndResponses(this)
+    getArtistArtworkForm(e, this)
   })
 }
 
 const getEditArtwork = () => {
   $(document).on('click', "#update_artwork", function(e){
-    e.preventDefault();
-    getArtworkFormAndResponses(this)
+    getArtistArtworkForm(e, this)
   });
 }
 
@@ -96,7 +69,7 @@ const clickOnArtwork = () => {
       const _template = response
       const template = $.parseHTML(_template)
       const details = $(response).find(".content")
-      showArtworkInOptB(details);
+      showArtistArtworksForm(details);
     })
   })
 }
