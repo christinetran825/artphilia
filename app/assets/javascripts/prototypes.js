@@ -76,7 +76,7 @@ Artist.prototype.formatArtistShowHeader = function() {
 
     <button><a href="/artists" id="artist_index">Back to All Artists</a></button>
     <button><a href="/artists/${this.id}/edit" data-id="${this.id}" id="update_artist">Edit Artist</a></button>
-    <button><a href="/artists/${this.id}" data-method="delete" id="delete_artist">Delete Artist</a></button>
+    <button><a href="/artists/${this.id}" data-method="delete" data-id="${this.id}" class="delete_artist">Delete Artist</a></button>
     <button><a href="/artists/${this.id}/artworks" data-id="${this.id}" id="load_artworks">Show All Artworks</a></button>
   `
   return artistShow
