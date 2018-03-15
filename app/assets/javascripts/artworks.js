@@ -53,7 +53,7 @@ function postingArtworkAjax(theSubmission){
     success: function(data){
       // const header = $(data).find(".header")
       const details = $(data).find(".content")
-      showArtworkInOptB(details);
+      showArtworksInArtistShow(details);
     },
     error: function(){
       alert("Hm... something didn't work.");
