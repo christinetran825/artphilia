@@ -25,6 +25,11 @@ function sortAttrButton(){
   $(sortAttr()).insertBefore( ".table" );
 }
 
+function sortAttr(){
+  let button = `<button id="obj_sort_attr">Sort</button>`
+  return button
+}
+
 
 function getRouteResponse(e, theRoute) {
   e.preventDefault();
