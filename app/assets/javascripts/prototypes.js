@@ -32,7 +32,7 @@ Artist.prototype.formatArtistIndexData = function(numofArtworks) {
       <td><a target=_blank href="${this.website}">${this.website}</a></td>
       <td>${this.rating}</td>
       <td><a href="/artists/${this.id}/edit" data-id="${this.id}" id="update_artist">Edit</a></td>
-      <td><a href="/artists/${this.id}" id="delete_artist" data-method="delete">Delete</a></td>
+      <td><a href="/artists/${this.id}" class="delete_artist" data-method="delete">Delete</a></td>
     </tr>
   `
   return artistHtml

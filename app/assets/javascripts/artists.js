@@ -7,6 +7,7 @@ $(document).ready(function() {
   clickOnArtist();
   showAllArtworks();
   deleteArtist();
+  sortArtistAttr()
 })
 
 
@@ -17,6 +18,29 @@ const getArtistIndex = () => {
   })
 }
 
+function compare(a,b) {
+  return b.rating > a.rating
+}
+
+const sortArtistAttr = () => {
+  $("#obj_sort_attr").on('click', function(e){
+    e.preventDefault();
+    fetch(`/artists.json`)
+     .then(res => res.json())
+     .then(artists => {
+       $("tbody").empty()
+       const sortedArtists = artists.sort(compare)
+       sortedArtists.forEach(artist => {
+         const numofArtworks = artist.artworks.length;
+         const newArtist = new Artist(artist);
+         const sortedRating = newArtist.formatArtistIndexData(numofArtworks);
+         tableContent(`${sortedRating}`)
+       })
+     })
+  })
+}
+
+
 ///// ADD ALL Artists to the Table /////
 function getAllArtists() {
   fetch(`/artists.json`)
@@ -26,9 +50,11 @@ function getAllArtists() {
        const numofArtworks = artist.artworks.length;
        const newArtist = new Artist(artist);
        const theTableData = newArtist.formatArtistIndexData(numofArtworks);
-       tableContent(`<tr>${theTableData}</tr>`);
+       console.log(theTableData)
+       tableContent(`${theTableData}`);
      })
    })
+   .then(() => sortArtistAttr())
    .then(() => deleteArtist());
 }
 
@@ -112,7 +138,7 @@ function getAllArtistArtworks(artistId) {
      artworks.forEach(artwork => {
        const newArtwork = new Artwork(artwork);
        const theTableData = newArtwork.formatArtworkIndexData(artistId);
-       tableContent(`<tr>${theTableData}</tr>`);
+       tableContent(`${theTableData}`);
      })
    })
    .then(() => deleteArtwork())
@@ -120,7 +146,7 @@ function getAllArtistArtworks(artistId) {
 
 ///// delete artist /////
 const deleteArtist = () => {
-  $("#delete_artist").on('click', function(e){
+  $(".delete_artist").on('click', function(e){
     e.preventDefault();
     const $form = $(this);
     const action = $form.attr("href");
@@ -138,7 +164,6 @@ const deleteArtist = () => {
       },
       success: function (data) {
         // alert("The Artist was Removed.")
-        theBodyPage() //need to update
       },
       error: function (data) {
         // alert('Oops! Looks like something went wrong.');
