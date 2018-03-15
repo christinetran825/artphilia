@@ -26,12 +26,14 @@ function Medium(medium){
 /////// ALL ARTISTS ///////
 Artist.prototype.formatArtistIndexData = function(numofArtworks) {
   let artistHtml = `
+    <tr>
       <td><a href="/artists/${this.id}" data-id="${this.id}" class="artist_show_link">${this.name}</a></td>
       <td><a href="/artists/${this.id}" data-id="${this.id}" class="artist_show_link">${numofArtworks}</a></td>
       <td><a target=_blank href="${this.website}">${this.website}</a></td>
       <td>${this.rating}</td>
       <td><a href="/artists/${this.id}/edit" data-id="${this.id}" id="update_artist">Edit</a></td>
       <td><a href="/artists/${this.id}" id="delete_artist" data-method="delete">Delete</a></td>
+    </tr>
   `
   return artistHtml
 }
@@ -82,6 +84,7 @@ Artist.prototype.formatArtistShowHeader = function() {
 
 Artwork.prototype.formatArtworkIndexData = function(artistId) {
   let artistHtml = `
+  <tr>
     <td><a href="/artists/${artistId}/artworks/${this.id}" class="artwork_show_link"><img src=${this.images_file_name} alt="paintboard"/></a></td>
     <td><a href="/artists/${artistId}/artworks/${this.id}" class="artwork_show_link">${this.title}</a></td>
     <td><a href="/artists/${artistId}/artworks/${this.id}" class="artwork_show_link">${this.exhibition}</a></td>
@@ -89,6 +92,7 @@ Artwork.prototype.formatArtworkIndexData = function(artistId) {
     <td>${this.rating}</td>
     <td><a href="/artists/${artistId}/artworks/${this.id}/edit" data-id="${this.id}" id="update_artwork">Edit</a></td>
     <td><a href="/artists/${artistId}/artworks/${this.id}" id="delete_artwork" data-method="delete">Delete</a></td>
+  </tr>
   `
   return artistHtml
 }
