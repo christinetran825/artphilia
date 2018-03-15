@@ -32,7 +32,7 @@ Artist.prototype.formatArtistIndexData = function(numofArtworks) {
       <td><a target=_blank href="${this.website}">${this.website}</a></td>
       <td>${this.rating}</td>
       <td><a href="/artists/${this.id}/edit" data-id="${this.id}" id="update_artist">Edit</a></td>
-      <td><a href="/artists/${this.id}" class="delete_artist" data-method="delete">Delete</a></td>
+      <td><a href="/artists/${this.id}" data-id="${this.id}" class="delete_artist" data-method="delete">Delete</a></td>
     </tr>
   `
   return artistHtml
@@ -47,7 +47,7 @@ Artist.prototype.formatFavArtistIndexData = function(numofArtworks) {
       <td><a target=_blank href="${this.website}">${this.website}</a></td>
       <td>${this.rating}</td>
       <td><a href="/artists/${this.id}/edit" data-id="${this.id}" id="update_artist">Edit</a></td>
-      <td><a href="/artists/${this.id}" id="delete_artist" data-method="delete">Delete</a></td>
+      <td><a href="/artists/${this.id}" data-id="${this.id}" class="delete_artist" data-method="delete">Delete</a></td>
     </tr>
   `
   return favArtists
@@ -60,7 +60,7 @@ Artwork.prototype.formatArtworkOwnedData = function(theArtistName, theOwnedArtwo
       <td><a href="/artists/${theOwnedArtworkArtist}/artworks/${this.id}" class="artwork_show_link">${this.title}</a></td>
       <td><a href="/artists/${theOwnedArtworkArtist}" class="artist_show_link">${theArtistName}</a></td>
       <td><a href="/artists/${theOwnedArtworkArtist}/artworks/${this.id}/edit" data-id="${this.id}" id="update_owned_artwork">Edit</a></td>
-      <td><a href="/artists/${theOwnedArtworkArtist}/artworks/${this.id}" id="delete_artwork" data-method="delete">Delete</a></td>
+      <td><a href="/artists/${theOwnedArtworkArtist}/artworks/${this.id}" data-id="${this.id}" class="delete_artwork" data-method="delete">Delete</a></td>
     </tr>
   `
   return artworkOwned
@@ -91,7 +91,7 @@ Artwork.prototype.formatArtworkIndexData = function(artistId) {
     <td><a href="/artists/${artistId}/artworks/${this.id}" class="artwork_show_link">${this.userOwned}</a></td>
     <td>${this.rating}</td>
     <td><a href="/artists/${artistId}/artworks/${this.id}/edit" data-id="${this.id}" id="update_artwork">Edit</a></td>
-    <td><a href="/artists/${artistId}/artworks/${this.id}" id="delete_artwork" data-method="delete">Delete</a></td>
+    <td><a href="/artists/${artistId}/artworks/${this.id}" data-id="${this.id}" class="delete_artwork" data-method="delete">Delete</a></td>
   </tr>
   `
   return artistHtml
