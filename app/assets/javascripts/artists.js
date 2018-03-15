@@ -148,26 +148,22 @@ function getAllArtistArtworks(artistId) {
 const deleteArtist = () => {
   $(".delete_artist").on('click', function(e){
     e.preventDefault();
-    const $form = $(this);
-    const action = $form.attr("href");
-    $.ajax({
-      type: "POST",
-      url: action,
-      data: {_method: 'delete'},
-      beforeSend: function(){
-        const r = confirm('Are you sure you want to delete this Artist?');
-        if (r == true) {
-            alert("The Artist was Removed.")
-        } else {
-            alert('Oops! Looks like something went wrong.');
+    const deleteObj = this;
+    const delete_id = $(deleteObj).attr('data-id');
+    const action = $(deleteObj).attr("href");
+    if(confirm('Are you sure you want to delete this Artist?')) {
+      $.ajax({
+        type: "POST",
+        url: action,
+        // data: {_method: 'delete'},
+        data: delete_id,
+        success: function(data) {
+          alert("The Artist was Removed.");
+          $("tr").destroy();
         }
-      },
-      success: function (data) {
-        // alert("The Artist was Removed.")
-      },
-      error: function (data) {
-        // alert('Oops! Looks like something went wrong.');
-      }
-    });
+      });
+    } else {
+      alert("You're keeping this Artist.");
+    }
   })
 }

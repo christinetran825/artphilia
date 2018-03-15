@@ -76,31 +76,24 @@ const clickOnArtwork = () => {
 
 ///// delete artwork /////
 const deleteArtwork = () => {
-  $(document).on('click', "#delete_artwork", function(e){
-    debugger
+  $(".delete_artwork").on('click', function(e){
     e.preventDefault();
-    const $form = $(this);
-    const action = $form.attr("href");
-    $.ajax({
-      type: "POST",
-      url: action,
-      data: {_method: 'delete'},
-      beforeSend: function(){
-        const r = confirm('Are you sure you want to delete this Artwork?');
-        if (r == true) {
-            alert("The Artist was Removed.")
-        } else {
-            alert('Oops! Looks like something went wrong.');
+    const deleteObj = this;
+    const delete_id = $(deleteObj).attr('data-id');
+    const action = $(deleteObj).attr("href");
+    if(confirm('Are you sure you want to delete this Artist?')) {
+      $.ajax({
+        type: "POST",
+        url: action,
+        // data: {_method: 'delete'},
+        data: delete_id,
+        success: function(data) {
+          alert("The Artwork was Removed.");
+          $("tr").destroy();
         }
-      },
-      success: function (data) {
-        debugger;
-        // alert("The Artist was Removed.")
-        theBodyPage()
-      },
-      error: function (data) {
-        // alert('Oops! Looks like something went wrong.');
-      }
-    });
+      });
+    } else {
+      alert("You're keeping this Artwork.");
+    }
   })
 }
