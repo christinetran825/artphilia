@@ -3,6 +3,7 @@ function getRouteId(routeId, theHeader, theTableHeader, artistId) {
   switch (routeId) {
     case "artist_index":
       theIndexBody(theHeader, theTableHeader)
+      sortAttrButton()
       getAllArtists();
       break;
     case "fav_artists":
@@ -19,6 +20,11 @@ function getRouteId(routeId, theHeader, theTableHeader, artistId) {
       break;
   }
 }
+
+function sortAttrButton(){
+  $(sortAttr()).insertBefore( ".table" );
+}
+
 
 function getRouteResponse(e, theRoute) {
   e.preventDefault();
