@@ -10,17 +10,6 @@ const artworksOwned = () => {
   });
 }
 
-/////// DEFINE ARTWORK Filter for owned artwork ///////
-function filterOwnership(collection, cb){
-  const artworksHave = [];
-  for (const element of collection){
-    if (cb(element)){
-      artworksHave.push(element);
-    }
-  }
-  return artworksHave;
-}
-
 /////// ADD OWNED ARTWORKS using filter function ///////
 function addArtworksOwnedByYes() {
   fetch(`/artists.json`)
@@ -29,9 +18,7 @@ function addArtworksOwnedByYes() {
     theArtists.forEach(artist => {
      const theArtistName = artist.name
      const theArtworks = artist.artworks
-     const whichArtworkOwned = filterOwnership(theArtworks, function(artworks){
-       return artworks.user_owned === "Yes"
-     });
+     const whichArtworkOwned = theArtworks.filter(artworks => artworks.user_owned === "Yes")
      whichArtworkOwned.forEach(artwork => {
        const theOwnedArtwork = new Artwork(artwork); //create newArtwork
        const theOwnedArtworkArtist = artwork.artist_id
