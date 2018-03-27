@@ -7,7 +7,8 @@ $(document).ready(function() {
   clickOnArtist();
   showAllArtworks();
   deleteArtist();
-  sortArtistAttr()
+  sortArtistAttr();
+  reduceArtistAttr();
 })
 
 
@@ -40,6 +41,23 @@ const sortArtistAttr = () => {
   })
 }
 
+const reduceArtistAttr = () => {
+  $("#obj_reduce_attr").on('click', function(e){
+    e.preventDefault();
+    fetch(`/artists.json`)
+    .then(res => res.json())
+    .then(artists => {
+     $("tbody").empty();
+     const artistsArtworks = artists.filter(artist => artist.artworks.length > 1)
+     artistsArtworks.forEach(artist => {
+       const numofArtworks = artist.artworks.length
+       const newArtistByArtworks = new Artist(artist); //create newArtist
+       const eachArtistsByArtworks = newArtistByArtworks.formatArtistIndexData(numofArtworks);
+       tableContent(`${eachArtistsByArtworks}`)
+     });
+    })
+  })
+}
 
 ///// ADD ALL Artists to the Table /////
 function getAllArtists() {
@@ -50,11 +68,11 @@ function getAllArtists() {
        const numofArtworks = artist.artworks.length;
        const newArtist = new Artist(artist);
        const theTableData = newArtist.formatArtistIndexData(numofArtworks);
-       console.log(theTableData)
        tableContent(`${theTableData}`);
      })
    })
    .then(() => sortArtistAttr())
+   .then(() => reduceArtistAttr())
    .then(() => deleteArtist());
 }
 
