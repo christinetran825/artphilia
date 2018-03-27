@@ -3,7 +3,8 @@ function getRouteId(routeId, theHeader, theTableHeader, artistId) {
   switch (routeId) {
     case "artist_index":
       theIndexBody(theHeader, theTableHeader)
-      sortAttrButton()
+      sortAttrButton();
+      reduceAttrButton();
       getAllArtists();
       break;
     case "fav_artists":
@@ -25,9 +26,16 @@ function sortAttrButton(){
   $(sortAttr()).insertBefore( ".table" );
 }
 
+function reduceAttrButton(){
+  $(reduceAttr()).insertBefore( ".table" );
+}
+
 function sortAttr(){
-  let button = `<button id="obj_sort_attr">Sort</button>`
-  return button
+  return `<button id="obj_sort_attr">Sort</button>`
+}
+
+function reduceAttr(){
+  return `<button id="obj_reduce_attr">Reduce</button>`
 }
 
 
