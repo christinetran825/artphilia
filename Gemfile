@@ -41,6 +41,11 @@ gem 'dotenv-rails'
 #paperclip
 gem "paperclip"
 
+gem "kaminari"
+
+gem 'active_model_serializers'
+gem 'jquery-rails'
+
 #boostrap
 # gem 'bootstrap-sass', '~> 3.2.0'
 gem 'bootstrap'
