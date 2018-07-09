@@ -1,11 +1,8 @@
-<div class="container">
+<div id="login" class="container">
   <h1>Log In</h1>
-
-  <div class="adding_objects">
-    <p>Not a member? <%= link_to "Sign up!", signup_path %></p>
-  </div>
-
-  <%= render 'sessions/log_in_form' %>
+  <p>Not a member? <%= link_to "Sign up!", signup_path %></p>
 
   <%= render 'sessions/oauth-link' %>
+
+  <%= render 'sessions/log_in_form' %>
 </div>

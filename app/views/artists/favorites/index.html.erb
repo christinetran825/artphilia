@@ -1,31 +1,43 @@
-<div class="container_show">
-  <h1>My Favorite Artists</h1>
+<div id="the_artists" class="header">
+  <div class="heading">
+    <h1>Favorite Artists</h1>
+  </div>
+
+  <div class="obj-attr">
+    <p><%= pluralize(@artists.count, 'Artists') %></p>
+  </div>
+
+  <div class="obj-links">
+    <%= link_to "Back to All Artists", artists_path, id:'artist_index', class:'btn btn-link btn-md' %>
+  </div>
 </div>
+
 
 <%= render :partial => 'shared/flash_messages' %>
 
-<!-- list all artists; filter by abc order last name and first name; add artist's website link -->
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>Artist's Name</th>
-      <th># of Artworks</th>
-      <th>Website</th>
-      <th>Rating</th>
-      <th>Edit</th>
-      <th>Delete</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @artists.each do |a| %>
-    <tr>
-      <td><%= link_to a.name, artist_path(a) %></td>
-      <td><%= link_to a.artworks.count, artist_artworks_path(a) %></td>
-      <td><%= link_to a.website, a.website, :target => "_blank" %></td>
-      <td><%= a.rating %></td>
-      <td><%= link_to "Edit", edit_artist_path(a) %></td>
-      <td><%= link_to "Delete", a, method: :delete, data: {confirm: "Are you sure you want to delete this Artist?"} %></td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="content">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Artist's Name</th>
+        <th># of Artworks</th>
+        <th>Website</th>
+        <th>Rating</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @artists.each do |a| %>
+      <tr>
+        <td><%= link_to a.name, artist_path(a) %></td>
+        <td><%= link_to a.artworks.count, artist_artworks_path(a) %></td>
+        <td><%= link_to a.website, a.website, :target => "_blank" %></td>
+        <td><%= a.rating %></td>
+        <td><%= link_to "Edit", edit_artist_path(a), id:"update_artist" %></td>
+        <td><%= link_to "Delete", a, id:"delete_artist", method: :delete, data: {confirm: "Are you sure you want to delete `#{a.name}`?"} %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

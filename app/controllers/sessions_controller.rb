@@ -16,7 +16,8 @@ class SessionsController < ApplicationController
       @user = User.find_by(email: params[:user][:email])
       if @user && @user.authenticate(params[:user][:password])
         log_user_in
-        redirect_to artists_path, flash: {success: "You're logged in!"}  #user_path(@user)
+        # redirect_to artists_path, flash: {success: "You're logged in!"}  #user_path(@user)
+        redirect_to home_path, flash: {success: "You're logged in!"}  #user_path(@user)
       else
         redirect_to '/sessions/new', flash: {danger: "Invalid email/password combination!"}
       end

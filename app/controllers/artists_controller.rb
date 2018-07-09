@@ -4,7 +4,12 @@ class ArtistsController < ApplicationController
 
   def index
     @artists = Artist.all
-    @artists = current_user.artists.order(:name)
+    # @artists = current_user.artists.order(:name)
+    @artists = Artist.order(created_at: :asc).page(params[:page]).per(10)
+    respond_to do |f|
+      f.html
+      f.json {render json: @artists}
+    end
   end
 
   def new
@@ -15,7 +20,11 @@ class ArtistsController < ApplicationController
     @artist = Artist.new(artist_params)
     @artist.user = current_user
     if @artist && @artist.save
-      redirect_to artist_path(@artist), flash: {success: "'#{@artist.name}' was added!"}
+      respond_to do |f|
+        f.html {redirect_to artist_path(@artist), flash: {success: "'#{@artist.name}' was added!"}}
+        # f.html {redirect_to artist_path(@artist), flash: {success: "'#{@artist.first_name} #{@artist.last_name}' was added!"}}
+        f.json {render json: @artist}
+      end
     else
       render :new, flash: {danger: "Please enter all fields"}
     end
@@ -23,6 +32,10 @@ class ArtistsController < ApplicationController
 
   def show
     @artwork = @artist.artworks
+    respond_to do |f|
+      f.html
+      f.json { render json: @artist }
+    end
   end
 
   def edit
@@ -30,7 +43,11 @@ class ArtistsController < ApplicationController
 
   def update
     if @artist.update(artist_params)
-      redirect_to artist_path(@artist), flash: {success: "'#{@artist.name}' was updated!"}
+      respond_to do |f|
+        f.html {redirect_to artist_path(@artist), flash: {success: "'#{@artist.name}' was updated!"}}
+        # f.html {redirect_to artist_path(@artist), flash: {success: "'#{@artist.first_name} #{@artist.last_name}' was updated!"}}
+        f.json {render json: @artist}
+      end
     else
       render :edit
     end
@@ -38,7 +55,10 @@ class ArtistsController < ApplicationController
 
   def destroy
     @artist.delete
-    redirect_to artists_path, flash: {success: "'#{@artist.name}' was deleted!"}
+    respond_to do |f|
+      f.html { redirect_to artists_path, flash: {success: "'#{@artist.name}' was deleted!"} }
+      f.json { head :no_content }
+    end
   end
 
   private

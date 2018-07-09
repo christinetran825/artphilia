@@ -29,20 +29,98 @@ body {
   font-family: 'Karla', sans-serif;
 }
 
-body.home {
-  background:url('paint-2924891_1920.jpg');
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  line-height: 1.5;
-}
-
-// Nav bar
+///////////////// Nav bar /////////////////
 nav li a {
   margin: 7px;
 }
 
-// Errors
+
+///////////////// Welcome, Sign Up, Log in /////////////////
+#welcome {
+  // background-color: rgba(255,255,255, 0.5);
+  // border-radius: 40px;
+  // border: 2px solid #73AD21;
+}
+
+#welcome h1 {
+  font-size: 50px;
+}
+
+#welcome .obj-links {
+  margin-bottom: 20px;
+}
+
+.container {
+  width: 450px;
+  margin: 150px auto;
+  text-align: center;
+}
+
+.container p {
+  margin: 20px 0;
+}
+
+.socialmedia-login {
+}
+
+///////////////// User's HomePage /////////////////
+#homepage {
+  width: 450px;
+  margin: 100px auto;
+  text-align: center;
+}
+
+.section {
+}
+
+/// NEW DOM HEADER ///
+#header {
+  text-align: center;
+  margin: 35px 0;
+}
+
+///////////////// Body Header /////////////////
+.header {
+  text-align: center;
+  margin: 35px 0;
+}
+
+.heading {
+  margin-bottom: 20px;
+}
+
+.obj-attr {
+}
+
+.obj-links {
+}
+
+.content {
+  // width: 150px;
+  margin: 35px auto;
+}
+
+///////////////// Artwork's ShowPage /////////////////
+#the_artworks.content {
+  margin: 0;
+}
+
+#the_artworks_image {
+  padding-top: 35px;
+  text-align: center;
+}
+
+.col-md-6 {
+  padding-top: 35px;
+}
+
+///////////////// User's Profile /////////////////
+#the_user.obj-attr {
+  margin: 25px 0;
+  padding: 20px;
+}
+
+///////////////// Errors /////////////////
 .error_explanation {
   margin: 10px 0;
   padding: 10px;
@@ -59,7 +137,7 @@ nav li a {
   text-align: center;
 }
 
-// Forms
+///////////////// Forms /////////////////
 form {
   margin: 32px 16px;
 }
@@ -78,50 +156,21 @@ input::placeholder {
   margin-bottom: 24px;
 }
 
-// Sign up & Log in
-.container {
-  width: 450px;
-  margin: 100px auto;
-  // background-color: rgba(255,255,255, 0.5);
-  // border-radius: 40px;
-  // border: 2px solid #73AD21;
-  text-align: center;
+/////////// Tables ///////////
+.pagination {
+  float: right;
+  clear: both;
 }
 
-.container h1 {
-  margin-bottom: 25px;
+.pagination span {
+  margin-right: 10px;
 }
 
-form.new_user {
-  margin-bottom: 25px;
+.pagination a {
+  //no formatting needed?
 }
 
-.adding_objects {
-  margin: 20px 0;
-}
-
-// New, Edit, Show
-.container_new_edit {
-  margin: 30px auto;
-  text-align: left;
-}
-
-.container_show {
-  // width: 150px;
-  margin: 25px auto;
-  text-align: center;
-}
-
-.container_profile {
-  margin: 25px auto;
-  padding: 20px;
-}
-
-.container_ownership {
-  margin-left: 25px;
-}
-
-// Artwork form for Medium/Media
+///////////////// Artwork form for Medium/Media /////////////////
 .collection-check-box {
   margin: 0 5px auto;
   display: inline-block;
@@ -131,17 +180,7 @@ form.new_user {
   margin: 15px auto;
 }
 
-// Artwork - Show
-.col-md-6 {
-  padding-top: 35px;
-  text-align: center;
-}
-
-.col-md-6-text {
-  padding-top: 35px;
-}
-
-// Footer
+///////////////// Footer /////////////////
 .footer {
   margin: 150px auto;
   text-align: center;

@@ -1,26 +1,39 @@
-<div class="container_show">
-  <h1>Artworks I Own</h1>
+<div id="the_artworks" class="header">
+  <div class="heading">
+    <h1>Artworks I Own</h1>
+  </div>
+
+  <div class="obj-attr">
+    <p><%= pluralize(@artworks.count, 'Artworks') %></p>
+  </div>
+
+  <div class="obj-links">
+    <%= link_to "Back to All Artists", artists_path, id:'artist_index', class:'btn btn-link btn-md' %>
+  </div>
 </div>
 
 <%= render :partial => 'shared/flash_messages' %>
 
-<!-- list all artists; filter by abc order last name and first name; add artist's website link -->
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Artist</th>
-      <th>Edit</th>
-      <th>Delete</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @artworks.each do |work| %>
-    <tr>
-      <td><%= link_to work.title, artist_artwork_path(work.artist, work) %></td>
-      <td><%= link_to work.artist.name, artist_path(work.artist) %></td>
-      <td><%= link_to "Edit", edit_artist_artwork_path(work.artist, work) %></td>
-      <td><%= link_to "Delete", artist_artwork_path(work.artist, work), method: :delete, data: {confirm: "Are you sure you want to delete this Artwork?"} %></td>
-    <% end %>
-  </tbody>
-</table>
+<div class="content">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Image</th>
+        <th>Title</th>
+        <th>Artist</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @artworks.each do |work| %>
+      <tr>
+        <td><%= image_tag work.images.url(:thumb) %></td>
+        <td><%= link_to work.title, artist_artwork_path(work.artist, work) %></td>
+        <td><%= link_to work.artist.name, artist_path(work.artist) %></td>
+        <td><%= link_to "Edit", edit_artist_artwork_path(work.artist, work), id:"update_artwork" %></td>
+        <td><%= link_to "Delete", artist_artwork_path(work.artist, work), id:"delete_artwork", method: :delete, data: {confirm: "Are you sure you want to delete `#{work.title}`?"} %></td>
+      <% end %>
+    </tbody>
+  </table>
+</div>

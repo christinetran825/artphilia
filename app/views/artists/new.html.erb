@@ -1,7 +1,12 @@
-<div class="container_new_edit">
-  <h1>Add a New Artist</h1>
+<div id="the_artists" class="header">
+  <div class="heading">
+    <h1>Add a New Artist</h1>
+  </div>
 
+  <%= render :partial => 'formButtons' %>
+
+</div>
+
+<div class="content">
   <%= render 'form' %>
-
-  <%= link_to "Cancel", artists_path %>
 </div>

@@ -1,7 +1,14 @@
-<div class="container_new_edit">
-  <h1>Edit <%= @artwork.title  %> </h1>
+<div id="the_artworks" class="header">
+  <div class="heading">
+    <h1>Edit <%= @artwork.title  %> </h1>
+  </div>
 
-  <%= render 'form'  %>
+  <div class="obj-links">
+    <%= link_to "Cancel", artist_artwork_path, id:'artist_show', class:'artist_show_link btn btn-link btn-md', :data => {:id => @artist.id} %>
+    <!-- <%= link_to "Cancel", artist_path(@artist), id:'artist_show', class:'artist_show_link btn btn-link btn-md', :data => {:id => @artist.id} %> -->
+  </div>
+</div>
 
-  <%= link_to "Cancel", artist_artwork_path %>
+<div class="content">
+  <%= render 'form' %>
 </div>

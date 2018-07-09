@@ -4,7 +4,13 @@ class ArtworksController < ApplicationController
   before_action :find_the_artist
 
   def index
-    @artworks = Artwork.all
+    # @artworks = Artwork.all
+    @artworks = @artist.artworks
+    # render 'artworks/index', :layout => false
+    respond_to do |f|
+      f.html
+      f.json { render json: @artworks }
+    end
   end
 
   def new
@@ -14,13 +20,20 @@ class ArtworksController < ApplicationController
   def create
     @artwork = @artist.artworks.build(artwork_params)
     if @artwork && @artwork.save
-      redirect_to artist_artwork_path(@artist, @artwork), flash: {success: "'#{@artwork.title}' was added!"}
+      respond_to do |f|
+        f.html {redirect_to artist_artwork_path(@artist, @artwork), flash: {success: "'#{@artwork.title}' was added!"}}
+        f.json {render json: @artwork}
+      end
     else
       render :new, flash: {danger: "Please enter all fields"}
     end
   end
 
   def show
+    respond_to do |f|
+      f.html
+      f.json { render json: @artwork }
+    end
   end
 
   def edit

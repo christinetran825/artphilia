@@ -44,11 +44,8 @@
     <%= f.radio_button :user_owned, "Yes" %> Yes <%= f.radio_button :user_owned, "No" %> No
   </div>
 
-  <span>If you do own this, please answer the questions below. Otherwise, leave blank. </span>
-  <div class="container_ownership">
+  <div id="artwork_fields" style="display:none">
     <div class="field">
-  <!-- if user does own the artwork, show signed and original fields -->
-      <br>
       <%= f.label "Is it signed?" %>
       <%= f.radio_button :signed, "Yes" %> Yes <%= f.radio_button :signed, "No" %> No
     </div>

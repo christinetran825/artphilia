@@ -1,35 +1,40 @@
-<div class="container_show">
-  <h4> <%= @artist.name %> </h4>
+<div id="the_artworks" class="header">
+  <div class="heading">
+    <h1> <%= @artist.name %> </h1>
+  </div>
+  <div class="obj-links">
+    <%= link_to "Show All #{@artist.name} Artworks", artist_path(@artist), class:'artist_show_link btn btn-link btn-sm', :data => {:id => @artist.id} %>
+  </div>
 </div>
 
-<div class='row'>
-  <div class="col-md-6">
-    <%= image_tag @artwork.images.url %>
-  </div>
+<div id="the_artworks" class="content">
+  <div class='row'>
+    <div id="the_artworks_image" class="col-md-6">
+      <%= image_tag @artwork.images.url(:medium) %>
+    </div>
 
-  <div class="col-md-6-text">
-    <h2> <%= @artwork.title %> </h2>
-    <p><span>Exhibition:</span> <%= @artwork.exhibition %> </p>
-    <p>Medium/Media:</p>
-    <ul>
-      <% @artwork.media.each do |medium| %>
-        <li> <%= medium.name %> </li>
+    <div class="col-md-6">
+      <h2> <%= @artwork.title %> </h2>
+      <p><span>Exhibition:</span> <%= @artwork.exhibition %> </p>
+      <p>Medium/Media:</p>
+      <ul>
+        <% @artwork.media.each do |medium| %>
+          <li> <%= medium.name %> </li>
+        <% end %>
+      </ul>
+      <p> Rating: <%= @artwork.rating %> </p>
+      <p> Comments: <%= @artwork.comments %> </p>
+
+      <h4>Do I own this?</h4>
+      <p> <%= @artwork.user_owned %> </p>
+      <% if @artwork.user_owned == "Yes" %>
+        <p> Signed? <%= @artwork.signed %> </p>
+        <p> Original or Print? <%= @artwork.original %> </p>
       <% end %>
-    </ul>
-    <p> Rating: <%= @artwork.rating %> </p>
-    <p> Comments: <%= @artwork.comments %> </p>
-
-    <h4>Do I own this?</h4>
-    <p> <%= @artwork.user_owned %> </p>
-    <% if @artwork.user_owned == "Yes" %>
-      <p> Signed? <%= @artwork.signed %> </p>
-      <p> Original or Print? <%= @artwork.original %> </p>
-    <% end %>
-
-    <div class="btn-group">
-      <%= link_to "Show All #{@artist.name} Artworks", artist_path(@artist), class:'btn btn-link btn-sm' %>
-      <%= link_to "Edit Artwork", edit_artist_artwork_path, class:'btn btn-link btn-sm' %>
-      <%= link_to "Delete Artwork", artist_artwork_path, method: :delete, data: {confirm: "Are you sure you want to delete this Artwork?"}, class:'btn btn-link btn-sm' %>
+      <div class="obj-links">
+        <%= link_to "Edit Artwork", edit_artist_artwork_path, id:"update_artwork", class:'btn btn-link btn-sm', :data => {:id => @artist.id} %>
+        <%= link_to "Delete Artwork", artist_artwork_path, id:"delete_artwork", class:'btn btn-link btn-sm', method: :delete, data: {confirm: "Are you sure you want to delete `#{@artwork.title}`?"} %>
+      </div>
     </div>
   </div>
 </div>
