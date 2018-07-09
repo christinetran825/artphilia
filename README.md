@@ -1,5 +1,7 @@
 # Artphilia
-There are countless Artists out there in the world, especially non-musician artists. Becoming a fan is easy; you can follow the artist on social media, their personal website, and buy their many of their great work. How can you keep track of all those artists you found at galleries, art fairs, farmer's market, or even on social media? Welcome, Artphilia. It's an app to help you keep a record of non-musician artists (painters, illustrators, etc.) that you like. Keep a record of the artist's artwork(s) that you already own or wish to own. Get in touch with fellow fans. Maybe you'll find another artist to follow.
+There are countless artists in the world. This is especially true for non-musician artists. Becoming a fan of these artists is easy: you can follow the artist on social media, on their personal website, and by buying their works. With so many artists, how can you keep track of every one?
+
+Welcome to Artphilia, an app that helps you keep a record of non-musician artists that you like. You can easily keep a record of the artist's works that you already own or wish to own, and get in touch with fellow fans. You may even find a new artist to follow.
 
 ## Video Walkthrough
 My video walkthrough of Artphilia (Part 1): https://youtu.be/LW-DTvgwrGs
