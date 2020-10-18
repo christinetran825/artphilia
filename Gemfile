@@ -46,10 +46,16 @@ gem 'dotenv-rails'
 #paperclip
 gem "paperclip"
 
-gem "kaminari"
+gem "kaminari", ">= 1.2.1"
 
 gem 'active_model_serializers'
 gem 'jquery-rails'
+
+gem "actionpack", ">= 5.2.4.3"
+gem "actionview", ">= 5.2.4.3"
+gem "activesupport", ">= 5.2.4.3"
+gem "websocket-extensions", ">= 0.1.5"
+gem "rack", ">= 2.1.4"
 
 #boostrap
 # gem 'bootstrap-sass', '~> 3.2.0'
